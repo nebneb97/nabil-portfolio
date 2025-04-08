@@ -41,7 +41,7 @@ const Nav = () => {
               links.path === pathname
                 ? "text-accent border-b-2 border-accent"
                 : ""
-            } capitalize font-medium hover:text-accent transition-all`}
+            } capitalize font-medium hover:text-accent transition-all`} /*this is a test*/
           >
             {links.name}
           </Link>
