@@ -1,5 +1,4 @@
 "use client";
-
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -10,20 +9,19 @@ const links = [
   },
   {
     name: "About",
-    path: "/about",
+    path: "/about", 
   },
   {
     name: "Resume",
-    path: "/resumet",
+    path: "/resume",
   },
-
   {
     name: "Projects",
-    path: "/projects",
+    path: "/project",
   },
   {
     name: "Contact",
-    path: "/contact",
+    path: "/contacts",
   },
 ];
 
@@ -41,7 +39,7 @@ const Nav = () => {
               links.path === pathname
                 ? "text-accent border-b-2 border-accent"
                 : ""
-            } capitalize font-medium hover:text-accent transition-all`} /*this is a test*/
+            } capitalize font-medium hover:text-accent transition-all`} 
           >
             {links.name}
           </Link>
