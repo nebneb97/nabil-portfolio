@@ -1,7 +1,7 @@
 "use client";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { usePathname } from "next/navigation";
-import { Link } from "next/link";
+import Link from "next/link";
 import { CiMenuFries } from "react-icons/ci";
 
 const links = [
@@ -40,16 +40,18 @@ const MobileNav = () => {
             Nabil<span className="text-teal-500">.</span>
           </h1>
         </div>
-        {/*gov*/}
-        <nav>
+        {/* Navigation Links */}
+        <nav className="flex flex-col items-center space-y-4">
           {links.map((link, index) => {
             return (
               <Link
                 href={link.path}
                 key={index}
-                className={
-                  "text-xl capitalize hover:text-teal-500 transition-all"
-                }
+                className={`${
+                  link.path === pathname
+                    ? "text-teal-500 border-b-2 border-teal-500"
+                    : ""
+                } text-xl capitalize hover:text-teal-500 transition-all`}
               >
                 {link.name}
               </Link>
@@ -60,5 +62,6 @@ const MobileNav = () => {
     </Sheet>
   );
 };
+
 
 export default MobileNav;
