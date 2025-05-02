@@ -122,7 +122,16 @@
     @apply border-border outline-ring/50;
   } 
   body {
-    @apply bg-gray-900 text-white;
+    @apply bg-red-500 text-white;
+  }
+  .h1{
+    @apply text-[48px] xl:text-[80px] leading-[1.1] font-semibold;
+  }
+  .h2{
+    @apply text-[36px] xl:text-[80px] leading-[1.1] font-semibold;
+  }
+  .h3{
+    @apply text-[27px] xl:text-[80px] leading-[1.1] font-semibold;
   }
 }
 

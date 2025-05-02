@@ -30,10 +30,10 @@ const MobileNav = () => {
   const pathname = usePathname();
   return (
     <Sheet>
-      <SheetTrigger className="flex justify-center items-center">
+      <SheetTrigger className="flex justify-center items-center" aria-label="Open mobile navigation menu">
         <CiMenuFries className="text-[32px] text-teal-500" />
       </SheetTrigger>
-      <SheetContent className="flex flex-col">
+      <SheetContent className="flex flex-col" role="dialog" aria-label="Mobile Navigation">
         {/*logo*/}
         <div className="mt-32 mb-40 text-center text-2xl">
           <h1 className="text-4xl font-semibold">
