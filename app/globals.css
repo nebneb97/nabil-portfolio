@@ -122,17 +122,18 @@
     @apply border-border outline-ring/50;
   } 
   body {
-    @apply bg-red-500 text-white;
+    background-color: #1c1c22;
+    @apply  text-white;
   }
-  .h1{
-    @apply text-[48px] xl:text-[80px] leading-[1.1] font-semibold;
-  }
-  .h2{
-    @apply text-[36px] xl:text-[80px] leading-[1.1] font-semibold;
-  }
-  .h3{
-    @apply text-[27px] xl:text-[80px] leading-[1.1] font-semibold;
-  }
+  h1 {
+  @apply text-[48px] xl:text-[80px] leading-[1.1] font-semibold ;
+}
+h2 {
+  @apply text-[36px] xl:text-[80px] leading-[1.1] font-semibold;
+}
+h3 {
+  @apply text-[27px] xl:text-[80px] leading-[1.1] font-semibold;
+}
 }
 
 @layer utilities {
