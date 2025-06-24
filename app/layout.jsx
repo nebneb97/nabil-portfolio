@@ -19,7 +19,6 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      {/* Apply global styles and custom font */}
       <body className={`${jetbrains_Mono.variable} text-white`}>
         <Header />
         <StairTransition />

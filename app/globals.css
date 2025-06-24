@@ -117,11 +117,17 @@
   --sidebar-ring: oklch(0.446 0.043 257.281);
 }
 
+[data-placeholder] {
+   color: #404040;   
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
   } 
   body {
+    height: 100%;
+    min-height: 100vh;
     background-color: #1c1c22;
     @apply  text-white;
   }
