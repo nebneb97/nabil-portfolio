@@ -9,9 +9,9 @@ import Stats from "@/components/Stats";
 
 const Home = () => {
   return (
-    <section className="h-full xl:h-screen xl:overflow-hidden">
-      <div className="container mx-auto h-full xl:h-screen">
-        <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-10 xl:pb-24">
+    <section className="h-full">
+      <div className="container mx-auto h-full">
+        <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-5 xl:pb-20">
           {/*Text*/}
           <div className="text-center xl:text-left order-2 xl:order-none">
             <span className="text-xl">Software Developer</span>
@@ -25,28 +25,29 @@ const Home = () => {
             </p>
             {/*Button*/}
             <div className="flex flex-col xl:flex-row items-center gap-8">
-              <Button
-                variant="outline"
-                size="lg"
-                className="uppercase flex items-center gap-2"
+              <a
+                href="/assets/RESUME NABIL ADIB.pdf"
+                download // This attribute prompts download
+                aria-label="Download CV as PDF"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <span> Download CV</span>
-                <FiDownload className="text-xl" />
-              </Button>
-              <div className="mb-8 xl:mb-0">
-                <Social
-                  containerStyles="flex gap-6"
-                  iconStyles="w-9 h-9 border border-teal-500 rounded-full flex justify-center items-center 
-                  text-teal-500  text-base hover:bg-teal-600 hover:text-primary hover:transition-all duration-500"
-                />
-              </div>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="uppercase flex items-center gap-2"
+                >
+                  <span>Download CV</span>
+                  <FiDownload className="text-xl" />
+                </Button>
+              </a>
             </div>
           </div>
           <div className="order-1 xl:order-none mb-8 xl:mb-0">
             <Photo />
           </div>
         </div>
-        <Stats/>
+        <Stats />
       </div>
     </section>
   );
