@@ -5,30 +5,30 @@ import { motion } from "framer-motion";
 const about = [
   {
     num: "01",
-    title: "Web Development",
+    title: "Web App Development",
     description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Designs and builds responsive, scalable web applications using modern frameworks like Next.js, React, and Tailwind CSS, suitable for dashboards, portfolios, and business tools.",
     href: "",
   },
   {
     num: "02",
-    title: "UI/UX Design",
+    title: "Mobile App Development",
     description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Delivers cross-platform mobile applications using Flutter and Firebase, optimized for real-time features, location-based services, and multi-role access systems.",
     href: "",
   },
   {
     num: "03",
-    title: "Logo Design",
+    title: "Frontend Implementation",
     description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Translates UI designs into interactive, accessible interfaces using Tailwind CSS, DaisyUI, and component-based architecture, ensuring consistency and responsiveness across devices.",
     href: "",
   },
   {
     num: "04",
-    title: "SEO",
+    title: "Bug Fixing & QA Support",
     description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Provides frontend debugging, issue tracking, and collaborative testing support to enhance system stability, performance, and overall user experience.",
     href: "",
   },
 ];
@@ -64,7 +64,9 @@ const About = () => {
                   </Link>
                 </div>
                 {/*title*/}
-                <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-green-500 transition-all duration-500">{about.title}</h2>
+                <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-green-500 transition-all duration-500">
+                  {about.title}
+                </h2>
                 {/*description*/}
                 <p className="text-white/60">{about.description}</p>
                 {/*border*/}
