@@ -23,7 +23,7 @@ const about = {
     "Computer Science graduate with a strong foundation in Networking and Cybersecurity, and hands-on experience in mobile and web application development. Passionate about building real-world solutions and contributing to collaborative, tech-driven environments.",
   info: [
     { fieldName: "Name", fieldValue: "Nabil Adib" },
-    { fieldName: "Phone", fieldValue: "(+60) 19-107 5390" },
+    { fieldName: "Phone", fieldValue: "(+60) 19-207 5390" },
     { fieldName: "Experience", fieldValue: "2 Internships" },
     { fieldName: "GitHub", fieldValue: "github.com/nebneb97" },
     { fieldName: "Nationality", fieldValue: "Malaysian" },
