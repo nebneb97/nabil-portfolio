@@ -1,5 +1,10 @@
 "use client";
-import { Sheet, SheetContent,SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { CiMenuFries } from "react-icons/ci";
@@ -10,17 +15,17 @@ const links = [
     path: "/",
   },
   {
-    name: "About",
-    path: "/about",
-  },
-  {
-    name: "Resume",
+    name: "About Me",
     path: "/resume",
   },
   {
-    name: "Projects",
-    path: "/projects",
+    name: "Solutions",
+    path: "/solutions",
   },
+  // {
+  //   name: "Projects",
+  //   path: "/projects",
+  // },
   {
     name: "Contact",
     path: "/contacts",
@@ -30,11 +35,18 @@ const MobileNav = () => {
   const pathname = usePathname();
   return (
     <Sheet>
-      <SheetTrigger className="flex justify-center items-center" aria-label="Open mobile navigation menu">
+      <SheetTrigger
+        className="flex justify-center items-center"
+        aria-label="Open mobile navigation menu"
+      >
         <CiMenuFries className="text-[32px] text-teal-500" />
       </SheetTrigger>
-      <SheetContent className="flex flex-col" role="dialog" aria-label="Mobile Navigation">
-         {/* Accessibility Title (visually hidden) */}
+      <SheetContent
+        className="flex flex-col"
+        role="dialog"
+        aria-label="Mobile Navigation"
+      >
+        {/* Accessibility Title (visually hidden) */}
         <SheetTitle className="sr-only">Mobile Navigation</SheetTitle>
         {/*logo*/}
         <div className="mt-32 mb-40 text-center text-2xl">
@@ -64,6 +76,5 @@ const MobileNav = () => {
     </Sheet>
   );
 };
-
 
 export default MobileNav;
