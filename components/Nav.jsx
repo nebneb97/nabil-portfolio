@@ -8,12 +8,12 @@ const links = [
     path: "/",
   },
   {
-    name: "About",
-    path: "/about",
+    name: "About Me",
+    path: "/resume",
   },
   {
-    name: "Resume",
-    path: "/resume",
+    name: "Solutions",
+    path: "/solutions",
   },
   // {
   //   name: "Projects",

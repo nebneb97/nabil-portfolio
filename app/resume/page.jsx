@@ -1,19 +1,14 @@
 "use client";
 
-import {
-  FaHtml5,
-  FaCss3,
-  FaJs,
-  FaReact,
-  FaFigma,
-  FaNodeJs,
-} from "react-icons/fa";
+import { FaHtml5, FaCss3, FaJs, FaReact, FaNodeJs } from "react-icons/fa";
 
 import {
   SiNextdotjs,
   SiTailwindcss,
   SiFirebase,
   SiPrisma,
+  SiFlutter,
+  SiTypescript,
 } from "react-icons/si";
 
 //resume data
@@ -38,7 +33,7 @@ const experience = {
   title: "My Experience",
   description:
     "Hands-on frontend development experience from real-world internships. Contributed to production-ready systems, UI building, bug tracking, and team collaboration using modern tools.",
-   items: [
+  items: [
     {
       company: "Al-Ain IT Consultants Sdn Bhd",
       position: "Frontend Developer Intern",
@@ -86,7 +81,6 @@ const skills = {
     { icon: <SiNextdotjs />, name: "Next.js" },
     { icon: <SiTailwindcss />, name: "Tailwind CSS" },
     { icon: <FaNodeJs />, name: "Node.js" },
-    { icon: <FaFigma />, name: "Figma" },
     { icon: <SiFirebase />, name: "Firebase" },
     { icon: <SiPrisma />, name: "Prisma" },
   ],
@@ -113,7 +107,7 @@ const Resume = () => {
         opacity: 1,
         transition: { delay: 2.4, duration: 0.4, ease: "easeIn" },
       }}
-      className="min-h-[80vh] flex items-center justify-center py-12 xl:py-0"
+      className="min-h-[80vh] flex items-center justify-center py-12 xl:py-0 px-4 xl:px-0"
     >
       <div className="container mx-auto">
         <Tabs
@@ -186,20 +180,20 @@ const Resume = () => {
                       <FaReact title="React" />
                       <SiPrisma title="Prisma" />
                       <SiTailwindcss title="Tailwind" />
+                      <SiTypescript title="TypeScript" />
                     </div>
                   </li>
                   <li className="bg-[#232329] p-6 rounded-xl flex flex-col gap-4">
                     <h4 className="text-xl font-semibold text-green-400">
-                      Equip&Go
+                      Equip&Go Rental App
                     </h4>
                     <p className="text-white/70 text-sm">
                       A mobile app for renting outdoor activity equipment based
                       on user location and availability.
                     </p>
                     <div className="flex flex-wrap gap-2 text-xl text-green-500">
-                      <FaReact title="Flutter" />
+                      <SiFlutter title="Flutter" />
                       <SiFirebase title="Firebase" />
-                      <FaFigma title="Figma" />
                     </div>
                   </li>
                 </ul>
@@ -289,16 +283,16 @@ const Resume = () => {
                   })}
                 </ul>
               </div>
+              <div className="mt-10 text-center xl:text-left">
+                <Link href="/assets/RESUME NABIL ADIB.pdf" download>
+                  <Button className="uppercase text-sm">
+                    Download Full CV (PDF)
+                  </Button>
+                </Link>
+              </div>
             </TabsContent>
           </div>
         </Tabs>
-        <div className="mt-10 text-center xl:text-left">
-          <Link href="/assets/RESUME NABIL ADIB.pdf" download>
-            <Button className="uppercase text-sm">
-              Download Full CV (PDF)
-            </Button>
-          </Link>
-        </div>
       </div>
     </motion.div>
   );

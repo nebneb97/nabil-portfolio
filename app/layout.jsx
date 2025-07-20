@@ -1,8 +1,10 @@
 import { JetBrains_Mono } from "next/font/google";
+import "@/app/globals.css";
 // Components
 import Header from "@/components/Header";
 import PageTransition from "@/components/PageTransition";
 import StairTransition from "@/components/StairTransition";
+import Footer from "@/components/Footer";
 // import { PrismaClient } from '@prisma/client';
 // import { withAccelerate } from '@prisma/extension-accelerate'
 
@@ -32,6 +34,7 @@ export default function RootLayout({ children }) {
         <Header />
         <StairTransition />
         <PageTransition>{children}</PageTransition>
+        {/* <Footer /> */}
       </body>
     </html>
   );

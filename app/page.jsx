@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { FiDownload } from "react-icons/fi";
-import "./globals.css";
 
 //components
 import Social from "@/components/Social";
@@ -9,9 +8,9 @@ import Stats from "@/components/Stats";
 
 const Home = () => {
   return (
-    <section className="min-h-screen flex items-center justify-center">
+    <section className="m:max-h-screen flex items-center justify-center">
       <div className="container mx-auto h-full px-4 xl:px-0">
-        <div className="flex flex-col xl:flex-row items-center justify-between gap-12 xl:gap-20 py-8 xl:py-20">
+        <div className="flex flex-col xl:flex-row items-center justify-between gap-12 xl:gap-15 py-8 xl:py-15">
           {/*Text*/}
           <div className="text-center xl:text-left order-2 xl:order-none space-y-4">
             <span className="text-xl">Software Developer</span>

@@ -10,7 +10,7 @@ const Header = () => {
     <header className="py-8 xl:py-12 text-white" role="banner">
       <div className="container mx-auto flex justify-between items-center">
         <Link href="/" aria-label="Go to homepage">
-        <h1 className="text-4xl font-semibold">
+        <h1 className="text-4xl font-semibold pl-2 xl:pl-0">
           Nabil Adib
           <span className="text-teal-500">.</span>
           </h1>
