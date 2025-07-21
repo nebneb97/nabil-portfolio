@@ -5,35 +5,28 @@ import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-[#1a1a1a] text-white py-10 px-4 mt-12">
+    <footer className="text-white outline-2 py-10 px-4 mt-10">
       <div className="container mx-auto flex flex-col xl:flex-row items-center justify-between gap-6 text-center xl:text-left">
         {/* Left Section */}
         <div>
-          <h4 className="text-xl font-semibold mb-2">Nabil Adib</h4>
-          <p className="text-white/60 text-sm">
+          <p className="text-white/60 text-md">
             © {new Date().getFullYear()} All rights reserved.
           </p>
         </div>
+        {/* Center: Logo + Description */}
+        <Link href="/" className="flex items-center gap-2">
+          <h1 className="text-md text-white/60  font-semibold">
+            Nabil Adib
+            <span className="text-teal-500">.</span>
+          </h1>
+        <p className="text-md text-white/50">
+          Built with Next.js, React, Tailwind CSS & Framer Motion
+        </p>
+        </Link>
 
-        {/* Center Nav Links */}
-        <ul className="flex flex-wrap justify-center gap-6 text-white/70 text-sm">
-          <li>
-            <Link href="/">Home</Link>
-          </li>
-          <li>
-            <Link href="/about">About</Link>
-          </li>
-          <li>
-            <Link href="/projects">Projects</Link>
-          </li>
-          <li>
-            <Link href="/contact">Contact</Link>
-          </li>
-        </ul>
-
-        {/* Right: Socials + Built with */}
+        {/* Right: Socials + */}
         <div className="flex flex-col items-center xl:items-end gap-2">
-          <div className="flex gap-4 text-xl">
+          <div className="flex gap-4 text-md">
             <a
               href="https://github.com/nebneb97"
               target="_blank"
@@ -59,9 +52,6 @@ const Footer = () => {
               <FaTwitter />
             </a>
           </div>
-          <p className="text-xs text-white/50">
-            Built with Next.js, React, Tailwind CSS & Framer Motion
-          </p>
         </div>
       </div>
     </footer>

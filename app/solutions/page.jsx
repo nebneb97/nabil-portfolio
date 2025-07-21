@@ -26,6 +26,7 @@ import {
   TooltipTrigger,
   TooltipContent,
 } from "@/components/ui/tooltip";
+import { Icon } from "lucide-react";
 
 const about = [
   {
@@ -65,7 +66,12 @@ const projects = [
     title: "Project 1",
     description:
       "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    stack: [{ name: "Html 5" }, { name: "Css3" }, { name: "Javascript" }],
+    stack: [
+      { name: "Html 5", Icon: FaHtml5 },
+      { name: "Css3", Icon: FaCss3 },
+      { name: "Javascript", Icon: FaJs },
+      { name: "React.js", Icon: FaReact },
+    ],
     image: "/assets/work/thumb1.png",
     live: "",
     github: "",
@@ -76,7 +82,11 @@ const projects = [
     title: "Project 2",
     description:
       "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    stack: [{ name: "Next.js" }, { name: "Tailwind.css" }, { name: "Node.js" }],
+    stack: [
+      { name: "Next.js", Icon: SiNextdotjs },
+      { name: "Tailwind.css", Icon: SiTailwindcss },
+      { name: "Node.js", Icon: FaNodeJs },
+    ],
     image: "/assets/work/thumb2.png",
     live: "",
     github: "",
@@ -87,14 +97,17 @@ const projects = [
     title: "Project 3",
     description:
       "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    stack: [{ name: "Next.js" }, { name: "Tailwind.css" }],
+    stack: [
+      { name: "Next.js", Icon: SiNextdotjs },
+      { name: "Tailwind.css", Icon: SiTailwindcss },
+    ],
     image: "/assets/work/thumb3.png",
     live: "",
     github: "",
   },
 ];
 
-const Solutions= () => {
+const Solutions = () => {
   const [project, setProject] = useState(projects[0]);
 
   const handleSlideChange = (swiper) => {
@@ -109,7 +122,10 @@ const Solutions= () => {
       className="min-h-[80vh] flex flex-col justify-center py-12 xl:py-0 px-4 xl:px-0"
     >
       <div className="container mx-auto">
-        {/* Solutions */}
+        {/* Solutions Section Title */}
+        <h2 className="text-4xl font-bold text-center text-white py-5">
+          What I Offer
+        </h2>
         <div className="mb-24">
           <motion.div
             initial={{ opacity: 0 }}
@@ -145,28 +161,34 @@ const Solutions= () => {
           </motion.div>
         </div>
 
-        {/* Projects */}
+        {/* Projects Section Title */}
+        <h2 className="text-3xl font-bold text-center text-white mt-24 mb-8">
+          Recent Projects
+        </h2>
         <div className="flex flex-col xl:flex-row xl:gap-[30px]">
           <div className="w-full xl:w-[50%] xl:h-[460px] flex flex-col xl:justify-between order-2 xl:order-none">
             <div className="flex flex-col gap-[30px] h-[50%]">
               <div className="text-8xl leading-none font-extrabold text-transparent text-outline">
                 {project.num}
               </div>
-              <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-green-500 transition-all duration-500 capitalize">
+              <h2 className="text-2xl md:text-3xl xl:text-[42px] font-bold leading-none text-white group-hover:text-green-500 transition-all duration-500 capitalize">
                 {project.category}
               </h2>
               <p className="text-white/60">{project.description}</p>
               <ul className="flex gap-4">
                 {project.stack.map((item, index) => (
-                  <li key={index} className="text-xl text-emerald-400">
+                  <li
+                    key={index}
+                    className="flex items-center gap-2 text-xl text-emerald-400"
+                  >
+                    {item.Icon && <item.Icon className="text-2xl" />}
                     {item.name}
-                    {index !== project.stack.length - 1 && ","}
                   </li>
                 ))}
               </ul>
               <div className="border border-white/20"></div>
               <div className="flex items-center gap-4">
-                <Link href={project.live}>
+                <Link href={project.live} aria-label="View Live Project">
                   <TooltipProvider delayDuration={100}>
                     <Tooltip>
                       <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
@@ -178,7 +200,7 @@ const Solutions= () => {
                     </Tooltip>
                   </TooltipProvider>
                 </Link>
-                <Link href={project.github}>
+                <Link href={project.github} aria-label="View Github Repository">
                   <TooltipProvider delayDuration={100}>
                     <Tooltip>
                       <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
