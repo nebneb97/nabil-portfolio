@@ -65,7 +65,7 @@ const Contacts = () => {
       }}
       className=""
     >
-      <div className="container mx-auto px-4 xl:px-0">
+      <div className="container mx-auto px-4 xl:px-10 xl:pb-10">
         <div className="flex flex-col xl:flex-row gap-6 xl:gap-10">
           {/* LEFT COLUMN (40%) */}
           <div className="flex-1 flex flex-col gap-6">

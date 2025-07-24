@@ -119,7 +119,7 @@ const Solutions = () => {
     <motion.section
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="min-h-[80vh] flex flex-col justify-center py-12 xl:py-0 px-4 xl:px-0"
+      className="min-h-[80vh] flex flex-col justify-center py-12 xl:py-0 px-4 xl:px-10"
     >
       <div className="container mx-auto">
         {/* Solutions Section Title */}
