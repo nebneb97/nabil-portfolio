@@ -162,7 +162,7 @@ const Solutions = () => {
         </div>
 
         {/* Projects Section Title */}
-        <h2 className="text-3xl font-bold text-center text-white mt-24 mb-8">
+        {/* <h2 className="text-3xl font-bold text-center text-white mt-24 mb-8">
           Recent Projects
         </h2>
         <div className="flex flex-col xl:flex-row xl:gap-[30px]">
@@ -249,7 +249,7 @@ const Solutions = () => {
               />
             </Swiper>
           </div>
-        </div>
+        </div> */}
       </div>
     </motion.section>
   );
