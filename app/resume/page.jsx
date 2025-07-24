@@ -18,12 +18,11 @@ const about = {
     "Computer Science graduate with a strong foundation in Networking and Cybersecurity, and hands-on experience in mobile and web application development. Passionate about building real-world solutions and contributing to collaborative, tech-driven environments.",
   info: [
     { fieldName: "Name", fieldValue: "Nabil Adib" },
-    { fieldName: "Phone", fieldValue: "(+60) 19-207 5390" },
     { fieldName: "Experience", fieldValue: "2 Internships" },
-    { fieldName: "GitHub", fieldValue: "github.com/nebneb97" },
-    { fieldName: "Nationality", fieldValue: "Malaysian" },
     { fieldName: "Email", fieldValue: "nabiladib70@gmail.com" },
-    { fieldName: "Freelance", fieldValue: "Available" },
+    { fieldName: "GitHub", fieldValue: "https://github.com/nebneb97" },
+    { fieldName: "Nationality", fieldValue: "Malaysian" },
+    { fieldName: "Languages", fieldValue: "English, Malay" },
   ],
 };
 
@@ -107,9 +106,9 @@ const Resume = () => {
         opacity: 1,
         transition: { delay: 2.4, duration: 0.4, ease: "easeIn" },
       }}
-      className="min-h-[80vh] flex items-center justify-center py-12 xl:py-0 px-4 xl:px-0"
+      className="min-h-[80vh] flex items-center justify-center py-12 xl:py-0 px-4 xl:px-10"
     >
-      <div className="container mx-auto">
+      <div className="container bg mx-auto">
         <Tabs
           defaultValue="experience"
           className="flex flex-col xl:flex-row gap-[60px]"
@@ -262,22 +261,35 @@ const Resume = () => {
               </div>
             </TabsContent>
 
-            {/*about */}
+            {/*about me*/}
             <TabsContent value="about" className="w-full">
               <div className="flex flex-col gap-[30px] text-center xl:text-left">
                 <h3 className="text-4xl font-bold">{about.title}</h3>
-                <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
+                <p className="max-w-[500px] xl:max-w-[680px] text-white/60 mx-auto xl:mx-0">
                   {about.description}
                 </p>
                 <ul className="grid grid-cols-1 xl:grid-cols-2 gap-y-6 max-2-[620px] mx-auto xl:mx-0">
                   {about.info.map((item, index) => {
+                    const isLink = item.fieldName.toLowerCase() === "github";
+
                     return (
                       <li
                         key={index}
                         className="flex items-center justify-center xl:justify-start gap-4"
                       >
                         <span className="text-white/60">{item.fieldName}</span>
-                        <span className="text-xl">{item.fieldValue}</span>
+                        {isLink ? (
+                          <a
+                            href={item.fieldValue}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-xl text-teal-500 hover:underline"
+                          >
+                            {item.fieldValue.replace("https://", "")}
+                          </a>
+                        ) : (
+                          <span className="text-xl">{item.fieldValue}</span>
+                        )}
                       </li>
                     );
                   })}

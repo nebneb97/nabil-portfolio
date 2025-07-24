@@ -9,7 +9,7 @@ import Stats from "@/components/Stats";
 const Home = () => {
   return (
     <section className="m:max-h-screen flex items-center justify-center">
-      <div className="container mx-auto h-full px-4 xl:px-0">
+      <div className="container mx-auto h-full px-4 xl:px-30">
         <div className="flex flex-col xl:flex-row items-center justify-between gap-12 xl:gap-15 py-8 xl:py-15">
           {/*Text*/}
           <div className="text-center xl:text-left order-2 xl:order-none space-y-4">
@@ -31,7 +31,7 @@ const Home = () => {
             <div className="flex flex-col xl:flex-row items-center gap-8 mt-6">
               <a
                 href="/assets/RESUME NABIL ADIB.pdf"
-                download // This attribute prompts download
+                download 
                 aria-label="Download CV as PDF"
                 target="_blank"
                 rel="noopener noreferrer"

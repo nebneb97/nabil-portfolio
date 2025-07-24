@@ -1,5 +1,6 @@
 import { JetBrains_Mono } from "next/font/google";
 import "@/app/globals.css";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 // Components
 import Header from "@/components/Header";
 import PageTransition from "@/components/PageTransition";
@@ -16,8 +17,6 @@ const jetbrains_Mono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
 });
 
-
-
 export const metadata = {
   title: "Portfolio | Nabil Adib",
   keywords: ["Portfolio", "Nabil Adib", "Web Developer", "Software Engineer"],
@@ -30,12 +29,14 @@ export const viewport = "width=device-width, initial-scale=1";
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${jetbrains_Mono.variable}p-4 xl:px-9 mx-auto`}>
+      <body className={`${jetbrains_Mono.variable}p-4 xl:px-0 mx-auto`}>
         <Header />
         <StairTransition />
         <PageTransition>{children}</PageTransition>
-        {/* <Footer /> */}
+        <SpeedInsights />
+        <Footer />
       </body>
+      
     </html>
   );
 }
