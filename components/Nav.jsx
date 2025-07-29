@@ -19,10 +19,10 @@ const links = [
   //   name: "Projects",
   //   path: "/projects",
   // },
-  {
-    name: "Contact",
-    path: "/contacts",
-  },
+  // {
+  //   name: "Contact",
+  //   path: "/contacts",
+  // },
 ];
 
 const Nav = () => {

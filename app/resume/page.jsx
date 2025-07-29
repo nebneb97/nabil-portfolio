@@ -296,9 +296,10 @@ const Resume = () => {
                 </ul>
               </div>
               <div className="mt-10 text-center xl:text-left">
-                <Link href="/assets/RESUME NABIL ADIB.pdf" download>
+                <Link href="/assets/RESUME NABIL ADIB.pdf" target="_blank" rel="noopener noreferrer">
+                  {/* Button to view resume */}
                   <Button className="uppercase text-sm">
-                    Download Full CV (PDF)
+                    <span>My Resume</span>
                   </Button>
                 </Link>
               </div>

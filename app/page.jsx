@@ -5,6 +5,7 @@ import { FiDownload } from "react-icons/fi";
 import Social from "@/components/Social";
 import Photo from "@/components/Photo";
 import Stats from "@/components/Stats";
+import HomeResumeProjects from "@/components/HomeResumeProjects";
 
 const Home = () => {
   return (
@@ -31,17 +32,16 @@ const Home = () => {
             <div className="flex flex-col xl:flex-row items-center gap-8 mt-6">
               <a
                 href="/assets/RESUME NABIL ADIB.pdf"
-                download 
-                aria-label="Download CV as PDF"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="View CV as PDF"
               >
                 <Button
                   variant="outline"
                   size="lg"
                   className="uppercase flex items-center gap-2"
                 >
-                  <span>Download CV</span>
+                  <span>Download Resume</span>
                   <FiDownload className="text-xl" />
                 </Button>
               </a>
@@ -51,7 +51,10 @@ const Home = () => {
             <Photo />
           </div>
         </div>
-        <Stats className="mt-12 xl:mt-20" />
+        <Stats className="mt-12 xl:mt-10" />
+        <div className="">
+          <HomeResumeProjects />
+        </div>
       </div>
     </section>
   );
