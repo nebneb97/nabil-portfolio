@@ -123,7 +123,7 @@ const Solutions = () => {
     >
       <div className="container mx-auto">
         {/* Solutions Section Title */}
-        <h2 className="text-3xl font-bold text-center text-white py-10">
+        <h2 className="xl:text-[42px] font-bold text-center text-white py-10 xl:mb-15">
           What I Offer
         </h2>
         <div className="mb-24">
@@ -162,7 +162,7 @@ const Solutions = () => {
         </div>
 
         {/* Projects Section Title */}
-        <h2 className="text-2xl sm:text-3xl font-bold text-center text-white mt-16 sm:mt-24 mb-6 sm:mb-8">
+        <h2 className="xl:text-[42px] sm:text-3xl font-bold text-center text-white mt-16 sm:mt-24 mb-6 sm:mb-8 xl:mb-15">
           Recent Projects
         </h2>
 
