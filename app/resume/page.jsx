@@ -1,7 +1,6 @@
 "use client";
 
 import { FaHtml5, FaCss3, FaJs, FaReact, FaNodeJs } from "react-icons/fa";
-
 import {
   SiNextdotjs,
   SiTailwindcss,
@@ -10,8 +9,19 @@ import {
   SiFlutter,
   SiTypescript,
 } from "react-icons/si";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Tooltip,
+  TooltipProvider,
+  TooltipTrigger,
+  TooltipContent,
+} from "@/components/ui/tooltip";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Button } from "@/components/ui/button";
 
-//resume data
+// Resume data
 const about = {
   title: "About Me",
   description:
@@ -26,7 +36,6 @@ const about = {
   ],
 };
 
-//experience data
 const experience = {
   icon: "/assets/resume/badge.svg",
   title: "My Experience",
@@ -46,10 +55,9 @@ const experience = {
   ],
 };
 
-//education data
 const education = {
   icon: "/assets/resume/cap.svg",
-  title: "My education",
+  title: "My Education",
   description:
     "Completed a Computer Science degree specializing in Netcentric Computing. Coursework covered web/mobile development, cybersecurity, and network systems.",
   items: [
@@ -67,9 +75,8 @@ const education = {
   ],
 };
 
-//skills data
 const skills = {
-  title: "My skills",
+  title: "My Skills",
   description:
     "Experienced with modern web and mobile development tools. Skilled in frontend architecture, UI frameworks, and collaborative development workflows.",
   skillList: [
@@ -82,21 +89,34 @@ const skills = {
     { icon: <FaNodeJs />, name: "Node.js" },
     { icon: <SiFirebase />, name: "Firebase" },
     { icon: <SiPrisma />, name: "Prisma" },
+    { icon: <SiFlutter />, name: "Flutter" },
+    { icon: <SiTypescript />, name: "TypeScript" },
   ],
 };
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-
-import {
-  Tooltip,
-  TooltipProvider,
-  TooltipTrigger,
-  TooltipContent,
-} from "@/components/ui/tooltip";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { motion } from "framer-motion";
+const projects = [
+  {
+    title: "Cloud-based Software Testing Platform",
+    description:
+      "A platform to request and manage software testing tasks with real-time status and role-based control.",
+    technologies: [
+      <SiNextdotjs title="Next.js" key="nextjs" />,
+      <FaReact title="React" key="react" />,
+      <SiPrisma title="Prisma" key="prisma" />,
+      <SiTailwindcss title="Tailwind CSS" key="tailwind" />,
+      <SiTypescript title="TypeScript" key="ts" />,
+    ],
+  },
+  {
+    title: "Equip&Go Rental App",
+    description:
+      "A mobile app for renting outdoor activity equipment based on user location and availability.",
+    technologies: [
+      <SiFlutter title="Flutter" key="flutter" />,
+      <SiFirebase title="Firebase" key="firebase" />,
+    ],
+  },
+];
 
 const Resume = () => {
   return (
@@ -104,26 +124,50 @@ const Resume = () => {
       initial={{ opacity: 0 }}
       animate={{
         opacity: 1,
-        transition: { delay: 2.4, duration: 0.4, ease: "easeIn" },
+        transition: { delay: 0.2, duration: 0.2, ease: "easeIn" },
       }}
-      className="min-h-[90vh] flex items-center justify-center py-12 xl:py-0 px-4 xl:px-10 xl:mt-40"
+      className="min-h-screen  from-gray-900 via-gray-800 to-emerald-900/20 py-8"
     >
-      <div className="container mx-">
+      <div className="lg:mt-20 container mx-auto px-4 max-w-7xl">
+        {/* Header Section */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            Nabil <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Adib</span>
+          </h1>
+          <p className="text-xl text-gray-300 mb-6">Frontend Developer & Computer Science Graduate</p>
+        </div>
+
+        {/* Navigation Tabs */}
         <Tabs
           defaultValue="experience"
           className="flex flex-col xl:flex-row gap-[60px]"
         >
           <TabsList className="flex flex-col w-full max-w-[380px] mx-auto xl:mx-0 gap-6">
-            <TabsTrigger value="about">About Me</TabsTrigger>
-            <TabsTrigger value="education">Education</TabsTrigger>
-            <TabsTrigger value="skills">Skills</TabsTrigger>
-            <TabsTrigger value="experience">Experience</TabsTrigger>
-            <TabsTrigger value="projects">Projects</TabsTrigger>
+            <TabsTrigger value="about"
+              className="bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white px-6 py-3 rounded-lg font-medium transition-all duration-300">
+              About Me
+            </TabsTrigger>
+            <TabsTrigger value="education"
+              className="bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white px-6 py-3 rounded-lg font-medium transition-all duration-300">
+              Education
+            </TabsTrigger>
+            <TabsTrigger value="skills"
+              className="bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white px-6 py-3 rounded-lg font-medium transition-all duration-300">
+              Skills
+            </TabsTrigger>
+            <TabsTrigger value="experience"
+              className="bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white px-6 py-3 rounded-lg font-medium transition-all duration-300">
+              Experience
+            </TabsTrigger>
+            <TabsTrigger value="projects"
+              className="bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white px-6 py-3 rounded-lg font-medium transition-all duration-300">
+              Projects
+            </TabsTrigger>
           </TabsList>
 
-          {/*content*/}
+          {/* Content */}
           <div className="min-h-[70vh] w-full">
-            {/* experience */}
+            {/* Experience */}
             <TabsContent value="experience" className="w-full">
               <div className="flex flex-col gap-[30px] text-center xl:text-left">
                 <h3 className="text-4xl font-bold">{experience.title}</h3>
@@ -132,32 +176,29 @@ const Resume = () => {
                 </p>
                 <ScrollArea className="h-[400px]">
                   <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[30px]">
-                    {experience.items.map((item, index) => {
-                      return (
-                        <li
-                          key={index}
-                          className="bg-[#232329] h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
-                        >
-                          <span className="text-green-500">
-                            {item.duration}
-                          </span>
-                          <h3 className="text-xl max-w-[260px] min-h-[60px] text-center lg:text-left">
-                            {item.position}
-                          </h3>
-                          <div>
-                            {/*dot*/}
-                            <span className="w-[6px] h-[6px] rounded-full bg-green-400"></span>
-                            <p className="text-white/60">{item.company}</p>
-                          </div>
-                        </li>
-                      );
-                    })}
+                    {experience.items.map((item, index) => (
+                      <li
+                        key={index}
+                        className="bg-gradient-to-br from-gray-700/50 to-gray-800/50 rounded-xl p-6 border border-gray-600/50 flex flex-col justify-center items-center lg:items-start gap-2"
+                      >
+                        <span className="text-green-500">
+                          {item.duration}
+                        </span>
+                        <h3 className="text-xl max-w-[260px] min-h-[60px] text-center lg:text-left">
+                          {item.position}
+                        </h3>
+                        <div className="flex items-center gap-2">
+                          <span className="w-[6px] h-[6px] rounded-full bg-green-400" />
+                          <p className="text-white/60">{item.company}</p>
+                        </div>
+                      </li>
+                    ))}
                   </ul>
                 </ScrollArea>
               </div>
             </TabsContent>
 
-            {/*projects */}
+            {/* Projects */}
             <TabsContent value="projects" className="w-full">
               <div className="flex flex-col gap-[30px] text-center xl:text-left">
                 <h3 className="text-4xl font-bold">Projects</h3>
@@ -166,40 +207,24 @@ const Resume = () => {
                   internships and academic work.
                 </p>
                 <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[30px]">
-                  <li className="bg-[#232329] p-6 rounded-xl flex flex-col gap-4">
-                    <h4 className="text-xl font-semibold text-green-400">
-                      Cloud-based Software Testing Platform
-                    </h4>
-                    <p className="text-white/70 text-sm">
-                      A platform to request and manage software testing tasks
-                      with real-time status and role-based control.
-                    </p>
-                    <div className="flex flex-wrap gap-2 text-xl text-green-500">
-                      <SiNextdotjs title="Next.js" />
-                      <FaReact title="React" />
-                      <SiPrisma title="Prisma" />
-                      <SiTailwindcss title="Tailwind" />
-                      <SiTypescript title="TypeScript" />
-                    </div>
-                  </li>
-                  <li className="bg-[#232329] p-6 rounded-xl flex flex-col gap-4">
-                    <h4 className="text-xl font-semibold text-green-400">
-                      Equip&Go Rental App
-                    </h4>
-                    <p className="text-white/70 text-sm">
-                      A mobile app for renting outdoor activity equipment based
-                      on user location and availability.
-                    </p>
-                    <div className="flex flex-wrap gap-2 text-xl text-green-500">
-                      <SiFlutter title="Flutter" />
-                      <SiFirebase title="Firebase" />
-                    </div>
-                  </li>
+                  {projects.map((project, idx) => (
+                    <li key={idx} className="bg-gradient-to-br from-gray-700/50 to-gray-800/50 rounded-xl p-6 border border-gray-600/50 flex flex-col gap-4">
+                      <h4 className="text-xl font-semibold text-green-400">
+                        {project.title}
+                      </h4>
+                      <p className="text-white/70 text-sm">
+                        {project.description}
+                      </p>
+                      <div className="flex flex-wrap gap-2 text-xl text-green-500">
+                        {project.technologies}
+                      </div>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </TabsContent>
 
-            {/*education */}
+            {/* Education */}
             <TabsContent value="education" className="w-full">
               <div className="flex flex-col gap-[30px] text-center xl:text-left">
                 <h3 className="text-4xl font-bold">{education.title}</h3>
@@ -208,30 +233,25 @@ const Resume = () => {
                 </p>
                 <ScrollArea className="h-[400px]">
                   <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[30px]">
-                    {education.items.map((item, index) => {
-                      return (
-                        <li
-                          key={index}
-                          className="bg-[#232329] h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
-                        >
-                          <span className="text-green-500">{item.degree}</span>
-                          <h3 className="text-xl max-w-[260px] min-h-[60px] text-center lg:text-left">
-                            {item.position}
-                          </h3>
-                          <div>
-                            {/*dot*/}
-                            <span className="w-[6px] h-[6px] rounded-full bg-green-400"></span>
-                            <p className="text-white/60">{item.institution}</p>
-                          </div>
-                        </li>
-                      );
-                    })}
+                    {education.items.map((item, index) => (
+                      <li
+                        key={index}
+                        className="bg-gradient-to-br from-gray-700/50 to-gray-800/50 rounded-xl p-6 border border-gray-600/50 flex flex-col justify-center items-center lg:items-start gap-2"
+                      >
+                        <span className="text-green-500">{item.degree}</span>
+                        <span className="text-white/60">{item.duration}</span>
+                        <div className="flex items-center gap-2">
+                          <span className="w-[6px] h-[6px] rounded-full bg-green-400" />
+                          <p className="text-white/60">{item.institution}</p>
+                        </div>
+                      </li>
+                    ))}
                   </ul>
                 </ScrollArea>
               </div>
             </TabsContent>
 
-            {/*skills */}
+            {/* Skills */}
             <TabsContent value="skills" className="w-full">
               <div className="flex flex-col gap-[30px] text-center xl:text-left">
                 <h3 className="text-4xl font-bold">{skills.title}</h3>
@@ -239,29 +259,27 @@ const Resume = () => {
                   {skills.description}
                 </p>
                 <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xl:gap-[30px]">
-                  {skills.skillList.map((skill, index) => {
-                    return (
-                      <li key={index}>
-                        <TooltipProvider delayDuration={100}>
-                          <Tooltip>
-                            <TooltipTrigger className="w-full h-[150px] bg-[#232339] rounded-xl flex justify-center items-center group">
-                              <div className="text-6xl group-hover:text-green-500 transition-all duration-300">
-                                {skill.icon}
-                              </div>
-                            </TooltipTrigger>
-                            <TooltipContent>
-                              <p className="capitalize">{skill.name}</p>
-                            </TooltipContent>
-                          </Tooltip>
-                        </TooltipProvider>
-                      </li>
-                    );
-                  })}
+                  {skills.skillList.map((skill, index) => (
+                    <li key={index}>
+                      <TooltipProvider delayDuration={100}>
+                        <Tooltip>
+                          <TooltipTrigger className="w-full h-[150px] bg-gradient-to-br from-gray-700/50 to-gray-800/50 rounded-xl flex justify-center items-center group border border-gray-600/50">
+                            <div className="text-6xl group-hover:text-green-500 transition-all duration-300">
+                              {skill.icon}
+                            </div>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p className="capitalize">{skill.name}</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </TabsContent>
 
-            {/*about me*/}
+            {/* About Me */}
             <TabsContent value="about" className="w-full">
               <div className="flex flex-col gap-[30px] text-center xl:text-left">
                 <h3 className="text-4xl font-bold">{about.title}</h3>
@@ -297,7 +315,6 @@ const Resume = () => {
               </div>
               <div className="mt-10 text-center xl:text-left">
                 <Link href="/assets/RESUME NABIL ADIB.pdf" target="_blank" rel="noopener noreferrer">
-                  {/* Button to view resume */}
                   <Button className="uppercase text-sm">
                     <span>My Resume</span>
                   </Button>

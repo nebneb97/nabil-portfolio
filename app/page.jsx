@@ -10,7 +10,7 @@ import HomeResumeProjects from "@/components/HomeResumeProjects";
 const Home = () => {
   return (
     <section className="m:max-h-screen flex items-center justify-center">
-      <div className="container mx-auto h-full px-4 xl:px-30 xl:mt-10">
+      <div className="container mx-auto h-full px-4 xl:px-30 xl:mt-15">
         <div className="flex flex-col xl:flex-row items-center justify-between gap-12 xl:gap-15 py-8 xl:py-15">
           {/*Text*/}
           <div className="text-center xl:text-left order-2 xl:order-none space-y-4">
