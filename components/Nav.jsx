@@ -3,48 +3,28 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const links = [
-  {
-    name: "Home",
-    path: "/",
-  },
-  {
-    name: "About Me",
-    path: "/resume",
-  },
-  {
-    name: "Solutions",
-    path: "/solutions",
-  },
-  // {
-  //   name: "Projects",
-  //   path: "/projects",
-  // },
-  // {
-  //   name: "Contact",
-  //   path: "/contacts",
-  // },
+  { name: "Home", path: "/" },
+  { name: "About Me", path: "/resume" },
+  { name: "Solutions", path: "/solutions" },
 ];
 
 const Nav = () => {
   const pathname = usePathname();
-  console.log(pathname);
   return (
     <nav className="flex gap-8">
-      {links.map((links, index) => {
-        return (
-          <Link
-            href={links.path}
-            key={index}
-            className={`${
-              links.path === pathname
-                ? "text-teal-400 border-b-2 border-teal-400"
-                : ""
-            } capitalize font-medium hover:text-accent transition-all`}
-          >
-            {links.name}
-          </Link>
-        );
-      })}
+      {links.map((link, index) => (
+        <Link
+          href={link.path}
+          key={index}
+          className={`${
+            link.path === pathname
+              ? "text-indigo-600 border-b-2 border-indigo-500"
+              : "text-zinc-600 hover:text-indigo-500"
+          } capitalize font-medium transition-colors duration-200`}
+        >
+          {link.name}
+        </Link>
+      ))}
     </nav>
   );
 };

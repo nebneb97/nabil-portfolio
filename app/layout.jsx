@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import PageTransition from "@/components/PageTransition";
 import StairTransition from "@/components/StairTransition";
 import Footer from "@/components/Footer";
+import CustomCursor from "@/components/CustomCursor";
 // import { PrismaClient } from '@prisma/client';
 // import { withAccelerate } from '@prisma/extension-accelerate'
 
@@ -30,6 +31,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${jetbrains_Mono.variable}p-4 xl:px-0 mx-auto`}>
+        <CustomCursor />
         <Header />
         <StairTransition />
         <PageTransition>{children}</PageTransition>

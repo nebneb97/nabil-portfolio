@@ -1,4 +1,4 @@
-import { animate, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 //variants
 const stairAnimation = {
@@ -42,7 +42,7 @@ const Stairs = () => {
               ease: "easeInOut",
               delay: reverseIndex(index) * 0.1, // Staggered delay
             }}
-            className="h-full w-full bg-white relative"
+            className="h-full w-full bg-indigo-600 relative"
           />
         ))}
     </>

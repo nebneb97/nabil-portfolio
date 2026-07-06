@@ -11,27 +11,12 @@ import { CiMenuFries } from "react-icons/ci";
 import { Button } from "./ui/button";
 
 const links = [
-  {
-    name: "Home",
-    path: "/",
-  },
-  {
-    name: "About Me",
-    path: "/resume",
-  },
-  {
-    name: "Solutions",
-    path: "/solutions",
-  },
-  // {
-  //   name: "Projects",
-  //   path: "/projects",
-  // },
-  {
-    name: "Hire Me",
-    path: "/contacts",
-  },
+  { name: "Home", path: "/" },
+  { name: "About Me", path: "/resume" },
+  { name: "Solutions", path: "/solutions" },
+  { name: "Hire Me", path: "/contacts" },
 ];
+
 const MobileNav = () => {
   const pathname = usePathname();
   return (
@@ -40,25 +25,21 @@ const MobileNav = () => {
         className="flex justify-center items-center"
         aria-label="Open mobile navigation menu"
       >
-        <CiMenuFries className="text-[32px] text-teal-500" />
+        <CiMenuFries className="text-[32px] text-zinc-700" />
       </SheetTrigger>
       <SheetContent
-        className="flex flex-col"
+        className="flex flex-col bg-[#f6f5f1] border-l border-zinc-200"
         role="dialog"
         aria-label="Mobile Navigation"
       >
-        {/* Accessibility Title (visually hidden) */}
         <SheetTitle className="sr-only">Mobile Navigation</SheetTitle>
-        {/*logo*/}
         <div className="mt-32 mb-40 text-center text-2xl">
-          <h1 className="text-4xl font-semibold">
-            Nabil<span className="text-teal-500">.</span>
+          <h1 className="text-4xl font-semibold text-zinc-900">
+            Nabil<span className="text-indigo-500">.</span>
           </h1>
         </div>
-        {/* Navigation Links */}
         <nav className="flex flex-col items-center space-y-4">
           {links.map((link, index) => {
-            // Render a Button for "Hire Me", normal link for others
             if (link.name === "Hire Me") {
               return (
                 <Link href={link.path} key={index}>
@@ -66,16 +47,15 @@ const MobileNav = () => {
                 </Link>
               );
             }
-
             return (
               <Link
                 href={link.path}
                 key={index}
                 className={`${
                   link.path === pathname
-                    ? "text-teal-500 border-b-2 border-teal-500"
-                    : ""
-                } text-xl capitalize hover:text-teal-500 transition-all`}
+                    ? "text-indigo-600 border-b-2 border-indigo-500"
+                    : "text-zinc-700 hover:text-indigo-500"
+                } text-xl capitalize transition-colors duration-200`}
               >
                 {link.name}
               </Link>

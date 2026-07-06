@@ -5,35 +5,27 @@ import Image from "next/image";
 
 const Photo = () => {
   return (
-    <div className="w-full h-full relative">
+    <div className="w-full h-full relative flex items-center justify-center">
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{
-          opacity: 1,
-          transition: { delay: 2, duration: 0.4, ease: "easeIn" },
-        }}
+        animate={{ opacity: 1, transition: { delay: 0.4, duration: 0.6, ease: "easeIn" } }}
+        className="relative"
       >
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{
-            opacity: 1,
-            transition: { delay: 2.4, duration: 0.4, ease: "easeInOut" },
-          }}
-          className="w-[298px] h-[298px] xl:w-[498px] xl:h-[498px] mix-blend-lighten absolute"
-        >
+        {/* Profile image in a circle */}
+        <div className="w-[280px] h-[280px] xl:w-[460px] xl:h-[460px] rounded-full overflow-hidden bg-indigo-50 border-4 border-white shadow-lg relative z-10">
           <Image
             src="/assets/resume.png"
-            priority  
+            priority
             quality={100}
             fill
-            alt=""
-            className="object-contain"
+            alt="Nabil Adib"
+            className="object-cover object-center"
           />
-        </motion.div>
+        </div>
 
-        {/* Circle */}
+        {/* Spinning SVG ring */}
         <motion.svg
-          className="w-[300px] xl:w-[500px] h-[300px] xl:h-[500px]"
+          className="absolute inset-0 w-full h-full"
           fill="transparent"
           viewBox="0 0 506 506"
           xmlns="http://www.w3.org/2000/svg"
@@ -42,8 +34,8 @@ const Photo = () => {
             cx="253"
             cy="253"
             r="250"
-            stroke="#00ff99"
-            strokeWidth="4"
+            stroke="#6366f1"
+            strokeWidth="3"
             strokeLinecap="round"
             strokeLinejoin="round"
             initial={{ strokeDasharray: "24 10 0 0" }}
