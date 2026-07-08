@@ -69,7 +69,7 @@ const Solutions = () => {
     <motion.section
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { delay: 0.4, duration: 0.6 } }}
-      className="min-h-[80vh] flex flex-col justify-center py-12 xl:py-0 px-5 xl:px-10 xl:mt-30"
+      className="min-h-[80vh] flex flex-col justify-center py-12 xl:py-0 px-5 xl:px-10"
     >
       <div className="container mx-auto">
         <div className="max-w-4xl mx-auto">

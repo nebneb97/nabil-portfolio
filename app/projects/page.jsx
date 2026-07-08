@@ -1,19 +1,25 @@
 "use client";
 
-import { motion, number } from "framer-motion";
-import React, { useState } from "react";
-
+import { motion } from "framer-motion";
+import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { BsLink, BsGithub } from "react-icons/bs";
-
+import { FaReact } from "react-icons/fa";
+import {
+  SiNextdotjs,
+  SiTailwindcss,
+  SiFirebase,
+  SiPrisma,
+  SiFlutter,
+  SiTypescript,
+} from "react-icons/si";
 import {
   Tooltip,
   TooltipProvider,
   TooltipTrigger,
   TooltipContent,
 } from "@/components/ui/tooltip";
-
 import Link from "next/link";
 import Image from "next/image";
 import WorkSliderBtns from "@/components/ui/WorkSliderBtns";
@@ -21,36 +27,50 @@ import WorkSliderBtns from "@/components/ui/WorkSliderBtns";
 const projects = [
   {
     num: "01",
-    category: "Frontend Project",
-    title: "Project 1",
+    category: "Fullstack Web App",
+    title: "Cloud-based Testing Platform",
     description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    stack: [{ name: "Html 5" }, { name: "Css3" }, { name: "Javascript" }],
+      "A platform built during my internship at Al-Ain IT Consultants to request and manage software testing tasks. Features real-time status tracking, role-based access control (admin, tester, client), and a structured request/approval workflow.",
+    stack: [
+      { name: "Next.js", Icon: SiNextdotjs },
+      { name: "React", Icon: FaReact },
+      { name: "Prisma", Icon: SiPrisma },
+      { name: "Tailwind CSS", Icon: SiTailwindcss },
+      { name: "TypeScript", Icon: SiTypescript },
+    ],
     image: "/assets/work/thumb1.png",
     live: "",
-    github: "",
+    github: "https://github.com/nebneb97",
   },
   {
     num: "02",
-    category: "Fullstack",
-    title: "Project 2",
+    category: "Mobile App",
+    title: "Equip&Go Rental App",
     description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    stack: [{ name: "Next.js" }, { name: "Tailwind.css" }, { name: "Node.js" }],
+      "A cross-platform Flutter mobile application for renting outdoor activity equipment. Users can browse equipment by location and availability, manage bookings, and track rental status. Built with Firebase for real-time data and authentication.",
+    stack: [
+      { name: "Flutter", Icon: SiFlutter },
+      { name: "Firebase", Icon: SiFirebase },
+    ],
     image: "/assets/work/thumb2.png",
     live: "",
-    github: "",
+    github: "https://github.com/nebneb97",
   },
   {
     num: "03",
     category: "Frontend Web",
-    title: "Project 3",
+    title: "Portfolio Website",
     description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    stack: [{ name: "Next.js" }, { name: "Tailwind.css" }],
+      "This portfolio — built with Next.js 15, Tailwind CSS, and Framer Motion. Features smooth page transitions, a custom cursor, typewriter animation, an interactive accordion, and a fully responsive layout across all screen sizes.",
+    stack: [
+      { name: "Next.js", Icon: SiNextdotjs },
+      { name: "Tailwind CSS", Icon: SiTailwindcss },
+      { name: "Framer Motion", Icon: FaReact },
+      { name: "TypeScript", Icon: SiTypescript },
+    ],
     image: "/assets/work/thumb3.png",
     live: "",
-    github: "",
+    github: "https://github.com/nebneb97/nabil-portfolio",
   },
 ];
 
@@ -58,120 +78,118 @@ const ProjectsPage = () => {
   const [project, setProject] = useState(projects[0]);
 
   const handleSlideChange = (swiper) => {
-    // get current slide index
-    const currentIndex = swiper.activeIndex;
-    //update project state based on current slide index
-    setProject(projects[currentIndex]);
+    setProject(projects[swiper.activeIndex]);
   };
 
   return (
     <motion.section
       initial={{ opacity: 0 }}
-      animate={{ opacity: 2 }}
+      animate={{ opacity: 1, transition: { delay: 0.2, duration: 0.4 } }}
       className="min-h-[80vh] flex flex-col justify-center py-12 xl:px-0"
     >
-      <div className="container mx-auto">
+      <div className="container mx-auto px-4">
         <div className="flex flex-col xl:flex-row xl:gap-[30px]">
-          <div className="w-full xl:w-[50%] xl:h-[460px] flex flex-col xl:justify-between order-2 xl:order-none">
-            <div className="flex flex-col gap-[30px] h-[50%]">
-              {/*outline num*/}
-              <div className="text-8xl leading-none font-extrabold text-transparent text-outline">
+
+          {/* Info panel */}
+          <div className="w-full xl:w-[50%] xl:h-[460px] flex flex-col xl:justify-between order-2 xl:order-none mt-8 xl:mt-0">
+            <div className="flex flex-col gap-6">
+              {/* Number */}
+              <div className="text-7xl xl:text-8xl leading-none font-extrabold text-zinc-100">
                 {project.num}
               </div>
-              {/*project category*/}
-              <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-green-500 transition-all duration-500 capitalize">
-                {project.category}
-              </h2>
-              {/*project description*/}
-              <p className="text-white/60">{project.description}</p>
-              {/*stack*/}
-              <ul className="flex gap-4">
-                {project.stack.map((item, index) => {
-                  return (
-                    <li key={index} className="text-xl text-emerald-400">
-                      {item.name}
-                      {index !== project.stack.length - 1 && ","}
-                    </li>
-                  );
-                })}
+
+              {/* Category + title */}
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-widest text-indigo-400 mb-1">
+                  {project.category}
+                </p>
+                <h2 className="text-2xl xl:text-[32px] font-bold leading-tight text-zinc-900">
+                  {project.title}
+                </h2>
+              </div>
+
+              {/* Description */}
+              <p className="text-zinc-500 text-sm leading-relaxed max-w-[480px]">
+                {project.description}
+              </p>
+
+              {/* Stack */}
+              <ul className="flex flex-wrap gap-2">
+                {project.stack.map((item, index) => (
+                  <li
+                    key={index}
+                    className="flex items-center gap-1.5 text-indigo-500 bg-indigo-50 border border-indigo-100 px-3 py-1.5 rounded-full text-xs font-medium"
+                  >
+                    <item.Icon className="text-sm" />
+                    {item.name}
+                  </li>
+                ))}
               </ul>
-              {/*border*/}
-              <div className="border border-white/20"></div>
-              {/*button*/}
+
+              <div className="border-t border-zinc-100" />
+
+              {/* Links */}
               <div className="flex items-center gap-4">
-                {/*Live project button*/}
-                <Link href={project.live}>
-                  <TooltipProvider delayDuration={100}>
-                    <Tooltip>
-                      <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
-                        <BsLink className="text-white text-3xl group-hover:text-emerald-400" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Live Project</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                </Link>
-                {/*Github project button*/}
-                <Link href={project.github}>
-                  <TooltipProvider delayDuration={100}>
-                    <Tooltip>
-                      <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
-                        <BsGithub className="text-white text-3xl group-hover:text-emerald-400" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Github repository</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                </Link>
+                {project.live && (
+                  <Link href={project.live} target="_blank" aria-label="View live project">
+                    <TooltipProvider delayDuration={100}>
+                      <Tooltip>
+                        <TooltipTrigger className="w-[52px] h-[52px] rounded-full bg-zinc-100 hover:bg-indigo-50 border border-zinc-200 hover:border-indigo-200 flex justify-center items-center group transition-all">
+                          <BsLink className="text-zinc-500 text-xl group-hover:text-indigo-500" />
+                        </TooltipTrigger>
+                        <TooltipContent><p>Live Project</p></TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  </Link>
+                )}
+                {project.github && (
+                  <Link href={project.github} target="_blank" aria-label="View GitHub repository">
+                    <TooltipProvider delayDuration={100}>
+                      <Tooltip>
+                        <TooltipTrigger className="w-[52px] h-[52px] rounded-full bg-zinc-100 hover:bg-indigo-50 border border-zinc-200 hover:border-indigo-200 flex justify-center items-center group transition-all">
+                          <BsGithub className="text-zinc-500 text-xl group-hover:text-indigo-500" />
+                        </TooltipTrigger>
+                        <TooltipContent><p>GitHub Repo</p></TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  </Link>
+                )}
+                {!project.live && (
+                  <span className="text-xs text-zinc-400 italic">Live demo not available</span>
+                )}
               </div>
             </div>
           </div>
+
+          {/* Image slider */}
           <div className="w-full xl:w-[50%]">
             <Swiper
-              spaceBetween={30}
+              spaceBetween={20}
               slidesPerView={1}
-              className="xl:h-[520px] mb-12"
+              className="xl:h-[480px] mb-4 rounded-2xl overflow-hidden"
               onSlideChange={handleSlideChange}
             >
-              {projects.map((project, index) => {
-                return (
-                  <SwiperSlide key={index} className="w-full">
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{
-                        delay: 0.4,
-                        duration: 0.6,
-                        ease: "easeOut",
-                      }}
-                      className="h-[460px] relative group flex justify-center items-center bg-pink-50/20"
-                    >
-                      {/*overlay*/}
-                      <div></div>
-                      {/*Animated Image*/}
-                      <div className="relative w-full h-full">
-                        <Image
-                          src={project.image}
-                          fill
-                          className="object-cover"
-                          alt=""
-                          sizes="(max-width: 768px) 100vw, 50vw"
-                        />
-                      </div>
-                    </motion.div>
-                  </SwiperSlide>
-                );
-              })}
-              {/*Slider Buttons*/}
+              {projects.map((p, index) => (
+                <SwiperSlide key={index} className="w-full">
+                  <div className="h-[300px] xl:h-[480px] relative bg-zinc-100 rounded-2xl overflow-hidden">
+                    <Image
+                      src={p.image}
+                      fill
+                      className="object-cover"
+                      alt={p.title}
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                  </div>
+                </SwiperSlide>
+              ))}
               <WorkSliderBtns
-                containerStyles="flex gap-2 absolute right-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 w-full justify-between xl:w-max xl:w-max xl:justify-none"
-                btnStyles="bg-emerald-400 hover:bg-emerald-600 w-[44px] h-[44px] flex justify-center items-center transition-all rounded"
-                iconsStyles="text-primary text-[22px]"
+                containerStyles="flex gap-2 absolute right-3 bottom-3 z-20"
+                btnStyles="bg-indigo-500 hover:bg-indigo-600 w-[40px] h-[40px] flex justify-center items-center transition-all rounded-lg"
+                iconsStyles="text-white text-[18px]"
               />
             </Swiper>
           </div>
+
         </div>
       </div>
     </motion.section>

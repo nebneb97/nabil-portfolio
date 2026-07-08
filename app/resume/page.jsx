@@ -124,7 +124,7 @@ const Resume = () => {
       animate={{ opacity: 1, transition: { delay: 0.2, duration: 0.4, ease: "easeIn" } }}
       className="min-h-screen py-8"
     >
-      <div className="xl:mt-20 container mx-auto px-4 max-w-7xl">
+      <div className="container mx-auto px-4 max-w-7xl">
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-zinc-900 mb-3">

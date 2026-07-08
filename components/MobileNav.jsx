@@ -13,6 +13,7 @@ import { Button } from "./ui/button";
 const links = [
   { name: "Home", path: "/" },
   { name: "About Me", path: "/resume" },
+  { name: "Projects", path: "/projects" },
   { name: "Solutions", path: "/solutions" },
   { name: "Hire Me", path: "/contacts" },
 ];
@@ -33,7 +34,7 @@ const MobileNav = () => {
         aria-label="Mobile Navigation"
       >
         <SheetTitle className="sr-only">Mobile Navigation</SheetTitle>
-        <div className="mt-32 mb-40 text-center text-2xl">
+        <div className="mt-32 mb-40 text-center">
           <h1 className="text-4xl font-semibold text-zinc-900">
             Nabil<span className="text-indigo-500">.</span>
           </h1>

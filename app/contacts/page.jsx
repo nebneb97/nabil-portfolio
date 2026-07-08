@@ -16,26 +16,15 @@ import { FaEnvelope, FaMapMarkerAlt, FaGithub, FaLinkedin } from "react-icons/fa
 import { motion } from "framer-motion";
 
 const info = [
-  {
-    icon: <FaEnvelope />,
-    title: "Email",
-    description: "nabiladib70@gmail.com",
-  },
-  {
-    icon: <FaMapMarkerAlt />,
-    title: "Location",
-    description: "Selangor, Malaysia",
-  },
-  {
-    icon: <FaGithub />,
-    title: "GitHub",
-    description: "github.com/nebneb97",
-  },
+  { icon: <FaEnvelope />, title: "Email", description: "nabiladib70@gmail.com" },
+  { icon: <FaMapMarkerAlt />, title: "Location", description: "Selangor, Malaysia" },
+  { icon: <FaGithub />, title: "GitHub", description: "github.com/nebneb97" },
 ];
 
 const Contacts = () => {
-  const [status, setStatus] = useState("idle");
+  const [status, setStatus] = useState("idle"); // idle | loading | success | error
   const [copied, setCopied] = useState(false);
+  const [service, setService] = useState("");
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText("nabiladib70@gmail.com");
@@ -46,7 +35,34 @@ const Contacts = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("loading");
-    setTimeout(() => setStatus("success"), 1500);
+
+    const form = e.target;
+    const data = {
+      firstName: form.firstName.value,
+      lastName: form.lastName.value,
+      email: form.email.value,
+      phone: form.phone.value,
+      service,
+      message: form.message.value,
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (res.ok) {
+        setStatus("success");
+        form.reset();
+        setService("");
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -54,11 +70,11 @@ const Contacts = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { delay: 0.2, duration: 0.4, ease: "easeIn" } }}
     >
-      <div className="container mx-auto px-4 xl:px-10 xl:pb-5 xl:mt-30">
+      <div className="container mx-auto px-4 xl:px-10 xl:pb-5">
         <div className="flex flex-col xl:flex-row gap-6 xl:gap-10">
+
           {/* Left column */}
           <div className="flex-1 flex flex-col gap-6">
-            {/* Contact info */}
             <div className="bg-white border border-zinc-200 p-6 rounded-2xl shadow-sm">
               <h4 className="text-xl font-semibold text-indigo-500 mb-5">
                 Contact Information
@@ -87,7 +103,6 @@ const Contacts = () => {
               </ul>
             </div>
 
-            {/* Why work with me */}
             <div className="bg-white border border-zinc-200 p-6 rounded-2xl shadow-sm">
               <h4 className="text-xl font-semibold text-indigo-500 mb-2">
                 Why Work With Me?
@@ -116,13 +131,13 @@ const Contacts = () => {
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <Input type="text" placeholder="First Name" required />
-                <Input type="text" placeholder="Last Name" required />
-                <Input type="email" placeholder="Email" required />
-                <Input type="tel" placeholder="Phone Number" />
+                <Input name="firstName" type="text" placeholder="First Name" required />
+                <Input name="lastName" type="text" placeholder="Last Name" required />
+                <Input name="email" type="email" placeholder="Email" required />
+                <Input name="phone" type="tel" placeholder="Phone Number" />
               </div>
 
-              <Select>
+              <Select value={service} onValueChange={setService}>
                 <SelectTrigger className="w-full bg-zinc-50 border-zinc-200">
                   <SelectValue placeholder="Select a service" />
                 </SelectTrigger>
@@ -137,30 +152,42 @@ const Contacts = () => {
               </Select>
 
               <Textarea
+                name="message"
                 placeholder="Type your message here."
                 className="h-[140px] bg-zinc-50 border-zinc-200"
+                required
               />
 
-              <Button type="submit" className="w-fit" disabled={status === "loading"}>
+              <Button
+                type="submit"
+                className="w-fit"
+                disabled={status === "loading"}
+              >
                 {status === "loading" ? "Sending..." : "Send Message"}
               </Button>
 
               {status === "success" && (
                 <p className="text-indigo-500 text-sm font-medium">
-                  Message sent successfully!
+                  Message sent! I&apos;ll get back to you soon.
+                </p>
+              )}
+              {status === "error" && (
+                <p className="text-red-500 text-sm">
+                  Something went wrong. Please email me directly at nabiladib70@gmail.com
                 </p>
               )}
 
-              <div className="flex gap-4 mt-2">
-                <a href="https://linkedin.com/in/nabiladib" target="_blank" aria-label="LinkedIn">
+              <div className="flex gap-4 pt-2">
+                <a href="https://linkedin.com/in/nabiladib" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                   <FaLinkedin className="text-2xl text-zinc-400 hover:text-indigo-500 transition-colors" />
                 </a>
-                <a href="https://github.com/nebneb97" target="_blank" aria-label="GitHub">
+                <a href="https://github.com/nebneb97" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                   <FaGithub className="text-2xl text-zinc-400 hover:text-indigo-500 transition-colors" />
                 </a>
               </div>
             </form>
           </div>
+
         </div>
       </div>
     </motion.section>
