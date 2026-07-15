@@ -8,6 +8,7 @@ import {
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { CiMenuFries } from "react-icons/ci";
+import { Button } from "./ui/button";
 
 const links = [
   {
@@ -27,7 +28,7 @@ const links = [
   //   path: "/projects",
   // },
   {
-    name: "Contact",
+    name: "Hire Me",
     path: "/contacts",
   },
 ];
@@ -57,6 +58,15 @@ const MobileNav = () => {
         {/* Navigation Links */}
         <nav className="flex flex-col items-center space-y-4">
           {links.map((link, index) => {
+            // Render a Button for "Hire Me", normal link for others
+            if (link.name === "Hire Me") {
+              return (
+                <Link href={link.path} key={index}>
+                  <Button className="w-[200px]">{link.name}</Button>
+                </Link>
+              );
+            }
+
             return (
               <Link
                 href={link.path}

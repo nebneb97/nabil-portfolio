@@ -27,19 +27,19 @@ import { motion } from "framer-motion";
 
 const info = [
   {
-    icon: <FaPhoneAlt />,
-    title: "Phone",
-    description: "(+60) 19 -207 5390",
-  },
-  {
     icon: <FaEnvelope />,
     title: "Email",
-    description: "nabiladib85@gmail.com",
+    description: "nabiladib70@gmail.com",
   },
   {
     icon: <FaMapMarkerAlt />,
-    title: "Address",
-    description: "Kuala Lumpur, Malaysia",
+    title: "Location",
+    description: "Selangor, Malaysia",
+  },
+  {
+    icon: <FaGithub />,
+    title: "GitHub",
+    description: "github.com/nebneb97",
   },
 ];
 
@@ -65,7 +65,7 @@ const Contacts = () => {
       }}
       className=""
     >
-      <div className="container mx-auto px-4 xl:px-10 xl:pb-10">
+      <div className="container mx-auto px-4 xl:px-10 xl:pb-5 xl:mt-30">
         <div className="flex flex-col xl:flex-row gap-6 xl:gap-10">
           {/* LEFT COLUMN (40%) */}
           <div className="flex-1 flex flex-col gap-6">
@@ -81,7 +81,7 @@ const Contacts = () => {
                       <div className="text-[24px]">{item.icon}</div>
                     </div>
                     <div>
-                      <p className="text-white/60">{item.title}</p>
+                      {/* <p className="text-white/60">{item.title}</p> */}
                       <h3 className="text-lg">{item.description}</h3>
                     </div>
                   </li>
@@ -95,8 +95,9 @@ const Contacts = () => {
                 Why Work With Me?
               </h4>
               <p className="text-white/60">
-                I help businesses and individuals build fast, scalable, and
-                elegant digital products using modern technologies.
+                I bring a fresh perspective, strong fundamentals, and a passion for continuous learning. 
+                I'm eager to contribute, grow with your team, and deliver clean, user-focused 
+                solutions using modern development tools.
               </p>
             </div>
           </div>

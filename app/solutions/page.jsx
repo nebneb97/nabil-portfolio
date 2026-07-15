@@ -119,11 +119,11 @@ const Solutions = () => {
     <motion.section
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="min-h-[80vh] flex flex-col justify-center py-12 xl:py-0 px-4 xl:px-10"
+      className="min-h-[80vh] flex flex-col justify-center xl:py-0 px-5 xl:px-10 xl:mt-30"
     >
       <div className="container mx-auto">
         {/* Solutions Section Title */}
-        <h2 className="text-4xl font-bold text-center text-white py-5">
+        <h2 className="xl:text-[42px] font-bold text-center text-white py-10 xl:mb-15">
           What I Offer
         </h2>
         <div className="mb-24">
@@ -162,37 +162,45 @@ const Solutions = () => {
         </div>
 
         {/* Projects Section Title */}
-        {/* <h2 className="text-3xl font-bold text-center text-white mt-24 mb-8">
+        <h2 className="xl:text-[42px] sm:text-3xl font-bold text-center text-white mt-16 sm:mt-24 mb-6 sm:mb-8 xl:mb-15">
           Recent Projects
         </h2>
-        <div className="flex flex-col xl:flex-row xl:gap-[30px]">
-          <div className="w-full xl:w-[50%] xl:h-[460px] flex flex-col xl:justify-between order-2 xl:order-none">
-            <div className="flex flex-col gap-[30px] h-[50%]">
-              <div className="text-8xl leading-none font-extrabold text-transparent text-outline">
+
+        <div className="flex flex-col-reverse xl:flex-row xl:gap-[30px]">
+          {/* Text & Info Block */}
+          <div className="w-full xl:w-[50%] flex flex-col justify-between mt-10 xl:mt-0">
+            <div className="flex flex-col gap-6 sm:gap-[30px]">
+              <div className="text-6xl sm:text-8xl leading-none font-extrabold text-transparent text-outline">
                 {project.num}
               </div>
-              <h2 className="text-2xl md:text-3xl xl:text-[42px] font-bold leading-none text-white group-hover:text-green-500 transition-all duration-500 capitalize">
+              <h2 className="text-xl sm:text-3xl xl:text-[42px] font-bold leading-tight text-white">
                 {project.category}
               </h2>
-              <p className="text-white/60">{project.description}</p>
-              <ul className="flex gap-4">
+              <p className="text-white/60 text-sm sm:text-base">
+                {project.description}
+              </p>
+
+              {/* Stack list */}
+              <ul className="flex flex-wrap gap-2 sm:gap-4">
                 {project.stack.map((item, index) => (
                   <li
                     key={index}
-                    className="flex items-center gap-2 text-xl text-emerald-400"
+                    className="flex items-center gap-2 text-sm sm:text-xl text-emerald-400"
                   >
-                    {item.Icon && <item.Icon className="text-2xl" />}
+                    {item.Icon && <item.Icon className="text-lg sm:text-2xl" />}
                     {item.name}
                   </li>
                 ))}
               </ul>
-              <div className="border border-white/20"></div>
-              <div className="flex items-center gap-4">
+
+              <div className="border border-white/20 mt-4"></div>
+
+              <div className="flex items-center gap-4 mt-2">
                 <Link href={project.live} aria-label="View Live Project">
                   <TooltipProvider delayDuration={100}>
                     <Tooltip>
-                      <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
-                        <BsLink className="text-white text-3xl group-hover:text-emerald-400" />
+                      <TooltipTrigger className="w-12 h-12 sm:w-[70px] sm:h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
+                        <BsLink className="text-white text-xl sm:text-3xl group-hover:text-emerald-400" />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>Live Project</p>
@@ -203,11 +211,11 @@ const Solutions = () => {
                 <Link href={project.github} aria-label="View Github Repository">
                   <TooltipProvider delayDuration={100}>
                     <Tooltip>
-                      <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
-                        <BsGithub className="text-white text-3xl group-hover:text-emerald-400" />
+                      <TooltipTrigger className="w-12 h-12 sm:w-[70px] sm:h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
+                        <BsGithub className="text-white text-xl sm:text-3xl group-hover:text-emerald-400" />
                       </TooltipTrigger>
                       <TooltipContent>
-                        <p>Github repository</p>
+                        <p>Github Repo</p>
                       </TooltipContent>
                     </Tooltip>
                   </TooltipProvider>
@@ -215,11 +223,13 @@ const Solutions = () => {
               </div>
             </div>
           </div>
+
+          {/* Image Slider Block */}
           <div className="w-full xl:w-[50%]">
             <Swiper
-              spaceBetween={30}
+              spaceBetween={16}
               slidesPerView={1}
-              className="xl:h-[520px] mb-12"
+              className="h-[300px] sm:h-[400px] xl:h-[520px] mb-12"
               onSlideChange={handleSlideChange}
             >
               {projects.map((project, index) => (
@@ -228,13 +238,13 @@ const Solutions = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4, duration: 0.6, ease: "easeOut" }}
-                    className="h-[460px] relative group flex justify-center items-center bg-pink-50/20"
+                    className="h-full relative group flex justify-center items-center bg-pink-50/20"
                   >
                     <div className="relative w-full h-full">
                       <Image
                         src={project.image}
                         fill
-                        className="object-cover"
+                        className="object-cover rounded"
                         alt="project"
                         sizes="(max-width: 768px) 100vw, 50vw"
                       />
@@ -243,13 +253,13 @@ const Solutions = () => {
                 </SwiperSlide>
               ))}
               <WorkSliderBtns
-                containerStyles="flex gap-2 absolute right-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 w-full justify-between xl:w-max xl:justify-none"
-                btnStyles="bg-emerald-400 hover:bg-emerald-600 w-[44px] h-[44px] flex justify-center items-center transition-all rounded"
-                iconsStyles="text-primary text-[22px]"
+                containerStyles="flex gap-2 absolute right-0 bottom-[10px] sm:bottom-[calc(50%-22px)] xl:bottom-0 z-20 w-full justify-between xl:w-max xl:justify-none"
+                btnStyles="bg-emerald-400 hover:bg-emerald-600 w-[36px] h-[36px] sm:w-[44px] sm:h-[44px] flex justify-center items-center transition-all rounded"
+                iconsStyles="text-primary text-[20px] sm:text-[22px]"
               />
             </Swiper>
           </div>
-        </div> */}
+        </div>
       </div>
     </motion.section>
   );
