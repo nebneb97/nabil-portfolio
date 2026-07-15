@@ -1,19 +1,52 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import MobileNav from "./MobileNav";
 
-// Mobile-only header — desktop uses Sidebar instead
+const links = [
+  { name: "Home", path: "/" },
+  { name: "About", path: "/resume" },
+  { name: "Projects", path: "/projects" },
+  { name: "Solutions", path: "/solutions" },
+];
+
 const Header = () => {
+  const pathname = usePathname();
+
   return (
-    <header
-      className="p-5 bg-[#f6f5f1] border-b border-zinc-200 flex items-center justify-between"
-      role="banner"
-    >
-      <Link href="/" aria-label="Go to homepage">
-        <h1 className="text-xl font-semibold text-zinc-900">
-          Nabil Adib<span className="text-indigo-500">.</span>
-        </h1>
-      </Link>
-      <MobileNav />
+    <header className="sticky top-0 z-50 bg-[#0a0a0a]/90 backdrop-blur-sm border-b border-zinc-800">
+      <div className="container mx-auto px-6 xl:px-12 h-16 flex items-center justify-between">
+        <Link href="/" className="text-lg font-bold tracking-tight text-white">
+          NA<span className="text-orange-500">.</span>
+        </Link>
+
+        <nav className="hidden xl:flex items-center gap-8">
+          {links.map((link) => (
+            <Link
+              key={link.path}
+              href={link.path}
+              className={`text-sm font-medium transition-colors duration-200 ${
+                link.path === pathname
+                  ? "text-orange-500"
+                  : "text-zinc-400 hover:text-white"
+              }`}
+            >
+              {link.name}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="flex items-center gap-4">
+          <Link
+            href="/contacts"
+            className="hidden xl:inline-flex items-center bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold px-5 py-2 rounded-full transition-colors duration-200"
+          >
+            Hire Me
+          </Link>
+          <MobileNav />
+        </div>
+      </div>
     </header>
   );
 };

@@ -1,10 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import { BsLink, BsGithub } from "react-icons/bs";
 import { FaReact } from "react-icons/fa";
 import {
   SiNextdotjs,
@@ -14,15 +10,8 @@ import {
   SiFlutter,
   SiTypescript,
 } from "react-icons/si";
-import {
-  Tooltip,
-  TooltipProvider,
-  TooltipTrigger,
-  TooltipContent,
-} from "@/components/ui/tooltip";
-import Link from "next/link";
+import { BsGithub, BsLink } from "react-icons/bs";
 import Image from "next/image";
-import WorkSliderBtns from "@/components/ui/WorkSliderBtns";
 
 const projects = [
   {
@@ -61,7 +50,7 @@ const projects = [
     category: "Frontend Web",
     title: "Portfolio Website",
     description:
-      "This portfolio — built with Next.js 15, Tailwind CSS, and Framer Motion. Features smooth page transitions, a custom cursor, typewriter animation, an interactive accordion, and a fully responsive layout across all screen sizes.",
+      "This portfolio — built with Next.js 15, Tailwind CSS, and Framer Motion. Features smooth page transitions, a custom cursor, typewriter animation, and a fully responsive layout across all screen sizes.",
     stack: [
       { name: "Next.js", Icon: SiNextdotjs },
       { name: "Tailwind CSS", Icon: SiTailwindcss },
@@ -75,122 +64,108 @@ const projects = [
 ];
 
 const ProjectsPage = () => {
-  const [project, setProject] = useState(projects[0]);
-
-  const handleSlideChange = (swiper) => {
-    setProject(projects[swiper.activeIndex]);
-  };
-
   return (
     <motion.section
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { delay: 0.2, duration: 0.4 } }}
-      className="min-h-[80vh] flex flex-col justify-center py-12 xl:px-0"
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0, transition: { duration: 0.35 } }}
+      className="container mx-auto px-6 xl:px-12 py-16 xl:py-20"
     >
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col xl:flex-row xl:gap-[30px]">
+      {/* Heading */}
+      <div className="mb-14">
+        <p className="text-orange-500 text-xs font-semibold uppercase tracking-widest mb-3">
+          My Work
+        </p>
+        <h1 className="text-4xl xl:text-5xl font-bold text-white mb-4">
+          Projects
+        </h1>
+        <p className="text-zinc-400 max-w-xl text-base">
+          Real-world applications built during internships and personal
+          exploration — from fullstack platforms to mobile apps.
+        </p>
+      </div>
 
-          {/* Info panel */}
-          <div className="w-full xl:w-[50%] xl:h-[460px] flex flex-col xl:justify-between order-2 xl:order-none mt-8 xl:mt-0">
-            <div className="flex flex-col gap-6">
-              {/* Number */}
-              <div className="text-7xl xl:text-8xl leading-none font-extrabold text-zinc-100">
+      {/* Project cards */}
+      <div className="flex flex-col gap-8">
+        {projects.map((project, index) => (
+          <div
+            key={index}
+            className="group grid grid-cols-1 xl:grid-cols-2 gap-0 bg-zinc-900/40 border border-zinc-800 hover:border-zinc-700 rounded-2xl overflow-hidden transition-all duration-300"
+          >
+            {/* Image */}
+            <div
+              className={`relative h-56 xl:h-auto bg-zinc-900 ${
+                index % 2 === 1 ? "xl:order-last" : ""
+              }`}
+            >
+              <Image
+                src={project.image}
+                fill
+                alt={project.title}
+                className="object-cover opacity-70 group-hover:opacity-90 transition-opacity duration-300"
+                sizes="(max-width: 1280px) 100vw, 50vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/60 to-transparent" />
+              <span className="absolute bottom-4 left-4 text-5xl font-black text-white/10 select-none">
                 {project.num}
-              </div>
+              </span>
+            </div>
 
-              {/* Category + title */}
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-widest text-indigo-400 mb-1">
+            {/* Content */}
+            <div className="flex flex-col justify-between p-8">
+              <div className="flex flex-col gap-4">
+                <span className="text-orange-500 text-xs font-semibold uppercase tracking-widest">
                   {project.category}
-                </p>
-                <h2 className="text-2xl xl:text-[32px] font-bold leading-tight text-zinc-900">
+                </span>
+                <h2 className="text-xl xl:text-2xl font-bold text-white group-hover:text-orange-400 transition-colors">
                   {project.title}
                 </h2>
+                <p className="text-zinc-400 text-sm leading-relaxed">
+                  {project.description}
+                </p>
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {project.stack.map((item, i) => (
+                    <span
+                      key={i}
+                      className="flex items-center gap-1.5 text-xs font-medium text-zinc-400 bg-zinc-800 border border-zinc-700 px-3 py-1.5 rounded-full"
+                    >
+                      <item.Icon className="text-sm" />
+                      {item.name}
+                    </span>
+                  ))}
+                </div>
               </div>
 
-              {/* Description */}
-              <p className="text-zinc-500 text-sm leading-relaxed max-w-[480px]">
-                {project.description}
-              </p>
-
-              {/* Stack */}
-              <ul className="flex flex-wrap gap-2">
-                {project.stack.map((item, index) => (
-                  <li
-                    key={index}
-                    className="flex items-center gap-1.5 text-indigo-500 bg-indigo-50 border border-indigo-100 px-3 py-1.5 rounded-full text-xs font-medium"
+              <div className="flex items-center gap-3 mt-8">
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub"
+                  className="flex items-center gap-2 text-sm font-medium text-zinc-300 hover:text-orange-500 border border-zinc-700 hover:border-orange-500/50 px-4 py-2 rounded-full transition-all"
+                >
+                  <BsGithub className="text-base" />
+                  GitHub
+                </a>
+                {project.live ? (
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Live demo"
+                    className="flex items-center gap-2 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-full transition-colors"
                   >
-                    <item.Icon className="text-sm" />
-                    {item.name}
-                  </li>
-                ))}
-              </ul>
-
-              <div className="border-t border-zinc-100" />
-
-              {/* Links */}
-              <div className="flex items-center gap-4">
-                {project.live && (
-                  <Link href={project.live} target="_blank" aria-label="View live project">
-                    <TooltipProvider delayDuration={100}>
-                      <Tooltip>
-                        <TooltipTrigger className="w-[52px] h-[52px] rounded-full bg-zinc-100 hover:bg-indigo-50 border border-zinc-200 hover:border-indigo-200 flex justify-center items-center group transition-all">
-                          <BsLink className="text-zinc-500 text-xl group-hover:text-indigo-500" />
-                        </TooltipTrigger>
-                        <TooltipContent><p>Live Project</p></TooltipContent>
-                      </Tooltip>
-                    </TooltipProvider>
-                  </Link>
-                )}
-                {project.github && (
-                  <Link href={project.github} target="_blank" aria-label="View GitHub repository">
-                    <TooltipProvider delayDuration={100}>
-                      <Tooltip>
-                        <TooltipTrigger className="w-[52px] h-[52px] rounded-full bg-zinc-100 hover:bg-indigo-50 border border-zinc-200 hover:border-indigo-200 flex justify-center items-center group transition-all">
-                          <BsGithub className="text-zinc-500 text-xl group-hover:text-indigo-500" />
-                        </TooltipTrigger>
-                        <TooltipContent><p>GitHub Repo</p></TooltipContent>
-                      </Tooltip>
-                    </TooltipProvider>
-                  </Link>
-                )}
-                {!project.live && (
-                  <span className="text-xs text-zinc-400 italic">Live demo not available</span>
+                    <BsLink className="text-base" />
+                    Live Demo
+                  </a>
+                ) : (
+                  <span className="text-xs text-zinc-600 italic">
+                    Live demo not available
+                  </span>
                 )}
               </div>
             </div>
           </div>
-
-          {/* Image slider */}
-          <div className="w-full xl:w-[50%]">
-            <Swiper
-              spaceBetween={20}
-              slidesPerView={1}
-              className="xl:h-[480px] mb-4 rounded-2xl overflow-hidden"
-              onSlideChange={handleSlideChange}
-            >
-              {projects.map((p, index) => (
-                <SwiperSlide key={index} className="w-full">
-                  <div className="h-[300px] xl:h-[480px] relative bg-zinc-100 rounded-2xl overflow-hidden">
-                    <Image
-                      src={p.image}
-                      fill
-                      className="object-cover"
-                      alt={p.title}
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                    />
-                  </div>
-                </SwiperSlide>
-              ))}
-              <WorkSliderBtns
-                containerStyles="flex gap-2 absolute right-3 bottom-3 z-20"
-                btnStyles="bg-indigo-500 hover:bg-indigo-600 w-[40px] h-[40px] flex justify-center items-center transition-all rounded-lg"
-                iconsStyles="text-white text-[18px]"
-              />
-            </Swiper>
-          </div>
-
-        </div>
+        ))}
       </div>
     </motion.section>
   );

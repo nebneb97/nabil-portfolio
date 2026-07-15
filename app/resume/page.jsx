@@ -11,300 +11,197 @@ import {
 } from "react-icons/si";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Tooltip,
   TooltipProvider,
   TooltipTrigger,
   TooltipContent,
 } from "@/components/ui/tooltip";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Button } from "@/components/ui/button";
 
-const about = {
-  title: "About Me",
-  description:
-    "Computer Science graduate with a strong foundation in Networking and Cybersecurity, and hands-on experience in mobile and web application development. Passionate about building real-world solutions and contributing to collaborative, tech-driven environments.",
-  info: [
-    { fieldName: "Name", fieldValue: "Nabil Adib" },
-    { fieldName: "Experience", fieldValue: "2 Internships" },
-    { fieldName: "Email", fieldValue: "nabiladib70@gmail.com" },
-    { fieldName: "GitHub", fieldValue: "https://github.com/nebneb97" },
-    { fieldName: "Nationality", fieldValue: "Malaysian" },
-    { fieldName: "Languages", fieldValue: "English, Malay" },
-  ],
-};
+const info = [
+  { label: "Name", value: "Nabil Adib" },
+  { label: "Experience", value: "2 Internships" },
+  { label: "Email", value: "nabiladib70@gmail.com" },
+  { label: "Nationality", value: "Malaysian" },
+  { label: "Languages", value: "English, Malay" },
+  { label: "GitHub", value: "github.com/nebneb97", href: "https://github.com/nebneb97" },
+];
 
-const experience = {
-  title: "My Experience",
-  description:
-    "Hands-on frontend development experience from real-world internships. Contributed to production-ready systems, UI building, bug tracking, and team collaboration using modern tools.",
-  items: [
-    {
-      company: "Al-Ain IT Consultants Sdn Bhd",
-      position: "Frontend Developer Intern",
-      duration: "July 2024 – Present",
-    },
-    {
-      company: "Hezmedia Interactive Sdn Bhd",
-      position: "Frontend Developer Intern",
-      duration: "February 2022 – July 2022",
-    },
-  ],
-};
-
-const education = {
-  title: "My Education",
-  description:
-    "Completed a Computer Science degree specialising in Netcentric Computing. Coursework covered web/mobile development, cybersecurity, and network systems.",
-  items: [
-    {
-      institution: "Universiti Teknologi MARA (UiTM)",
-      degree: "Bachelor of Computer Science (Hons.) Netcentric Computing, CGPA 3.53",
-      duration: "2022 – 2024",
-    },
-    {
-      institution: "Universiti Teknologi MARA (UiTM)",
-      degree: "Diploma in Computer Science, CGPA 3.71",
-      duration: "2019 – 2022",
-    },
-  ],
-};
-
-const skills = {
-  title: "My Skills",
-  description:
-    "Experienced with modern web and mobile development tools. Skilled in frontend architecture, UI frameworks, and collaborative development workflows.",
-  skillList: [
-    { icon: <FaHtml5 />, name: "HTML5" },
-    { icon: <FaCss3 />, name: "CSS3" },
-    { icon: <FaJs />, name: "JavaScript" },
-    { icon: <FaReact />, name: "React" },
-    { icon: <SiNextdotjs />, name: "Next.js" },
-    { icon: <SiTailwindcss />, name: "Tailwind CSS" },
-    { icon: <FaNodeJs />, name: "Node.js" },
-    { icon: <SiFirebase />, name: "Firebase" },
-    { icon: <SiPrisma />, name: "Prisma" },
-    { icon: <SiFlutter />, name: "Flutter" },
-    { icon: <SiTypescript />, name: "TypeScript" },
-  ],
-};
-
-const projects = [
+const experience = [
   {
-    title: "Cloud-based Software Testing Platform",
-    description:
-      "A platform to request and manage software testing tasks with real-time status and role-based control.",
-    technologies: [
-      <SiNextdotjs title="Next.js" key="nextjs" />,
-      <FaReact title="React" key="react" />,
-      <SiPrisma title="Prisma" key="prisma" />,
-      <SiTailwindcss title="Tailwind CSS" key="tailwind" />,
-      <SiTypescript title="TypeScript" key="ts" />,
-    ],
+    company: "Al-Ain IT Consultants Sdn Bhd",
+    role: "Frontend Developer Intern",
+    duration: "July 2024 – Present",
   },
   {
-    title: "Equip&Go Rental App",
-    description:
-      "A mobile app for renting outdoor activity equipment based on user location and availability.",
-    technologies: [
-      <SiFlutter title="Flutter" key="flutter" />,
-      <SiFirebase title="Firebase" key="firebase" />,
-    ],
+    company: "Hezmedia Interactive Sdn Bhd",
+    role: "Frontend Developer Intern",
+    duration: "February 2022 – July 2022",
   },
 ];
 
-const tabTriggerClass =
-  "w-full text-left px-5 py-3 rounded-lg text-sm font-medium text-zinc-600 bg-zinc-100 hover:bg-zinc-200 hover:text-zinc-900 transition-all duration-200 data-[state=active]:bg-indigo-500 data-[state=active]:text-white data-[state=active]:shadow-sm";
+const education = [
+  {
+    institution: "Universiti Teknologi MARA (UiTM)",
+    degree: "Bachelor of Computer Science (Hons.) Netcentric Computing",
+    grade: "CGPA 3.53",
+    duration: "2022 – 2024",
+  },
+  {
+    institution: "Universiti Teknologi MARA (UiTM)",
+    degree: "Diploma in Computer Science",
+    grade: "CGPA 3.71",
+    duration: "2019 – 2022",
+  },
+];
+
+const skills = [
+  { icon: <FaHtml5 />, name: "HTML5" },
+  { icon: <FaCss3 />, name: "CSS3" },
+  { icon: <FaJs />, name: "JavaScript" },
+  { icon: <FaReact />, name: "React" },
+  { icon: <SiNextdotjs />, name: "Next.js" },
+  { icon: <SiTailwindcss />, name: "Tailwind CSS" },
+  { icon: <FaNodeJs />, name: "Node.js" },
+  { icon: <SiFirebase />, name: "Firebase" },
+  { icon: <SiPrisma />, name: "Prisma" },
+  { icon: <SiFlutter />, name: "Flutter" },
+  { icon: <SiTypescript />, name: "TypeScript" },
+];
+
+const SectionLabel = ({ children }) => (
+  <p className="text-orange-500 text-xs font-semibold uppercase tracking-widest mb-3">
+    {children}
+  </p>
+);
 
 const Resume = () => {
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { delay: 0.2, duration: 0.4, ease: "easeIn" } }}
-      className="min-h-screen py-8"
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0, transition: { duration: 0.35 } }}
+      className="container mx-auto px-6 xl:px-12 py-16 xl:py-20 max-w-5xl"
     >
-      <div className="container mx-auto px-4 max-w-7xl">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-zinc-900 mb-3">
-            Nabil{" "}
-            <span className="text-indigo-500">Adib</span>
-          </h1>
-          <p className="text-lg text-zinc-500">
-            Frontend Developer &amp; Computer Science Graduate
-          </p>
+      {/* Header */}
+      <div className="mb-16">
+        <SectionLabel>About Me</SectionLabel>
+        <h1 className="text-4xl xl:text-5xl font-bold text-white mb-6">
+          Nabil <span className="text-orange-500">Adib</span>
+        </h1>
+        <p className="text-zinc-400 leading-relaxed max-w-2xl text-base mb-8">
+          Computer Science graduate with a strong foundation in Networking and
+          Cybersecurity, and hands-on experience in mobile and web application
+          development. Passionate about building real-world solutions and
+          contributing to collaborative, tech-driven environments.
+        </p>
+
+        {/* Info grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 mb-8">
+          {info.map((item, i) => (
+            <div
+              key={i}
+              className="bg-zinc-900/60 border border-zinc-800 rounded-xl px-4 py-3"
+            >
+              <p className="text-zinc-500 text-xs mb-1">{item.label}</p>
+              {item.href ? (
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-orange-400 hover:text-orange-300 text-sm font-medium transition-colors"
+                >
+                  {item.value}
+                </a>
+              ) : (
+                <p className="text-white text-sm font-medium">{item.value}</p>
+              )}
+            </div>
+          ))}
         </div>
 
-        {/* Tabs */}
-        <Tabs defaultValue="experience" className="flex flex-col xl:flex-row gap-10">
-          <TabsList className="flex flex-col w-full max-w-[280px] mx-auto xl:mx-0 gap-2 bg-transparent p-0 h-auto">
-            {["about", "education", "skills", "experience", "projects"].map((tab) => (
-              <TabsTrigger key={tab} value={tab} className={tabTriggerClass}>
-                {tab.charAt(0).toUpperCase() + tab.slice(1)}
-              </TabsTrigger>
-            ))}
-          </TabsList>
+        <a
+          href="/assets/RESUME NABIL ADIB.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold px-6 py-3 rounded-full transition-colors uppercase"
+        >
+          Download Resume
+        </a>
+      </div>
 
-          <div className="min-h-[70vh] w-full">
-            {/* Experience */}
-            <TabsContent value="experience">
-              <div className="flex flex-col gap-6 text-center xl:text-left">
-                <h3 className="text-3xl font-bold text-zinc-900">{experience.title}</h3>
-                <p className="max-w-[600px] text-zinc-500 mx-auto xl:mx-0 text-sm leading-relaxed">
-                  {experience.description}
-                </p>
-                <ScrollArea className="h-[400px] pr-2">
-                  <ul className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                    {experience.items.map((item, index) => (
-                      <li
-                        key={index}
-                        className="bg-white border border-zinc-200 rounded-xl p-6 flex flex-col justify-center items-center lg:items-start gap-2 shadow-sm hover:shadow-md transition-shadow"
-                      >
-                        <span className="text-indigo-500 text-sm font-medium">
-                          {item.duration}
-                        </span>
-                        <h3 className="text-base font-semibold text-zinc-800 max-w-[260px] text-center lg:text-left">
-                          {item.position}
-                        </h3>
-                        <div className="flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-indigo-400" />
-                          <p className="text-zinc-500 text-sm">{item.company}</p>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                </ScrollArea>
-              </div>
-            </TabsContent>
+      {/* Experience */}
+      <div className="mb-16">
+        <SectionLabel>Experience</SectionLabel>
+        <h2 className="text-2xl xl:text-3xl font-bold text-white mb-8">
+          Work History
+        </h2>
+        <div className="relative border-l border-zinc-800 pl-8 flex flex-col gap-8">
+          {experience.map((item, i) => (
+            <div key={i} className="relative">
+              <span className="absolute -left-[37px] w-3 h-3 rounded-full bg-orange-500 border-2 border-[#0a0a0a] top-1" />
+              <span className="text-orange-500 text-xs font-semibold uppercase tracking-wide">
+                {item.duration}
+              </span>
+              <h3 className="text-white font-semibold text-lg mt-1">
+                {item.role}
+              </h3>
+              <p className="text-zinc-500 text-sm mt-0.5">{item.company}</p>
+            </div>
+          ))}
+        </div>
+      </div>
 
-            {/* Projects */}
-            <TabsContent value="projects">
-              <div className="flex flex-col gap-6 text-center xl:text-left">
-                <h3 className="text-3xl font-bold text-zinc-900">Projects</h3>
-                <p className="max-w-[600px] text-zinc-500 mx-auto xl:mx-0 text-sm leading-relaxed">
-                  Real-world apps and platforms built with modern stacks during
-                  internships and academic work.
-                </p>
-                <ul className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                  {projects.map((project, idx) => (
-                    <li
-                      key={idx}
-                      className="bg-white border border-zinc-200 rounded-xl p-6 flex flex-col gap-3 shadow-sm hover:shadow-md transition-shadow"
-                    >
-                      <h4 className="text-base font-semibold text-zinc-800">
-                        {project.title}
-                      </h4>
-                      <p className="text-zinc-500 text-sm leading-relaxed">
-                        {project.description}
-                      </p>
-                      <div className="flex flex-wrap gap-2 text-xl text-indigo-400 pt-1">
-                        {project.technologies}
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </TabsContent>
+      {/* Education */}
+      <div className="mb-16">
+        <SectionLabel>Education</SectionLabel>
+        <h2 className="text-2xl xl:text-3xl font-bold text-white mb-8">
+          Academic Background
+        </h2>
+        <div className="relative border-l border-zinc-800 pl-8 flex flex-col gap-8">
+          {education.map((item, i) => (
+            <div key={i} className="relative">
+              <span className="absolute -left-[37px] w-3 h-3 rounded-full bg-orange-500 border-2 border-[#0a0a0a] top-1" />
+              <span className="text-orange-500 text-xs font-semibold uppercase tracking-wide">
+                {item.duration}
+              </span>
+              <h3 className="text-white font-semibold text-lg mt-1">
+                {item.degree}
+              </h3>
+              <p className="text-zinc-400 text-sm mt-0.5">
+                {item.institution} · {item.grade}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
 
-            {/* Education */}
-            <TabsContent value="education">
-              <div className="flex flex-col gap-6 text-center xl:text-left">
-                <h3 className="text-3xl font-bold text-zinc-900">{education.title}</h3>
-                <p className="max-w-[600px] text-zinc-500 mx-auto xl:mx-0 text-sm leading-relaxed">
-                  {education.description}
-                </p>
-                <ScrollArea className="h-[400px] pr-2">
-                  <ul className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                    {education.items.map((item, index) => (
-                      <li
-                        key={index}
-                        className="bg-white border border-zinc-200 rounded-xl p-6 flex flex-col justify-center items-center lg:items-start gap-2 shadow-sm hover:shadow-md transition-shadow"
-                      >
-                        <span className="text-indigo-500 text-sm font-semibold leading-snug text-center lg:text-left">
-                          {item.degree}
-                        </span>
-                        <span className="text-zinc-400 text-sm">{item.duration}</span>
-                        <div className="flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-indigo-400" />
-                          <p className="text-zinc-500 text-sm">{item.institution}</p>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                </ScrollArea>
-              </div>
-            </TabsContent>
-
-            {/* Skills */}
-            <TabsContent value="skills">
-              <div className="flex flex-col gap-6 text-center xl:text-left">
-                <h3 className="text-3xl font-bold text-zinc-900">{skills.title}</h3>
-                <p className="max-w-[600px] text-zinc-500 mx-auto xl:mx-0 text-sm leading-relaxed">
-                  {skills.description}
-                </p>
-                <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                  {skills.skillList.map((skill, index) => (
-                    <li key={index}>
-                      <TooltipProvider delayDuration={100}>
-                        <Tooltip>
-                          <TooltipTrigger className="w-full h-[130px] bg-white border border-zinc-200 rounded-xl flex justify-center items-center group shadow-sm hover:shadow-md hover:border-indigo-200 transition-all">
-                            <div className="text-5xl text-zinc-400 group-hover:text-indigo-500 transition-colors duration-300">
-                              {skill.icon}
-                            </div>
-                          </TooltipTrigger>
-                          <TooltipContent>
-                            <p className="capitalize">{skill.name}</p>
-                          </TooltipContent>
-                        </Tooltip>
-                      </TooltipProvider>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </TabsContent>
-
-            {/* About */}
-            <TabsContent value="about">
-              <div className="flex flex-col gap-6 text-center xl:text-left">
-                <h3 className="text-3xl font-bold text-zinc-900">{about.title}</h3>
-                <p className="max-w-[680px] text-zinc-500 mx-auto xl:mx-0 text-sm leading-relaxed">
-                  {about.description}
-                </p>
-                <ul className="grid grid-cols-1 xl:grid-cols-2 gap-y-4 max-w-[620px] mx-auto xl:mx-0">
-                  {about.info.map((item, index) => {
-                    const isLink = item.fieldName.toLowerCase() === "github";
-                    return (
-                      <li
-                        key={index}
-                        className="flex items-center justify-center xl:justify-start gap-3"
-                      >
-                        <span className="text-zinc-400 text-sm">{item.fieldName}</span>
-                        {isLink ? (
-                          <a
-                            href={item.fieldValue}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-indigo-500 hover:underline text-sm"
-                          >
-                            {item.fieldValue.replace("https://", "")}
-                          </a>
-                        ) : (
-                          <span className="text-zinc-700 font-medium text-sm">{item.fieldValue}</span>
-                        )}
-                      </li>
-                    );
-                  })}
-                </ul>
-                <div className="mt-4 text-center xl:text-left">
-                  <Link href="/assets/RESUME NABIL ADIB.pdf" target="_blank" rel="noopener noreferrer">
-                    <Button className="uppercase text-sm">My Resume</Button>
-                  </Link>
-                </div>
-              </div>
-            </TabsContent>
-          </div>
-        </Tabs>
+      {/* Skills */}
+      <div>
+        <SectionLabel>Skills</SectionLabel>
+        <h2 className="text-2xl xl:text-3xl font-bold text-white mb-8">
+          Technologies
+        </h2>
+        <div className="grid grid-cols-3 sm:grid-cols-4 xl:grid-cols-6 gap-3">
+          {skills.map((skill, i) => (
+            <TooltipProvider key={i} delayDuration={100}>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <div className="bg-zinc-900/60 border border-zinc-800 hover:border-orange-500/40 rounded-xl h-20 flex flex-col items-center justify-center gap-2 cursor-default transition-all duration-200 group">
+                    <span className="text-3xl text-zinc-500 group-hover:text-orange-500 transition-colors duration-200">
+                      {skill.icon}
+                    </span>
+                    <span className="text-zinc-600 group-hover:text-zinc-400 text-[10px] font-medium transition-colors">
+                      {skill.name}
+                    </span>
+                  </div>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{skill.name}</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          ))}
+        </div>
       </div>
     </motion.div>
   );

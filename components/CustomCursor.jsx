@@ -4,7 +4,6 @@ import { useEffect, useRef } from "react";
 const CustomCursor = () => {
   const ringRef = useRef(null);
   const dotRef = useRef(null);
-  const pos = useRef({ x: -100, y: -100 });
 
   useEffect(() => {
     const ring = ringRef.current;
@@ -12,8 +11,6 @@ const CustomCursor = () => {
     if (!ring || !dot) return;
 
     const onMove = (e) => {
-      pos.current = { x: e.clientX, y: e.clientY };
-      // Instant — no CSS transition on position
       dot.style.transform = `translate(${e.clientX - 4}px, ${e.clientY - 4}px)`;
       ring.style.transform = `translate(${e.clientX - 16}px, ${e.clientY - 16}px)`;
     };
@@ -37,12 +34,12 @@ const CustomCursor = () => {
     <>
       <div
         ref={ringRef}
-        className="fixed top-0 left-0 pointer-events-none z-[9999] w-8 h-8 rounded-full border border-indigo-500 opacity-50"
+        className="fixed top-0 left-0 pointer-events-none z-[9999] w-8 h-8 rounded-full border border-orange-500 opacity-50"
         style={{ willChange: "transform", transition: "opacity 0.15s, scale 0.15s" }}
       />
       <div
         ref={dotRef}
-        className="fixed top-0 left-0 pointer-events-none z-[9999] w-2 h-2 rounded-full bg-indigo-500"
+        className="fixed top-0 left-0 pointer-events-none z-[9999] w-2 h-2 rounded-full bg-orange-500"
         style={{ willChange: "transform", transition: "opacity 0.15s" }}
       />
     </>

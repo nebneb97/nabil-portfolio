@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { FaHtml5, FaCss3, FaJs, FaReact, FaNodeJs } from "react-icons/fa";
 import {
@@ -63,102 +62,76 @@ const services = [
 ];
 
 const Solutions = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-
   return (
     <motion.section
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { delay: 0.4, duration: 0.6 } }}
-      className="min-h-[80vh] flex flex-col justify-center py-12 xl:py-0 px-5 xl:px-10"
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0, transition: { duration: 0.35 } }}
+      className="container mx-auto px-6 xl:px-12 py-16 xl:py-20"
     >
-      <div className="container mx-auto">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl xl:text-[42px] font-bold text-center text-zinc-900 mb-3">
-            What I Offer
-          </h2>
-          <p className="text-zinc-400 text-center text-sm mb-14 tracking-wide">
-            Click a service to learn more
-          </p>
+      {/* Heading */}
+      <div className="mb-14">
+        <p className="text-orange-500 text-xs font-semibold uppercase tracking-widest mb-3">
+          What I Do
+        </p>
+        <h1 className="text-4xl xl:text-5xl font-bold text-white mb-4">
+          Solutions
+        </h1>
+        <p className="text-zinc-400 max-w-xl text-base">
+          From concept to deployment — services tailored to build real digital
+          products that work.
+        </p>
+      </div>
 
-          <div className="divide-y divide-zinc-200">
-            {services.map((service, index) => {
-              const isOpen = activeIndex === index;
-              return (
-                <div key={index}>
-                  <button
-                    onClick={() => setActiveIndex(isOpen ? null : index)}
-                    className="w-full flex items-center gap-6 xl:gap-8 text-left py-6 xl:py-8 group"
-                  >
-                    <span
-                      className={`text-5xl xl:text-6xl font-extrabold tabular-nums transition-colors duration-300 ${
-                        isOpen ? "text-indigo-500" : "text-zinc-200 group-hover:text-zinc-300"
-                      }`}
-                    >
-                      {service.num}
-                    </span>
-                    <span
-                      className={`flex-1 text-xl xl:text-3xl font-semibold transition-colors duration-300 ${
-                        isOpen ? "text-indigo-500" : "text-zinc-800 group-hover:text-indigo-400"
-                      }`}
-                    >
-                      {service.title}
-                    </span>
-                    <motion.span
-                      animate={{ rotate: isOpen ? 45 : 0 }}
-                      transition={{ duration: 0.25, ease: "easeInOut" }}
-                      className={`text-4xl font-light leading-none transition-colors duration-300 ${
-                        isOpen ? "text-indigo-500" : "text-zinc-300 group-hover:text-zinc-500"
-                      }`}
-                    >
-                      +
-                    </motion.span>
-                  </button>
+      {/* Service cards grid */}
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
+        {services.map((service, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              transition: { delay: index * 0.08, duration: 0.35 },
+            }}
+            className="group relative bg-zinc-900/40 border border-zinc-800 hover:border-orange-500/30 rounded-2xl p-8 flex flex-col gap-5 transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+          >
+            {/* Background number */}
+            <span className="absolute top-4 right-6 text-7xl font-black text-zinc-800/50 select-none group-hover:text-orange-500/10 transition-colors">
+              {service.num}
+            </span>
 
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        key="content"
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.32, ease: "easeInOut" }}
-                        className="overflow-hidden"
-                      >
-                        <div className="pb-8 xl:pl-28 flex flex-col gap-5">
-                          <p className="text-zinc-500 max-w-2xl leading-relaxed text-sm xl:text-base">
-                            {service.description}
-                          </p>
-                          <ul className="flex flex-wrap gap-2">
-                            {service.stack.map((item, i) => (
-                              <li
-                                key={i}
-                                className="flex items-center gap-1.5 text-indigo-500 bg-indigo-50 border border-indigo-100 px-3 py-1.5 rounded-full text-xs xl:text-sm"
-                              >
-                                <item.Icon className="text-sm" />
-                                {item.name}
-                              </li>
-                            ))}
-                          </ul>
-                          <Link
-                            href="/contacts"
-                            className="inline-flex items-center gap-2 text-indigo-500 hover:text-indigo-700 text-sm font-medium transition-colors duration-200 w-fit group/link"
-                          >
-                            <span className="border-b border-indigo-300 group-hover/link:border-indigo-600 pb-px transition-colors duration-200">
-                              Let&apos;s work together
-                            </span>
-                            <span className="transition-transform duration-200 group-hover/link:translate-x-1">
-                              →
-                            </span>
-                          </Link>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              );
-            })}
-          </div>
-        </div>
+            <div className="flex flex-col gap-3 relative">
+              <h3 className="text-xl font-bold text-white group-hover:text-orange-400 transition-colors">
+                {service.title}
+              </h3>
+              <p className="text-zinc-400 text-sm leading-relaxed">
+                {service.description}
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-2">
+              {service.stack.map((item, i) => (
+                <span
+                  key={i}
+                  className="flex items-center gap-1.5 text-xs font-medium text-zinc-400 bg-zinc-800 border border-zinc-700 group-hover:border-orange-500/20 px-3 py-1.5 rounded-full transition-colors"
+                >
+                  <item.Icon className="text-sm" />
+                  {item.name}
+                </span>
+              ))}
+            </div>
+
+            <Link
+              href="/contacts"
+              className="inline-flex items-center gap-1.5 text-orange-500 hover:text-orange-400 text-sm font-medium transition-colors w-fit mt-auto"
+            >
+              Let&apos;s work together
+              <span className="transition-transform duration-200 group-hover:translate-x-1">
+                →
+              </span>
+            </Link>
+          </motion.div>
+        ))}
       </div>
     </motion.section>
   );

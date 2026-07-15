@@ -3,36 +3,37 @@
 import CountUp from "react-countup";
 
 const stats = [
-  { num: 4, text: "Years of Coding Experience" },
-  { num: 12, text: "Relevant Courses Completed" },
-  { num: 10, text: "Technologies Learned" },
-  { num: 2, text: "Internships" },
+  { num: 4, suffix: "+", text: "Years of Experience" },
+  { num: 10, suffix: "+", text: "Technologies" },
+  { num: 12, suffix: "", text: "Courses Completed" },
+  { num: 2, suffix: "", text: "Internships" },
 ];
 
 const Stats = () => {
   return (
-    <section className="py-12">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-2 xl:grid-cols-4 gap-4">
-          {stats.map((item, index) => (
-            <div
-              key={index}
-              className="flex flex-col items-center justify-center bg-white border border-zinc-200 py-8 px-4 xl:py-10 xl:px-6 rounded-xl shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300"
-            >
-              <CountUp
-                end={item.num}
-                duration={4}
-                delay={0.5}
-                className="text-4xl xl:text-5xl font-extrabold text-indigo-500"
-              />
-              <p className="mt-2 text-zinc-500 font-medium text-sm sm:text-base max-w-[160px] text-center xl:text-base">
-                {item.text}
-              </p>
-            </div>
-          ))}
+    <div className="grid grid-cols-2 xl:grid-cols-4 divide-x divide-y xl:divide-y-0 divide-zinc-800 border border-zinc-800 rounded-2xl overflow-hidden">
+      {stats.map((item, index) => (
+        <div
+          key={index}
+          className="flex flex-col items-center justify-center py-8 px-4"
+        >
+          <div className="flex items-end gap-0.5 text-orange-500">
+            <CountUp
+              end={item.num}
+              duration={4}
+              delay={0.5}
+              className="text-4xl xl:text-5xl font-bold"
+            />
+            <span className="text-2xl xl:text-3xl font-bold mb-1">
+              {item.suffix}
+            </span>
+          </div>
+          <p className="mt-2 text-zinc-500 text-xs xl:text-sm text-center max-w-[120px]">
+            {item.text}
+          </p>
         </div>
-      </div>
-    </section>
+      ))}
+    </div>
   );
 };
 

@@ -8,11 +8,13 @@ const Photo = () => {
     <div className="w-full h-full relative flex items-center justify-center">
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1, transition: { delay: 0.4, duration: 0.6, ease: "easeIn" } }}
+        animate={{
+          opacity: 1,
+          transition: { delay: 0.4, duration: 0.6, ease: "easeIn" },
+        }}
         className="relative"
       >
-        {/* Profile image in a circle */}
-        <div className="w-[280px] h-[280px] xl:w-[460px] xl:h-[460px] rounded-full overflow-hidden bg-indigo-50 border-4 border-white shadow-lg relative z-10">
+        <div className="w-[280px] h-[280px] xl:w-[400px] xl:h-[400px] rounded-full overflow-hidden bg-zinc-900 border-4 border-zinc-800 shadow-2xl relative z-10">
           <Image
             src="/assets/resume.png"
             priority
@@ -23,7 +25,6 @@ const Photo = () => {
           />
         </div>
 
-        {/* Spinning SVG ring */}
         <motion.svg
           className="absolute inset-0 w-full h-full"
           fill="transparent"
@@ -34,7 +35,7 @@ const Photo = () => {
             cx="253"
             cy="253"
             r="250"
-            stroke="#6366f1"
+            stroke="#f97316"
             strokeWidth="3"
             strokeLinecap="round"
             strokeLinejoin="round"
