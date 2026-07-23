@@ -8,74 +8,58 @@ import {
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { CiMenuFries } from "react-icons/ci";
-import { Button } from "./ui/button";
 
 const links = [
-  {
-    name: "Home",
-    path: "/",
-  },
-  {
-    name: "About Me",
-    path: "/resume",
-  },
-  {
-    name: "Solutions",
-    path: "/solutions",
-  },
-  // {
-  //   name: "Projects",
-  //   path: "/projects",
-  // },
-  {
-    name: "Hire Me",
-    path: "/contacts",
-  },
+  { name: "Home", path: "/" },
+  { name: "About", path: "/resume" },
+  { name: "Projects", path: "/projects" },
+  { name: "Solutions", path: "/solutions" },
+  { name: "Hire Me", path: "/contacts" },
 ];
+
 const MobileNav = () => {
   const pathname = usePathname();
   return (
     <Sheet>
       <SheetTrigger
-        className="flex justify-center items-center"
+        className="flex xl:hidden justify-center items-center"
         aria-label="Open mobile navigation menu"
       >
-        <CiMenuFries className="text-[32px] text-teal-500" />
+        <CiMenuFries className="text-[28px] text-zinc-300" />
       </SheetTrigger>
       <SheetContent
-        className="flex flex-col"
+        className="flex flex-col bg-[#0f0f0f] border-l border-zinc-800"
         role="dialog"
         aria-label="Mobile Navigation"
       >
-        {/* Accessibility Title (visually hidden) */}
         <SheetTitle className="sr-only">Mobile Navigation</SheetTitle>
-        {/*logo*/}
-        <div className="mt-32 mb-40 text-center text-2xl">
-          <h1 className="text-4xl font-semibold">
-            Nabil<span className="text-teal-500">.</span>
-          </h1>
+        <div className="mt-24 mb-12 text-center">
+          <span className="text-3xl font-bold text-white">
+            NA<span className="text-orange-500">.</span>
+          </span>
         </div>
-        {/* Navigation Links */}
-        <nav className="flex flex-col items-center space-y-4">
+        <nav className="flex flex-col items-center gap-6">
           {links.map((link, index) => {
-            // Render a Button for "Hire Me", normal link for others
             if (link.name === "Hire Me") {
               return (
-                <Link href={link.path} key={index}>
-                  <Button className="w-[200px]">{link.name}</Button>
+                <Link
+                  key={index}
+                  href={link.path}
+                  className="mt-4 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-3 rounded-full transition-colors"
+                >
+                  {link.name}
                 </Link>
               );
             }
-
             return (
               <Link
                 href={link.path}
                 key={index}
-                className={`${
+                className={`text-xl font-medium transition-colors duration-200 ${
                   link.path === pathname
-                    ? "text-teal-500 border-b-2 border-teal-500"
-                    : ""
-                } text-xl capitalize hover:text-teal-500 transition-all`}
+                    ? "text-orange-500"
+                    : "text-zinc-300 hover:text-white"
+                }`}
               >
                 {link.name}
               </Link>

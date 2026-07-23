@@ -1,265 +1,137 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import { BsLink, BsGithub, BsArrowDownRight } from "react-icons/bs";
-
 import { FaHtml5, FaCss3, FaJs, FaReact, FaNodeJs } from "react-icons/fa";
-
 import {
   SiNextdotjs,
   SiTailwindcss,
   SiFirebase,
-  SiPrisma,
   SiFlutter,
   SiTypescript,
 } from "react-icons/si";
 
-import WorkSliderBtns from "@/components/ui/WorkSliderBtns";
-import {
-  Tooltip,
-  TooltipProvider,
-  TooltipTrigger,
-  TooltipContent,
-} from "@/components/ui/tooltip";
-import { Icon } from "lucide-react";
-
-const about = [
+const services = [
   {
     num: "01",
     title: "Web App Development",
     description:
-      "Designs and builds responsive, scalable web applications using modern frameworks like Next.js, React, and Tailwind CSS, suitable for dashboards, portfolios, and business tools.",
-    href: "",
+      "Designs and builds responsive, scalable web applications using modern frameworks like Next.js, React, and Tailwind CSS — suitable for dashboards, portfolios, and business tools.",
+    stack: [
+      { name: "React", Icon: FaReact },
+      { name: "Next.js", Icon: SiNextdotjs },
+      { name: "Tailwind CSS", Icon: SiTailwindcss },
+      { name: "Node.js", Icon: FaNodeJs },
+      { name: "TypeScript", Icon: SiTypescript },
+    ],
   },
   {
     num: "02",
     title: "Mobile App Development",
     description:
-      "Delivers cross-platform mobile applications using Flutter and Firebase, optimized for real-time features, location-based services, and multi-role access systems.",
-    href: "",
+      "Delivers cross-platform mobile applications using Flutter and Firebase, optimised for real-time features, location-based services, and multi-role access systems.",
+    stack: [
+      { name: "Flutter", Icon: SiFlutter },
+      { name: "Firebase", Icon: SiFirebase },
+    ],
   },
   {
     num: "03",
     title: "Frontend Implementation",
     description:
-      "Translates UI designs into interactive, accessible interfaces using Tailwind CSS, DaisyUI, and component-based architecture, ensuring consistency and responsiveness across devices.",
-    href: "",
+      "Translates UI designs into interactive, accessible interfaces using Tailwind CSS and component-based architecture — ensuring consistency and responsiveness across all devices.",
+    stack: [
+      { name: "HTML5", Icon: FaHtml5 },
+      { name: "CSS3", Icon: FaCss3 },
+      { name: "JavaScript", Icon: FaJs },
+      { name: "React", Icon: FaReact },
+      { name: "Tailwind CSS", Icon: SiTailwindcss },
+    ],
   },
   {
     num: "04",
     title: "Bug Fixing & QA Support",
     description:
       "Provides frontend debugging, issue tracking, and collaborative testing support to enhance system stability, performance, and overall user experience.",
-    href: "",
-  },
-];
-
-const projects = [
-  {
-    num: "01",
-    category: "Frontend Project",
-    title: "Project 1",
-    description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     stack: [
-      { name: "Html 5", Icon: FaHtml5 },
-      { name: "Css3", Icon: FaCss3 },
-      { name: "Javascript", Icon: FaJs },
-      { name: "React.js", Icon: FaReact },
+      { name: "JavaScript", Icon: FaJs },
+      { name: "React", Icon: FaReact },
+      { name: "TypeScript", Icon: SiTypescript },
     ],
-    image: "/assets/work/thumb1.png",
-    live: "",
-    github: "",
-  },
-  {
-    num: "02",
-    category: "Fullstack",
-    title: "Project 2",
-    description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    stack: [
-      { name: "Next.js", Icon: SiNextdotjs },
-      { name: "Tailwind.css", Icon: SiTailwindcss },
-      { name: "Node.js", Icon: FaNodeJs },
-    ],
-    image: "/assets/work/thumb2.png",
-    live: "",
-    github: "",
-  },
-  {
-    num: "03",
-    category: "Frontend Web",
-    title: "Project 3",
-    description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    stack: [
-      { name: "Next.js", Icon: SiNextdotjs },
-      { name: "Tailwind.css", Icon: SiTailwindcss },
-    ],
-    image: "/assets/work/thumb3.png",
-    live: "",
-    github: "",
   },
 ];
 
 const Solutions = () => {
-  const [project, setProject] = useState(projects[0]);
-
-  const handleSlideChange = (swiper) => {
-    const currentIndex = swiper.activeIndex;
-    setProject(projects[currentIndex]);
-  };
-
   return (
     <motion.section
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      className="min-h-[80vh] flex flex-col justify-center xl:py-0 px-5 xl:px-10 xl:mt-30"
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0, transition: { duration: 0.35 } }}
+      className="container mx-auto px-6 xl:px-12 py-16 xl:py-20"
     >
-      <div className="container mx-auto">
-        {/* Solutions Section Title */}
-        <h2 className="xl:text-[42px] font-bold text-center text-white py-10 xl:mb-15">
-          What I Offer
-        </h2>
-        <div className="mb-24">
+      {/* Heading */}
+      <div className="mb-14">
+        <p className="text-orange-500 text-xs font-semibold uppercase tracking-widest mb-3">
+          What I Do
+        </p>
+        <h1 className="text-4xl xl:text-5xl font-bold text-white mb-4">
+          Solutions
+        </h1>
+        <p className="text-zinc-400 max-w-xl text-base">
+          From concept to deployment — services tailored to build real digital
+          products that work.
+        </p>
+      </div>
+
+      {/* Service cards grid */}
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
+        {services.map((service, index) => (
           <motion.div
-            initial={{ opacity: 0 }}
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
             animate={{
               opacity: 1,
-              transition: { delay: 2.4, duration: 0.4, ease: "easeIn" },
+              y: 0,
+              transition: { delay: index * 0.08, duration: 0.35 },
             }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-[60px]"
+            className="group relative bg-zinc-900/40 border border-zinc-800 hover:border-orange-500/30 rounded-2xl p-8 flex flex-col gap-5 transition-all duration-300 hover:-translate-y-1 overflow-hidden"
           >
-            {about.map((about, index) => (
-              <div
-                key={index}
-                className="flex-1 flex flex-col justify-center gap-6 group"
-              >
-                <div className="w-full flex justify-between items-center">
-                  <div className="text-5xl font-extrabold text-outline text-transparent transition-all duration-500">
-                    {about.num}
-                  </div>
-                  <Link
-                    href={about.href}
-                    className="w-[80px] h-[80px] rounded-full bg-white text-outline group-hover:bg-green-500 transition-all duration-500 flex justify-center items-center hover:-rotate-45"
-                  >
-                    <BsArrowDownRight className="text-slate-950 text-3xl" />
-                  </Link>
-                </div>
-                <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-green-500 transition-all duration-500">
-                  {about.title}
-                </h2>
-                <p className="text-white/60">{about.description}</p>
-                <div className="border-b border-white/20 w-full"></div>
-              </div>
-            ))}
-          </motion.div>
-        </div>
+            {/* Background number */}
+            <span className="absolute top-4 right-6 text-7xl font-black text-zinc-800/50 select-none group-hover:text-orange-500/10 transition-colors">
+              {service.num}
+            </span>
 
-        {/* Projects Section Title */}
-        <h2 className="xl:text-[42px] sm:text-3xl font-bold text-center text-white mt-16 sm:mt-24 mb-6 sm:mb-8 xl:mb-15">
-          Recent Projects
-        </h2>
-
-        <div className="flex flex-col-reverse xl:flex-row xl:gap-[30px]">
-          {/* Text & Info Block */}
-          <div className="w-full xl:w-[50%] flex flex-col justify-between mt-10 xl:mt-0">
-            <div className="flex flex-col gap-6 sm:gap-[30px]">
-              <div className="text-6xl sm:text-8xl leading-none font-extrabold text-transparent text-outline">
-                {project.num}
-              </div>
-              <h2 className="text-xl sm:text-3xl xl:text-[42px] font-bold leading-tight text-white">
-                {project.category}
-              </h2>
-              <p className="text-white/60 text-sm sm:text-base">
-                {project.description}
+            <div className="flex flex-col gap-3 relative">
+              <h3 className="text-xl font-bold text-white group-hover:text-orange-400 transition-colors">
+                {service.title}
+              </h3>
+              <p className="text-zinc-400 text-sm leading-relaxed">
+                {service.description}
               </p>
-
-              {/* Stack list */}
-              <ul className="flex flex-wrap gap-2 sm:gap-4">
-                {project.stack.map((item, index) => (
-                  <li
-                    key={index}
-                    className="flex items-center gap-2 text-sm sm:text-xl text-emerald-400"
-                  >
-                    {item.Icon && <item.Icon className="text-lg sm:text-2xl" />}
-                    {item.name}
-                  </li>
-                ))}
-              </ul>
-
-              <div className="border border-white/20 mt-4"></div>
-
-              <div className="flex items-center gap-4 mt-2">
-                <Link href={project.live} aria-label="View Live Project">
-                  <TooltipProvider delayDuration={100}>
-                    <Tooltip>
-                      <TooltipTrigger className="w-12 h-12 sm:w-[70px] sm:h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
-                        <BsLink className="text-white text-xl sm:text-3xl group-hover:text-emerald-400" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Live Project</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                </Link>
-                <Link href={project.github} aria-label="View Github Repository">
-                  <TooltipProvider delayDuration={100}>
-                    <Tooltip>
-                      <TooltipTrigger className="w-12 h-12 sm:w-[70px] sm:h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
-                        <BsGithub className="text-white text-xl sm:text-3xl group-hover:text-emerald-400" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Github Repo</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                </Link>
-              </div>
             </div>
-          </div>
 
-          {/* Image Slider Block */}
-          <div className="w-full xl:w-[50%]">
-            <Swiper
-              spaceBetween={16}
-              slidesPerView={1}
-              className="h-[300px] sm:h-[400px] xl:h-[520px] mb-12"
-              onSlideChange={handleSlideChange}
-            >
-              {projects.map((project, index) => (
-                <SwiperSlide key={index} className="w-full">
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4, duration: 0.6, ease: "easeOut" }}
-                    className="h-full relative group flex justify-center items-center bg-pink-50/20"
-                  >
-                    <div className="relative w-full h-full">
-                      <Image
-                        src={project.image}
-                        fill
-                        className="object-cover rounded"
-                        alt="project"
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                      />
-                    </div>
-                  </motion.div>
-                </SwiperSlide>
+            <div className="flex flex-wrap gap-2">
+              {service.stack.map((item, i) => (
+                <span
+                  key={i}
+                  className="flex items-center gap-1.5 text-xs font-medium text-zinc-400 bg-zinc-800 border border-zinc-700 group-hover:border-orange-500/20 px-3 py-1.5 rounded-full transition-colors"
+                >
+                  <item.Icon className="text-sm" />
+                  {item.name}
+                </span>
               ))}
-              <WorkSliderBtns
-                containerStyles="flex gap-2 absolute right-0 bottom-[10px] sm:bottom-[calc(50%-22px)] xl:bottom-0 z-20 w-full justify-between xl:w-max xl:justify-none"
-                btnStyles="bg-emerald-400 hover:bg-emerald-600 w-[36px] h-[36px] sm:w-[44px] sm:h-[44px] flex justify-center items-center transition-all rounded"
-                iconsStyles="text-primary text-[20px] sm:text-[22px]"
-              />
-            </Swiper>
-          </div>
-        </div>
+            </div>
+
+            <Link
+              href="/contacts"
+              className="inline-flex items-center gap-1.5 text-orange-500 hover:text-orange-400 text-sm font-medium transition-colors w-fit mt-auto"
+            >
+              Let&apos;s work together
+              <span className="transition-transform duration-200 group-hover:translate-x-1">
+                →
+              </span>
+            </Link>
+          </motion.div>
+        ))}
       </div>
     </motion.section>
   );

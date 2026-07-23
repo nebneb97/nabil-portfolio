@@ -10,12 +10,11 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          // Teal base, white text, lighter teal on hover, darker teal on active
-          "bg-teal-500 text-primary hover:bg-teal-600 active:bg-teal-800",
+          "bg-indigo-500 text-white hover:bg-indigo-600 active:bg-indigo-700",
         primary:
-          "bg-teal-600 text-white hover:bg-teal-700 active:bg-teal-800",
+          "bg-indigo-600 text-white hover:bg-indigo-700 active:bg-indigo-800",
         outline:
-          "border border-teal-500 bg-transparent text-teal-500 hover:bg-teal-500 hover:text-white active:bg-teal-600 active:text-white",
+          "border border-indigo-500 bg-transparent text-indigo-500 hover:bg-indigo-500 hover:text-white active:bg-indigo-600 active:text-white",
       },
       size: {
         default: "h-[44px] px-6",
@@ -41,6 +40,5 @@ function Button({ className, variant, size, asChild = false, ...props }) {
     />
   );
 }
-
 
 export { Button, buttonVariants };

@@ -1,295 +1,221 @@
 "use client";
 
 import { useState } from "react";
-
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-  SelectLabel,
-  SelectGroup,
-} from "@/components/ui/select";
-
-import {
-  FaPhoneAlt,
-  FaEnvelope,
-  FaMapMarkerAlt,
-  FaLinkedin,
-  FaGithub,
-} from "react-icons/fa";
-
 import { motion } from "framer-motion";
+import { FaEnvelope, FaMapMarkerAlt, FaGithub, FaLinkedin } from "react-icons/fa";
 
 const info = [
-  {
-    icon: <FaEnvelope />,
-    title: "Email",
-    description: "nabiladib70@gmail.com",
-  },
-  {
-    icon: <FaMapMarkerAlt />,
-    title: "Location",
-    description: "Selangor, Malaysia",
-  },
-  {
-    icon: <FaGithub />,
-    title: "GitHub",
-    description: "github.com/nebneb97",
-  },
+  { icon: <FaEnvelope />, label: "Email", value: "nabiladib70@gmail.com", copyable: true },
+  { icon: <FaMapMarkerAlt />, label: "Location", value: "Selangor, Malaysia" },
+  { icon: <FaGithub />, label: "GitHub", value: "github.com/nebneb97", href: "https://github.com/nebneb97" },
 ];
 
 const Contacts = () => {
   const [status, setStatus] = useState("idle");
+  const [copied, setCopied] = useState(false);
+  const [service, setService] = useState("");
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText("nabiladib70@gmail.com");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("loading");
-
-    // Simulate delay and success response
-    setTimeout(() => {
-      setStatus("success");
-    }, 1500);
+    const form = e.target;
+    const data = {
+      firstName: form.firstName.value,
+      lastName: form.lastName.value,
+      email: form.email.value,
+      phone: form.phone.value,
+      service,
+      message: form.message.value,
+    };
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (res.ok) {
+        setStatus("success");
+        form.reset();
+        setService("");
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
     <motion.section
-      initial={{ opacity: 0 }}
-      animate={{
-        opacity: 1,
-        transition: { delay: 2.4, duration: 0.4, ease: "easeIn" },
-      }}
-      className=""
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0, transition: { duration: 0.35 } }}
+      className="container mx-auto px-6 xl:px-12 py-16 xl:py-20"
     >
-      <div className="container mx-auto px-4 xl:px-10 xl:pb-5 xl:mt-30">
-        <div className="flex flex-col xl:flex-row gap-6 xl:gap-10">
-          {/* LEFT COLUMN (40%) */}
-          <div className="flex-1 flex flex-col gap-6">
-            {/* Box 1: Contact Info */}
-            <div className="bg-[#27272c] p-6 rounded-xl">
-              <h4 className="text-2xl font-semibold text-emerald-500 mb-4">
-                Contact Information
-              </h4>
-              <ul className="flex flex-col gap-6">
-                {info.map((item, index) => (
-                  <li key={index} className="flex items-center gap-4">
-                    <div className="w-[52px] h-[52px] bg-[#1f1f23] text-emerald-400 rounded-md flex items-center justify-center">
-                      <div className="text-[24px]">{item.icon}</div>
-                    </div>
-                    <div>
-                      {/* <p className="text-white/60">{item.title}</p> */}
-                      <h3 className="text-lg">{item.description}</h3>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-16 xl:gap-24 items-start">
 
-            {/* Box 2: Optional – Services or Message */}
-            <div className="bg-[#27272c] p-6 rounded-xl">
-              <h4 className="text-2xl font-semibold text-emerald-500 mb-2">
-                Why Work With Me?
-              </h4>
-              <p className="text-white/60">
-                I bring a fresh perspective, strong fundamentals, and a passion for continuous learning. 
-                I'm eager to contribute, grow with your team, and deliver clean, user-focused 
-                solutions using modern development tools.
-              </p>
-            </div>
-          </div>
-          {/* RIGHT COLUMN (Form – 60%) */}
-          {/* <div className="xl:w-[60%]">
-            <form
-              className="flex flex-col gap-4 p-4 bg-[#27272c] rounded-xl"
-              onSubmit={handleSubmit}
-            > */}
-          {/*Title and description*/}
-          {/* <h3 className="text-4xl text-emerald-500">Let's work together</h3>
-              <p className="text-white/60">
-                Whether you're planning a mobile app, web platform, or need help
-                debugging your frontend — feel free to reach out. Let's build
-                something great.
-              </p> */}
+        {/* Left — info */}
+        <div>
+          <p className="text-orange-500 text-xs font-semibold uppercase tracking-widest mb-4">
+            Get In Touch
+          </p>
+          <h1 className="text-5xl xl:text-6xl font-black text-white leading-none mb-6">
+            Let&apos;s
+            <br />
+            <span className="text-orange-500">Talk.</span>
+          </h1>
+          <p className="text-zinc-400 text-base leading-relaxed mb-10 max-w-sm">
+            Whether you have a project in mind or just want to connect — I&apos;m
+            open and ready to chat.
+          </p>
 
-          {/*Input with labels*/}
-          {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="text-white/60 text-sm">First Name</label>
-                  <Input type="text" placeholder="Firstname" required />
-                </div>
-                <div>
-                  <label className="text-white/60 text-sm">Last Name</label>
-                  <Input type="text" placeholder="Lastname" required />
-                </div>
-                <div>
-                  <label className="text-white/60 text-sm">Email Address</label>
-                  <Input type="email" placeholder="Email" required />
-                </div>
-                <div>
-                  <label className="text-white/60 text-sm">Phone Number</label>
-                  <Input type="tel" placeholder="Phone" />
-                </div>
-              </div> */}
-
-          {/*Select*/}
-          {/* <label className="text-white/60 text-sm">Service Type</label>
-              <Select required>
-                <SelectTrigger className="w-full bg-white">
-                  <SelectValue placeholder="Select a service" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    <SelectLabel>Choose a service</SelectLabel>
-                    <SelectItem value="web">🌐 Web App Development</SelectItem>
-                    <SelectItem value="mobile">
-                      📱 Mobile App Development
-                    </SelectItem>
-                    <SelectItem value="frontend">
-                      🎨 Frontend Implementation
-                    </SelectItem>
-                    <SelectItem value="qa">
-                      🔧 Bug Fixing & QA Support
-                    </SelectItem>
-                  </SelectGroup>
-                </SelectContent>
-              </Select> */}
-
-          {/*Textarea*/}
-          {/* <label className="text-white/60 text-sm">Message</label>
-              <Textarea
-                className="h-[200px]"
-                placeholder="Type your message here."
-                required
-              /> */}
-
-          {/*Button & Feedback*/}
-          {/* <Button
-                size="md"
-                type="submit"
-                className="max-w-40 disabled:opacity-50"
-                disabled={status === "loading"}
+          {/* Contact info */}
+          <div className="flex flex-col gap-4 mb-10">
+            {info.map((item, i) => (
+              <div
+                key={i}
+                onClick={item.copyable ? handleCopyEmail : undefined}
+                className={`flex items-center gap-4 p-4 bg-zinc-900/50 border border-zinc-800 rounded-xl ${
+                  item.copyable ? "cursor-pointer hover:border-orange-500/40 transition-colors group" : ""
+                }`}
               >
-                {status === "loading" ? "Sending..." : "Send Message"}
-              </Button>
-
-              {status === "success" && (
-                <p className="text-green-400 text-sm">
-                  Message sent successfully!
-                </p>
-              )} */}
-
-          {/* 2ND VERSION RIGHT COLUMN (Form – 60%) */}
-          <div className="xl:w-[60%]">
-            <form
-              onSubmit={handleSubmit}
-              className="flex flex-col gap-4 p-4 xl:p-6 bg-[#27272c] rounded-xl"
-            >
-              <h3 className="text-4xl text-emerald-500">Let's work together</h3>
-              <p className="text-white/60">
-                Whether you're planning a mobile app or web platform — feel free
-                to reach out.
-              </p>
-
-              {/* Inputs */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <Input type="text" placeholder="First Name" required />
-                <Input type="text" placeholder="Last Name" required />
-                <Input type="email" placeholder="Email" required />
-                <Input type="tel" placeholder="Phone Number" />
+                <div className="w-10 h-10 rounded-lg bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-500 flex-shrink-0">
+                  {item.icon}
+                </div>
+                <div>
+                  <p className="text-zinc-500 text-xs mb-0.5">{item.label}</p>
+                  {item.href ? (
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white text-sm font-medium hover:text-orange-400 transition-colors"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      {item.value}
+                    </a>
+                  ) : (
+                    <p className="text-white text-sm font-medium group-hover:text-orange-400 transition-colors">
+                      {item.copyable && copied ? "Copied!" : item.value}
+                    </p>
+                  )}
+                  {item.copyable && (
+                    <p className="text-zinc-600 text-[10px] mt-0.5">click to copy</p>
+                  )}
+                </div>
               </div>
-
-              {/* Select */}
-              <Select>
-                <SelectTrigger className="w-full bg-white">
-                  <SelectValue placeholder="Select a service" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="web">Web App Development</SelectItem>
-                  <SelectItem value="mobile">Mobile App Development</SelectItem>
-                  <SelectItem value="frontend">
-                    Frontend Implementation
-                  </SelectItem>
-                  <SelectItem value="qa">Bug Fixing & QA</SelectItem>
-                </SelectContent>
-              </Select>
-
-              {/* Textarea */}
-              <Textarea
-                placeholder="Type your message here."
-                className="h-[150px]"
-              />
-
-              {/* Submit Button */}
-              <Button type="submit" className="w-fit">
-                {status === "loading" ? "Sending..." : "Send Message"}
-              </Button>
-
-              {status === "success" && (
-                <p className="text-green-400 text-sm">
-                  Message sent successfully!
-                </p>
-              )}
-
-              {/* Social Links */}
-              <div className="flex gap-4 mt-4">
-                <a
-                  href="https://linkedin.com/in/nabiladib"
-                  target="_blank"
-                  aria-label="LinkedIn"
-                >
-                  <FaLinkedin className="text-2xl text-white hover:text-green-400 transition" />
-                </a>
-                <a
-                  href="https://github.com/nebneb97"
-                  target="_blank"
-                  aria-label="GitHub"
-                >
-                  <FaGithub className="text-2xl text-white hover:text-green-400 transition" />
-                </a>
-              </div>
-            </form>
+            ))}
           </div>
 
-          {/*Social Links*/}
-          {/* <div className="flex gap-4 mt-4">
-                <a
-                  href="https://linkedin.com/in/nabiladib"
-                  target="_blank"
-                  aria-label="LinkedIn"
-                >
-                  <FaLinkedin className="text-2xl text-white hover:text-green-400 transition" />
-                </a>
-                <a
-                  href="https://github.com/nebneb97"
-                  target="_blank"
-                  aria-label="GitHub"
-                >
-                  <FaGithub className="text-2xl text-white hover:text-green-400 transition" />
-                </a>
-              </div> */}
-          {/* </form>
-          </div> */}
+          {/* Why work with me */}
+          <div className="p-5 bg-zinc-900/50 border border-zinc-800 rounded-xl">
+            <p className="text-orange-500 text-xs font-semibold uppercase tracking-widest mb-2">
+              Why Work With Me?
+            </p>
+            <p className="text-zinc-400 text-sm leading-relaxed">
+              I bring a fresh perspective, strong fundamentals, and a passion
+              for continuous learning. Eager to contribute, grow with your team,
+              and deliver clean, user-focused solutions using modern tools.
+            </p>
+          </div>
+        </div>
 
-          {/* Info
-          <div className="flex-1 flex items-center xl:justify-end order-1 xl:order-none mb-8 xl:mb-0">
-            <ul className="flex flex-col gap-10">
-              {info.map((item, index) => (
-                <li key={index} className="flex items-center gap-6">
-                  <div className="w-[52px] h-[52px] xl:w-[72px] xl:h-[72px] bg-[#27272c] text-emerald-400 rounded-md flex items-center justify-center">
-                    <div className="text-[28px]">{item.icon}</div>
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-white/60">{item.title}</p>
-                    <h3 className="text-xl">{item.description}</h3>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div> */}
+        {/* Right — form */}
+        <div>
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <input
+                name="firstName"
+                type="text"
+                placeholder="First Name"
+                required
+                className="bg-zinc-900 border border-zinc-700 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-orange-500 transition-colors"
+              />
+              <input
+                name="lastName"
+                type="text"
+                placeholder="Last Name"
+                className="bg-zinc-900 border border-zinc-700 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-orange-500 transition-colors"
+              />
+              <input
+                name="email"
+                type="email"
+                placeholder="Email"
+                required
+                className="bg-zinc-900 border border-zinc-700 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-orange-500 transition-colors"
+              />
+              <input
+                name="phone"
+                type="tel"
+                placeholder="Phone Number"
+                className="bg-zinc-900 border border-zinc-700 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-orange-500 transition-colors"
+              />
+            </div>
+
+            <select
+              value={service}
+              onChange={(e) => setService(e.target.value)}
+              className="bg-zinc-900 border border-zinc-700 text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-orange-500 transition-colors appearance-none"
+              style={{ color: service ? "#fafafa" : "#52525b" }}
+            >
+              <option value="" disabled>Select a service</option>
+              <option value="web">Web App Development</option>
+              <option value="mobile">Mobile App Development</option>
+              <option value="frontend">Frontend Implementation</option>
+              <option value="qa">Bug Fixing &amp; QA</option>
+            </select>
+
+            <textarea
+              name="message"
+              placeholder="Your message..."
+              required
+              rows={6}
+              className="bg-zinc-900 border border-zinc-700 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-orange-500 transition-colors resize-none"
+            />
+
+            <button
+              type="submit"
+              disabled={status === "loading"}
+              className="w-fit bg-orange-500 hover:bg-orange-600 disabled:opacity-50 text-white font-semibold px-8 py-3 rounded-full text-sm uppercase transition-colors"
+            >
+              {status === "loading" ? "Sending..." : "Send Message"}
+            </button>
+
+            {status === "success" && (
+              <p className="text-orange-400 text-sm font-medium">
+                Message sent! I&apos;ll get back to you soon.
+              </p>
+            )}
+            {status === "error" && (
+              <p className="text-red-400 text-sm">
+                Something went wrong. Email me directly at nabiladib70@gmail.com
+              </p>
+            )}
+
+            <div className="flex gap-4 pt-2">
+              <a
+                href="https://linkedin.com/in/nabiladib"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+              >
+                <FaLinkedin className="text-2xl text-zinc-600 hover:text-orange-500 transition-colors" />
+              </a>
+              <a
+                href="https://github.com/nebneb97"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+              >
+                <FaGithub className="text-2xl text-zinc-600 hover:text-orange-500 transition-colors" />
+              </a>
+            </div>
+          </form>
         </div>
       </div>
     </motion.section>

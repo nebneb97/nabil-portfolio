@@ -5,35 +5,28 @@ import Image from "next/image";
 
 const Photo = () => {
   return (
-    <div className="w-full h-full relative">
+    <div className="w-full h-full relative flex items-center justify-center">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{
           opacity: 1,
-          transition: { delay: 2, duration: 0.4, ease: "easeIn" },
+          transition: { delay: 0.4, duration: 0.6, ease: "easeIn" },
         }}
+        className="relative"
       >
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{
-            opacity: 1,
-            transition: { delay: 2.4, duration: 0.4, ease: "easeInOut" },
-          }}
-          className="w-[298px] h-[298px] xl:w-[498px] xl:h-[498px] mix-blend-lighten absolute"
-        >
+        <div className="w-[280px] h-[280px] xl:w-[400px] xl:h-[400px] rounded-full overflow-hidden bg-zinc-900 border-4 border-zinc-800 shadow-2xl relative z-10">
           <Image
             src="/assets/resume.png"
-            priority  
+            priority
             quality={100}
             fill
-            alt=""
-            className="object-contain"
+            alt="Nabil Adib"
+            className="object-cover object-center"
           />
-        </motion.div>
+        </div>
 
-        {/* Circle */}
         <motion.svg
-          className="w-[300px] xl:w-[500px] h-[300px] xl:h-[500px]"
+          className="absolute inset-0 w-full h-full"
           fill="transparent"
           viewBox="0 0 506 506"
           xmlns="http://www.w3.org/2000/svg"
@@ -42,8 +35,8 @@ const Photo = () => {
             cx="253"
             cy="253"
             r="250"
-            stroke="#00ff99"
-            strokeWidth="4"
+            stroke="#f97316"
+            strokeWidth="3"
             strokeLinecap="round"
             strokeLinejoin="round"
             initial={{ strokeDasharray: "24 10 0 0" }}

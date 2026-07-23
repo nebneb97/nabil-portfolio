@@ -1,178 +1,171 @@
 "use client";
 
-import { motion, number } from "framer-motion";
-import React, { useState } from "react";
-
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import { BsLink, BsGithub } from "react-icons/bs";
-
+import { motion } from "framer-motion";
+import { FaReact } from "react-icons/fa";
 import {
-  Tooltip,
-  TooltipProvider,
-  TooltipTrigger,
-  TooltipContent,
-} from "@/components/ui/tooltip";
-
-import Link from "next/link";
+  SiNextdotjs,
+  SiTailwindcss,
+  SiFirebase,
+  SiPrisma,
+  SiFlutter,
+  SiTypescript,
+} from "react-icons/si";
+import { BsGithub, BsLink } from "react-icons/bs";
 import Image from "next/image";
-import WorkSliderBtns from "@/components/ui/WorkSliderBtns";
 
 const projects = [
   {
     num: "01",
-    category: "Frontend Project",
-    title: "Project 1",
+    category: "Fullstack Web App",
+    title: "Cloud-based Testing Platform",
     description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    stack: [{ name: "Html 5" }, { name: "Css3" }, { name: "Javascript" }],
+      "A platform built during my internship at Al-Ain IT Consultants to request and manage software testing tasks. Features real-time status tracking, role-based access control (admin, tester, client), and a structured request/approval workflow.",
+    stack: [
+      { name: "Next.js", Icon: SiNextdotjs },
+      { name: "React", Icon: FaReact },
+      { name: "Prisma", Icon: SiPrisma },
+      { name: "Tailwind CSS", Icon: SiTailwindcss },
+      { name: "TypeScript", Icon: SiTypescript },
+    ],
     image: "/assets/work/thumb1.png",
     live: "",
-    github: "",
+    github: "https://github.com/nebneb97",
   },
   {
     num: "02",
-    category: "Fullstack",
-    title: "Project 2",
+    category: "Mobile App",
+    title: "Equip&Go Rental App",
     description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    stack: [{ name: "Next.js" }, { name: "Tailwind.css" }, { name: "Node.js" }],
+      "A cross-platform Flutter mobile application for renting outdoor activity equipment. Users can browse equipment by location and availability, manage bookings, and track rental status. Built with Firebase for real-time data and authentication.",
+    stack: [
+      { name: "Flutter", Icon: SiFlutter },
+      { name: "Firebase", Icon: SiFirebase },
+    ],
     image: "/assets/work/thumb2.png",
     live: "",
-    github: "",
+    github: "https://github.com/nebneb97",
   },
   {
     num: "03",
     category: "Frontend Web",
-    title: "Project 3",
+    title: "Portfolio Website",
     description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    stack: [{ name: "Next.js" }, { name: "Tailwind.css" }],
+      "This portfolio — built with Next.js 15, Tailwind CSS, and Framer Motion. Features smooth page transitions, a custom cursor, typewriter animation, and a fully responsive layout across all screen sizes.",
+    stack: [
+      { name: "Next.js", Icon: SiNextdotjs },
+      { name: "Tailwind CSS", Icon: SiTailwindcss },
+      { name: "Framer Motion", Icon: FaReact },
+      { name: "TypeScript", Icon: SiTypescript },
+    ],
     image: "/assets/work/thumb3.png",
     live: "",
-    github: "",
+    github: "https://github.com/nebneb97/nabil-portfolio",
   },
 ];
 
 const ProjectsPage = () => {
-  const [project, setProject] = useState(projects[0]);
-
-  const handleSlideChange = (swiper) => {
-    // get current slide index
-    const currentIndex = swiper.activeIndex;
-    //update project state based on current slide index
-    setProject(projects[currentIndex]);
-  };
-
   return (
     <motion.section
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 2 }}
-      className="min-h-[80vh] flex flex-col justify-center py-12 xl:px-0"
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0, transition: { duration: 0.35 } }}
+      className="container mx-auto px-6 xl:px-12 py-16 xl:py-20"
     >
-      <div className="container mx-auto">
-        <div className="flex flex-col xl:flex-row xl:gap-[30px]">
-          <div className="w-full xl:w-[50%] xl:h-[460px] flex flex-col xl:justify-between order-2 xl:order-none">
-            <div className="flex flex-col gap-[30px] h-[50%]">
-              {/*outline num*/}
-              <div className="text-8xl leading-none font-extrabold text-transparent text-outline">
+      {/* Heading */}
+      <div className="mb-14">
+        <p className="text-orange-500 text-xs font-semibold uppercase tracking-widest mb-3">
+          My Work
+        </p>
+        <h1 className="text-4xl xl:text-5xl font-bold text-white mb-4">
+          Projects
+        </h1>
+        <p className="text-zinc-400 max-w-xl text-base">
+          Real-world applications built during internships and personal
+          exploration — from fullstack platforms to mobile apps.
+        </p>
+      </div>
+
+      {/* Project cards */}
+      <div className="flex flex-col gap-8">
+        {projects.map((project, index) => (
+          <div
+            key={index}
+            className="group grid grid-cols-1 xl:grid-cols-2 gap-0 bg-zinc-900/40 border border-zinc-800 hover:border-zinc-700 rounded-2xl overflow-hidden transition-all duration-300"
+          >
+            {/* Image */}
+            <div
+              className={`relative h-56 xl:h-auto bg-zinc-900 ${
+                index % 2 === 1 ? "xl:order-last" : ""
+              }`}
+            >
+              <Image
+                src={project.image}
+                fill
+                alt={project.title}
+                className="object-cover opacity-70 group-hover:opacity-90 transition-opacity duration-300"
+                sizes="(max-width: 1280px) 100vw, 50vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/60 to-transparent" />
+              <span className="absolute bottom-4 left-4 text-5xl font-black text-white/10 select-none">
                 {project.num}
-              </div>
-              {/*project category*/}
-              <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-green-500 transition-all duration-500 capitalize">
-                {project.category}
-              </h2>
-              {/*project description*/}
-              <p className="text-white/60">{project.description}</p>
-              {/*stack*/}
-              <ul className="flex gap-4">
-                {project.stack.map((item, index) => {
-                  return (
-                    <li key={index} className="text-xl text-emerald-400">
+              </span>
+            </div>
+
+            {/* Content */}
+            <div className="flex flex-col justify-between p-8">
+              <div className="flex flex-col gap-4">
+                <span className="text-orange-500 text-xs font-semibold uppercase tracking-widest">
+                  {project.category}
+                </span>
+                <h2 className="text-xl xl:text-2xl font-bold text-white group-hover:text-orange-400 transition-colors">
+                  {project.title}
+                </h2>
+                <p className="text-zinc-400 text-sm leading-relaxed">
+                  {project.description}
+                </p>
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {project.stack.map((item, i) => (
+                    <span
+                      key={i}
+                      className="flex items-center gap-1.5 text-xs font-medium text-zinc-400 bg-zinc-800 border border-zinc-700 px-3 py-1.5 rounded-full"
+                    >
+                      <item.Icon className="text-sm" />
                       {item.name}
-                      {index !== project.stack.length - 1 && ","}
-                    </li>
-                  );
-                })}
-              </ul>
-              {/*border*/}
-              <div className="border border-white/20"></div>
-              {/*button*/}
-              <div className="flex items-center gap-4">
-                {/*Live project button*/}
-                <Link href={project.live}>
-                  <TooltipProvider delayDuration={100}>
-                    <Tooltip>
-                      <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
-                        <BsLink className="text-white text-3xl group-hover:text-emerald-400" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Live Project</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                </Link>
-                {/*Github project button*/}
-                <Link href={project.github}>
-                  <TooltipProvider delayDuration={100}>
-                    <Tooltip>
-                      <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
-                        <BsGithub className="text-white text-3xl group-hover:text-emerald-400" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Github repository</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                </Link>
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3 mt-8">
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub"
+                  className="flex items-center gap-2 text-sm font-medium text-zinc-300 hover:text-orange-500 border border-zinc-700 hover:border-orange-500/50 px-4 py-2 rounded-full transition-all"
+                >
+                  <BsGithub className="text-base" />
+                  GitHub
+                </a>
+                {project.live ? (
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Live demo"
+                    className="flex items-center gap-2 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-full transition-colors"
+                  >
+                    <BsLink className="text-base" />
+                    Live Demo
+                  </a>
+                ) : (
+                  <span className="text-xs text-zinc-600 italic">
+                    Live demo not available
+                  </span>
+                )}
               </div>
             </div>
           </div>
-          <div className="w-full xl:w-[50%]">
-            <Swiper
-              spaceBetween={30}
-              slidesPerView={1}
-              className="xl:h-[520px] mb-12"
-              onSlideChange={handleSlideChange}
-            >
-              {projects.map((project, index) => {
-                return (
-                  <SwiperSlide key={index} className="w-full">
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{
-                        delay: 0.4,
-                        duration: 0.6,
-                        ease: "easeOut",
-                      }}
-                      className="h-[460px] relative group flex justify-center items-center bg-pink-50/20"
-                    >
-                      {/*overlay*/}
-                      <div></div>
-                      {/*Animated Image*/}
-                      <div className="relative w-full h-full">
-                        <Image
-                          src={project.image}
-                          fill
-                          className="object-cover"
-                          alt=""
-                          sizes="(max-width: 768px) 100vw, 50vw"
-                        />
-                      </div>
-                    </motion.div>
-                  </SwiperSlide>
-                );
-              })}
-              {/*Slider Buttons*/}
-              <WorkSliderBtns
-                containerStyles="flex gap-2 absolute right-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 w-full justify-between xl:w-max xl:w-max xl:justify-none"
-                btnStyles="bg-emerald-400 hover:bg-emerald-600 w-[44px] h-[44px] flex justify-center items-center transition-all rounded"
-                iconsStyles="text-primary text-[22px]"
-              />
-            </Swiper>
-          </div>
-        </div>
+        ))}
       </div>
     </motion.section>
   );

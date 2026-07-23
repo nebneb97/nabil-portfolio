@@ -1,59 +1,175 @@
-import { Button } from "@/components/ui/button";
 import { FiDownload } from "react-icons/fi";
+import Link from "next/link";
+import {
+  SiNextdotjs,
+  SiTailwindcss,
+  SiFirebase,
+  SiPrisma,
+  SiFlutter,
+  SiTypescript,
+} from "react-icons/si";
+import { FaReact } from "react-icons/fa";
 
-//components
 import Social from "@/components/Social";
 import Photo from "@/components/Photo";
 import Stats from "@/components/Stats";
-import HomeResumeProjects from "@/components/HomeResumeProjects";
+import TypewriterText from "@/components/TypewriterText";
+
+const featuredProjects = [
+  {
+    title: "Cloud-based Testing Platform",
+    description:
+      "A fullstack platform to request and manage software testing tasks with real-time status tracking and role-based access control.",
+    stack: [SiNextdotjs, FaReact, SiPrisma, SiTailwindcss, SiTypescript],
+    github: "https://github.com/nebneb97",
+    live: "",
+    category: "Fullstack Web",
+  },
+  {
+    title: "Equip&Go Rental App",
+    description:
+      "A cross-platform mobile app for renting outdoor activity equipment based on user location, real-time availability, and multi-role access.",
+    stack: [SiFlutter, SiFirebase],
+    github: "https://github.com/nebneb97",
+    live: "",
+    category: "Mobile App",
+  },
+];
 
 const Home = () => {
   return (
-    <section className="m:max-h-screen flex items-center justify-center">
-      <div className="container mx-auto h-full px-4 xl:px-30 xl:mt-15">
-        <div className="flex flex-col xl:flex-row items-center justify-between gap-12 xl:gap-15 py-8 xl:py-15">
-          {/*Text*/}
-          <div className="text-center xl:text-left order-2 xl:order-none space-y-4">
-            <span className="text-xl">Software Developer</span>
-            <h1 className="text-[48px] xl:text-[80px] leading-[1.1] font-semibold">
-              Hello I'm <br />{" "}
-              <span className="text-teal-500"> Nabil Adib </span>
+    <section>
+      {/* Hero */}
+      <div className="container mx-auto px-6 xl:px-12 pt-16 xl:pt-24 pb-16">
+        <div className="flex flex-col xl:flex-row items-center justify-between gap-12 xl:gap-8">
+          {/* Text */}
+          <div className="text-center xl:text-left order-2 xl:order-none flex-1">
+            <div className="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/20 rounded-full px-4 py-1.5 mb-8">
+              <span className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse" />
+              <span className="text-orange-400 text-xs font-medium tracking-widest uppercase">
+                Available for work
+              </span>
+            </div>
+
+            <h1 className="text-5xl xl:text-7xl font-bold leading-[1.05] tracking-tight text-white mb-4">
+              Building
+              <br />
+              things
+              <br />
+              <span className="text-orange-500">for the web.</span>
             </h1>
-            <p className="max-w-[500px] mb-6 text-white/80">
-              I excel at crafting elegant digital experiences and I am
-              proficient in various programming languages and technologies
+
+            <div className="mt-4 mb-6">
+              <TypewriterText />
+            </div>
+
+            <p className="max-w-[480px] mb-8 text-zinc-400 leading-relaxed text-base mx-auto xl:mx-0">
+              I craft elegant digital experiences using modern web technologies.
+              Passionate about clean code and great user experiences.
             </p>
-            {/*Socials*/}
+
             <Social
-              containerStyles="mt-6 w-full justify-center xl:justify-start gap-4"
-              iconStyles="text-3xl text-gray-600 hover:text-teal-500 transition duration-400"
+              containerStyles="mb-8 w-full justify-center xl:justify-start gap-4"
+              iconStyles="text-2xl text-zinc-500 hover:text-orange-500 transition-colors duration-300"
             />
-            {/*Button*/}
-            <div className="flex flex-col xl:flex-row items-center gap-8 mt-6">
+
+            <div className="flex flex-col sm:flex-row items-center gap-4 justify-center xl:justify-start">
               <a
                 href="/assets/RESUME NABIL ADIB.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="View CV as PDF"
+                className="inline-flex items-center gap-2 border border-zinc-700 text-zinc-300 hover:text-white hover:border-zinc-500 px-6 py-3 rounded-full text-sm font-semibold uppercase transition-colors"
               >
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="uppercase flex items-center gap-2"
-                >
-                  <span>Download Resume</span>
-                  <FiDownload className="text-xl" />
-                </Button>
+                Download CV
+                <FiDownload className="text-lg" />
               </a>
+              <Link
+                href="/projects"
+                className="inline-flex items-center bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-full text-sm font-semibold uppercase transition-colors"
+              >
+                View My Work
+              </Link>
             </div>
           </div>
-          <div className="order-1 xl:order-none mb-8 xl:mb-0">
+
+          {/* Photo */}
+          <div className="order-1 xl:order-none flex-shrink-0">
             <Photo />
           </div>
         </div>
-        <Stats className="mt-12 xl:mt-10" />
-        <div className="">
-          <HomeResumeProjects />
+      </div>
+
+      {/* Stats */}
+      <div className="container mx-auto px-6 xl:px-12 pb-16">
+        <Stats />
+      </div>
+
+      {/* Featured Projects */}
+      <div className="container mx-auto px-6 xl:px-12 pb-24">
+        <div className="flex items-end justify-between mb-10">
+          <div>
+            <p className="text-orange-500 text-xs font-semibold uppercase tracking-widest mb-2">
+              Selected Work
+            </p>
+            <h2 className="text-2xl xl:text-3xl font-bold text-white">
+              Featured Projects
+            </h2>
+          </div>
+          <Link
+            href="/projects"
+            className="text-sm text-zinc-400 hover:text-orange-500 font-medium transition-colors"
+          >
+            View all →
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
+          {featuredProjects.map((project, index) => (
+            <div
+              key={index}
+              className="group bg-zinc-900/50 border border-zinc-800 hover:border-zinc-700 rounded-2xl p-6 flex flex-col gap-4 transition-all duration-300 hover:-translate-y-1"
+            >
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-semibold text-orange-500 uppercase tracking-widest">
+                  {project.category}
+                </span>
+                <span className="text-zinc-700 text-xs font-mono">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+              </div>
+              <h3 className="text-lg font-semibold text-white group-hover:text-orange-400 transition-colors">
+                {project.title}
+              </h3>
+              <p className="text-zinc-400 text-sm leading-relaxed flex-1">
+                {project.description}
+              </p>
+              <div className="flex flex-wrap gap-2 text-xl text-zinc-600 group-hover:text-orange-400/60 transition-colors">
+                {project.stack.map((Icon, i) => (
+                  <Icon key={i} />
+                ))}
+              </div>
+              <div className="flex gap-3 pt-1">
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs font-medium text-zinc-400 hover:text-orange-500 transition-colors border border-zinc-700 hover:border-orange-500/50 px-3 py-1.5 rounded-full"
+                >
+                  GitHub
+                </a>
+                {project.live && (
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs font-medium text-white bg-orange-500 hover:bg-orange-600 px-3 py-1.5 rounded-full transition-colors"
+                  >
+                    Live Demo
+                  </a>
+                )}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
