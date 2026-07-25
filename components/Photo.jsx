@@ -14,7 +14,10 @@ const Photo = () => {
         }}
         className="relative"
       >
-        <div className="w-[280px] h-[280px] xl:w-[400px] xl:h-[400px] rounded-full overflow-hidden bg-zinc-900 border-4 border-zinc-800 shadow-2xl relative z-10">
+        <div
+          className="w-[280px] h-[280px] xl:w-[400px] xl:h-[400px] rounded-full overflow-hidden bg-zinc-900 border-4 border-zinc-800 relative z-10"
+          style={{ boxShadow: "0 0 60px rgba(56,189,248,0.18), 0 0 120px rgba(56,189,248,0.07), 0 20px 60px rgba(0,0,0,0.6)" }}
+        >
           <Image
             src="/assets/resume.png"
             priority
@@ -35,7 +38,7 @@ const Photo = () => {
             cx="253"
             cy="253"
             r="250"
-            stroke="#f97316"
+            stroke="#38bdf8"
             strokeWidth="3"
             strokeLinecap="round"
             strokeLinejoin="round"

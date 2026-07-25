@@ -14,13 +14,40 @@ const outfit = Outfit({
 });
 
 export const metadata = {
-  title: "Portfolio | Nabil Adib",
-  keywords: ["Portfolio", "Nabil Adib", "Web Developer", "Software Engineer"],
+  title: "Nabil Adib — Full Stack & Flutter Developer",
+  keywords: ["Portfolio", "Nabil Adib", "Web Developer", "Software Engineer", "Flutter Developer", "Next.js", "React"],
   description:
-    "Portfolio of Nabil Adib, a software developer specialising in web development and digital experiences.",
+    "Full Stack and Flutter developer building fast, modern web and mobile applications. Based in Selangor, Malaysia. Available for freelance and full-time roles.",
+  openGraph: {
+    title: "Nabil Adib — Full Stack & Flutter Developer",
+    description:
+      "Full Stack and Flutter developer building fast, modern web and mobile applications. Based in Selangor, Malaysia.",
+    url: "https://nabiladib.dev",
+    siteName: "Nabil Adib Portfolio",
+    images: [
+      {
+        url: "/assets/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Nabil Adib — Full Stack & Flutter Developer",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Nabil Adib — Full Stack & Flutter Developer",
+    description:
+      "Full Stack and Flutter developer building fast, modern web and mobile applications.",
+    images: ["/assets/og-image.png"],
+  },
 };
 
-export const viewport = "width=device-width, initial-scale=1";
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 
 export default function RootLayout({ children }) {
   return (

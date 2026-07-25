@@ -34,12 +34,12 @@ const CustomCursor = () => {
     <>
       <div
         ref={ringRef}
-        className="fixed top-0 left-0 pointer-events-none z-[9999] w-8 h-8 rounded-full border border-orange-500 opacity-50"
+        className="fixed top-0 left-0 pointer-events-none z-[9999] w-8 h-8 rounded-full border border-sky-500 opacity-50"
         style={{ willChange: "transform", transition: "opacity 0.15s, scale 0.15s" }}
       />
       <div
         ref={dotRef}
-        className="fixed top-0 left-0 pointer-events-none z-[9999] w-2 h-2 rounded-full bg-orange-500"
+        className="fixed top-0 left-0 pointer-events-none z-[9999] w-2 h-2 rounded-full bg-sky-500"
         style={{ willChange: "transform", transition: "opacity 0.15s" }}
       />
     </>

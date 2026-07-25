@@ -72,7 +72,7 @@ const ProjectsPage = () => {
     >
       {/* Heading */}
       <div className="mb-14">
-        <p className="text-orange-500 text-xs font-semibold uppercase tracking-widest mb-3">
+        <p className="text-sky-500 text-xs font-semibold uppercase tracking-widest mb-3">
           My Work
         </p>
         <h1 className="text-4xl xl:text-5xl font-bold text-white mb-4">
@@ -87,8 +87,12 @@ const ProjectsPage = () => {
       {/* Project cards */}
       <div className="flex flex-col gap-8">
         {projects.map((project, index) => (
-          <div
+          <motion.div
             key={index}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.4, delay: index * 0.07 }}
             className="group grid grid-cols-1 xl:grid-cols-2 gap-0 bg-zinc-900/40 border border-zinc-800 hover:border-zinc-700 rounded-2xl overflow-hidden transition-all duration-300"
           >
             {/* Image */}
@@ -113,10 +117,10 @@ const ProjectsPage = () => {
             {/* Content */}
             <div className="flex flex-col justify-between p-8">
               <div className="flex flex-col gap-4">
-                <span className="text-orange-500 text-xs font-semibold uppercase tracking-widest">
+                <span className="text-sky-500 text-xs font-semibold uppercase tracking-widest">
                   {project.category}
                 </span>
-                <h2 className="text-xl xl:text-2xl font-bold text-white group-hover:text-orange-400 transition-colors">
+                <h2 className="text-xl xl:text-2xl font-bold text-white group-hover:text-sky-400 transition-colors">
                   {project.title}
                 </h2>
                 <p className="text-zinc-400 text-sm leading-relaxed">
@@ -141,7 +145,7 @@ const ProjectsPage = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="GitHub"
-                  className="flex items-center gap-2 text-sm font-medium text-zinc-300 hover:text-orange-500 border border-zinc-700 hover:border-orange-500/50 px-4 py-2 rounded-full transition-all"
+                  className="flex items-center gap-2 text-sm font-medium text-zinc-300 hover:text-sky-500 border border-zinc-700 hover:border-sky-500/50 px-4 py-2 rounded-full transition-all"
                 >
                   <BsGithub className="text-base" />
                   GitHub
@@ -152,19 +156,19 @@ const ProjectsPage = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Live demo"
-                    className="flex items-center gap-2 text-sm font-medium text-white bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-full transition-colors"
+                    className="flex items-center gap-2 text-sm font-medium text-white bg-sky-500 hover:bg-sky-600 px-4 py-2 rounded-full transition-colors"
                   >
                     <BsLink className="text-base" />
                     Live Demo
                   </a>
                 ) : (
-                  <span className="text-xs text-zinc-600 italic">
-                    Live demo not available
+                  <span className="flex items-center gap-1.5 text-xs font-medium text-zinc-500 border border-zinc-800 px-3 py-1.5 rounded-full">
+                    Demo on request
                   </span>
                 )}
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </motion.section>

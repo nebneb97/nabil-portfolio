@@ -8,6 +8,7 @@ const info = [
   { icon: <FaEnvelope />, label: "Email", value: "nabiladib70@gmail.com", copyable: true },
   { icon: <FaMapMarkerAlt />, label: "Location", value: "Selangor, Malaysia" },
   { icon: <FaGithub />, label: "GitHub", value: "github.com/nebneb97", href: "https://github.com/nebneb97" },
+  { icon: <FaLinkedin />, label: "LinkedIn", value: "linkedin.com/in/nabiladib", href: "https://linkedin.com/in/nabiladib" },
 ];
 
 const Contacts = () => {
@@ -61,13 +62,13 @@ const Contacts = () => {
 
         {/* Left — info */}
         <div>
-          <p className="text-orange-500 text-xs font-semibold uppercase tracking-widest mb-4">
+          <p className="text-sky-500 text-xs font-semibold uppercase tracking-widest mb-4">
             Get In Touch
           </p>
           <h1 className="text-5xl xl:text-6xl font-black text-white leading-none mb-6">
             Let&apos;s
             <br />
-            <span className="text-orange-500">Talk.</span>
+            <span className="text-sky-500">Talk.</span>
           </h1>
           <p className="text-zinc-400 text-base leading-relaxed mb-10 max-w-sm">
             Whether you have a project in mind or just want to connect — I&apos;m
@@ -81,10 +82,10 @@ const Contacts = () => {
                 key={i}
                 onClick={item.copyable ? handleCopyEmail : undefined}
                 className={`flex items-center gap-4 p-4 bg-zinc-900/50 border border-zinc-800 rounded-xl ${
-                  item.copyable ? "cursor-pointer hover:border-orange-500/40 transition-colors group" : ""
+                  item.copyable ? "cursor-pointer hover:border-sky-500/40 transition-colors group" : ""
                 }`}
               >
-                <div className="w-10 h-10 rounded-lg bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-500 flex-shrink-0">
+                <div className="w-10 h-10 rounded-lg bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-500 flex-shrink-0">
                   {item.icon}
                 </div>
                 <div>
@@ -94,13 +95,13 @@ const Contacts = () => {
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-white text-sm font-medium hover:text-orange-400 transition-colors"
+                      className="text-white text-sm font-medium hover:text-sky-400 transition-colors"
                       onClick={(e) => e.stopPropagation()}
                     >
                       {item.value}
                     </a>
                   ) : (
-                    <p className="text-white text-sm font-medium group-hover:text-orange-400 transition-colors">
+                    <p className="text-white text-sm font-medium group-hover:text-sky-400 transition-colors">
                       {item.copyable && copied ? "Copied!" : item.value}
                     </p>
                   )}
@@ -114,7 +115,7 @@ const Contacts = () => {
 
           {/* Why work with me */}
           <div className="p-5 bg-zinc-900/50 border border-zinc-800 rounded-xl">
-            <p className="text-orange-500 text-xs font-semibold uppercase tracking-widest mb-2">
+            <p className="text-sky-500 text-xs font-semibold uppercase tracking-widest mb-2">
               Why Work With Me?
             </p>
             <p className="text-zinc-400 text-sm leading-relaxed">
@@ -134,33 +135,33 @@ const Contacts = () => {
                 type="text"
                 placeholder="First Name"
                 required
-                className="bg-zinc-900 border border-zinc-700 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-orange-500 transition-colors"
+                className="bg-zinc-900 border border-zinc-700 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-sky-500 transition-colors"
               />
               <input
                 name="lastName"
                 type="text"
                 placeholder="Last Name"
-                className="bg-zinc-900 border border-zinc-700 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-orange-500 transition-colors"
+                className="bg-zinc-900 border border-zinc-700 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-sky-500 transition-colors"
               />
               <input
                 name="email"
                 type="email"
                 placeholder="Email"
                 required
-                className="bg-zinc-900 border border-zinc-700 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-orange-500 transition-colors"
+                className="bg-zinc-900 border border-zinc-700 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-sky-500 transition-colors"
               />
               <input
                 name="phone"
                 type="tel"
                 placeholder="Phone Number"
-                className="bg-zinc-900 border border-zinc-700 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-orange-500 transition-colors"
+                className="bg-zinc-900 border border-zinc-700 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-sky-500 transition-colors"
               />
             </div>
 
             <select
               value={service}
               onChange={(e) => setService(e.target.value)}
-              className="bg-zinc-900 border border-zinc-700 text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-orange-500 transition-colors appearance-none"
+              className="bg-zinc-900 border border-zinc-700 text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-sky-500 transition-colors appearance-none"
               style={{ color: service ? "#fafafa" : "#52525b" }}
             >
               <option value="" disabled>Select a service</option>
@@ -175,19 +176,19 @@ const Contacts = () => {
               placeholder="Your message..."
               required
               rows={6}
-              className="bg-zinc-900 border border-zinc-700 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-orange-500 transition-colors resize-none"
+              className="bg-zinc-900 border border-zinc-700 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-sky-500 transition-colors resize-none"
             />
 
             <button
               type="submit"
               disabled={status === "loading"}
-              className="w-fit bg-orange-500 hover:bg-orange-600 disabled:opacity-50 text-white font-semibold px-8 py-3 rounded-full text-sm uppercase transition-colors"
+              className="w-fit bg-sky-500 hover:bg-sky-600 disabled:opacity-50 text-white font-semibold px-8 py-3 rounded-full text-sm uppercase transition-colors"
             >
               {status === "loading" ? "Sending..." : "Send Message"}
             </button>
 
             {status === "success" && (
-              <p className="text-orange-400 text-sm font-medium">
+              <p className="text-sky-400 text-sm font-medium">
                 Message sent! I&apos;ll get back to you soon.
               </p>
             )}
@@ -204,7 +205,7 @@ const Contacts = () => {
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
               >
-                <FaLinkedin className="text-2xl text-zinc-600 hover:text-orange-500 transition-colors" />
+                <FaLinkedin className="text-2xl text-zinc-600 hover:text-sky-500 transition-colors" />
               </a>
               <a
                 href="https://github.com/nebneb97"
@@ -212,7 +213,7 @@ const Contacts = () => {
                 rel="noopener noreferrer"
                 aria-label="GitHub"
               >
-                <FaGithub className="text-2xl text-zinc-600 hover:text-orange-500 transition-colors" />
+                <FaGithub className="text-2xl text-zinc-600 hover:text-sky-500 transition-colors" />
               </a>
             </div>
           </form>
