@@ -28,14 +28,14 @@ const MobileNav = () => {
         <CiMenuFries className="text-[28px] text-zinc-300" />
       </SheetTrigger>
       <SheetContent
-        className="flex flex-col bg-[#0f0f0f] border-l border-zinc-800"
+        className="flex flex-col bg-[#080810] border-l border-zinc-800"
         role="dialog"
         aria-label="Mobile Navigation"
       >
         <SheetTitle className="sr-only">Mobile Navigation</SheetTitle>
         <div className="mt-24 mb-12 text-center">
           <span className="text-3xl font-bold text-white">
-            NA<span className="text-orange-500">.</span>
+            NA<span className="text-sky-500">.</span>
           </span>
         </div>
         <nav className="flex flex-col items-center gap-6">
@@ -45,7 +45,7 @@ const MobileNav = () => {
                 <Link
                   key={index}
                   href={link.path}
-                  className="mt-4 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-3 rounded-full transition-colors"
+                  className="mt-4 bg-sky-500 hover:bg-sky-600 text-white font-semibold px-8 py-3 rounded-full transition-colors"
                 >
                   {link.name}
                 </Link>
@@ -57,7 +57,7 @@ const MobileNav = () => {
                 key={index}
                 className={`text-xl font-medium transition-colors duration-200 ${
                   link.path === pathname
-                    ? "text-orange-500"
+                    ? "text-sky-500"
                     : "text-zinc-300 hover:text-white"
                 }`}
               >

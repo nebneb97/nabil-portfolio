@@ -64,13 +64,14 @@ const services = [
 const Solutions = () => {
   return (
     <motion.section
-      initial={{ opacity: 0, y: 16 }}
-      animate={{ opacity: 1, y: 0, transition: { duration: 0.35 } }}
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.35 }}
       className="container mx-auto px-6 xl:px-12 py-16 xl:py-20"
     >
       {/* Heading */}
       <div className="mb-14">
-        <p className="text-orange-500 text-xs font-semibold uppercase tracking-widest mb-3">
+        <p className="text-sky-500 text-xs font-semibold uppercase tracking-widest mb-3">
           What I Do
         </p>
         <h1 className="text-4xl xl:text-5xl font-bold text-white mb-4">
@@ -87,21 +88,19 @@ const Solutions = () => {
         {services.map((service, index) => (
           <motion.div
             key={index}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{
-              opacity: 1,
-              y: 0,
-              transition: { delay: index * 0.08, duration: 0.35 },
-            }}
-            className="group relative bg-zinc-900/40 border border-zinc-800 hover:border-orange-500/30 rounded-2xl p-8 flex flex-col gap-5 transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.4, delay: index * 0.08 }}
+            className="group relative bg-zinc-900/40 border border-zinc-800 hover:border-sky-500/30 rounded-2xl p-8 flex flex-col gap-5 transition-all duration-300 hover:-translate-y-1 overflow-hidden"
           >
             {/* Background number */}
-            <span className="absolute top-4 right-6 text-7xl font-black text-zinc-800/50 select-none group-hover:text-orange-500/10 transition-colors">
+            <span className="absolute top-4 right-6 text-7xl font-black text-zinc-800/50 select-none group-hover:text-sky-500/10 transition-colors">
               {service.num}
             </span>
 
             <div className="flex flex-col gap-3 relative">
-              <h3 className="text-xl font-bold text-white group-hover:text-orange-400 transition-colors">
+              <h3 className="text-xl font-bold text-white group-hover:text-sky-400 transition-colors">
                 {service.title}
               </h3>
               <p className="text-zinc-400 text-sm leading-relaxed">
@@ -113,7 +112,7 @@ const Solutions = () => {
               {service.stack.map((item, i) => (
                 <span
                   key={i}
-                  className="flex items-center gap-1.5 text-xs font-medium text-zinc-400 bg-zinc-800 border border-zinc-700 group-hover:border-orange-500/20 px-3 py-1.5 rounded-full transition-colors"
+                  className="flex items-center gap-1.5 text-xs font-medium text-zinc-400 bg-zinc-800 border border-zinc-700 group-hover:border-sky-500/20 px-3 py-1.5 rounded-full transition-colors"
                 >
                   <item.Icon className="text-sm" />
                   {item.name}
@@ -123,7 +122,7 @@ const Solutions = () => {
 
             <Link
               href="/contacts"
-              className="inline-flex items-center gap-1.5 text-orange-500 hover:text-orange-400 text-sm font-medium transition-colors w-fit mt-auto"
+              className="inline-flex items-center gap-1.5 text-sky-500 hover:text-sky-400 text-sm font-medium transition-colors w-fit mt-auto"
             >
               Let&apos;s work together
               <span className="transition-transform duration-200 group-hover:translate-x-1">

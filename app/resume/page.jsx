@@ -10,7 +10,6 @@ import {
   SiTypescript,
 } from "react-icons/si";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import {
   Tooltip,
   TooltipProvider,
@@ -70,7 +69,7 @@ const skills = [
 ];
 
 const SectionLabel = ({ children }) => (
-  <p className="text-orange-500 text-xs font-semibold uppercase tracking-widest mb-3">
+  <p className="text-sky-500 text-xs font-semibold uppercase tracking-widest mb-3">
     {children}
   </p>
 );
@@ -86,7 +85,7 @@ const Resume = () => {
       <div className="mb-16">
         <SectionLabel>About Me</SectionLabel>
         <h1 className="text-4xl xl:text-5xl font-bold text-white mb-6">
-          Nabil <span className="text-orange-500">Adib</span>
+          Nabil <span className="text-sky-500">Adib</span>
         </h1>
         <p className="text-zinc-400 leading-relaxed max-w-2xl text-base mb-8">
           Computer Science graduate with a strong foundation in Networking and
@@ -108,7 +107,7 @@ const Resume = () => {
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-orange-400 hover:text-orange-300 text-sm font-medium transition-colors"
+                  className="text-sky-400 hover:text-sky-300 text-sm font-medium transition-colors"
                 >
                   {item.value}
                 </a>
@@ -123,7 +122,7 @@ const Resume = () => {
           href="/assets/RESUME NABIL ADIB.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold px-6 py-3 rounded-full transition-colors uppercase"
+          className="inline-flex items-center bg-sky-500 hover:bg-sky-600 text-white text-sm font-semibold px-6 py-3 rounded-full transition-colors uppercase"
         >
           Download Resume
         </a>
@@ -138,8 +137,8 @@ const Resume = () => {
         <div className="relative border-l border-zinc-800 pl-8 flex flex-col gap-8">
           {experience.map((item, i) => (
             <div key={i} className="relative">
-              <span className="absolute -left-[37px] w-3 h-3 rounded-full bg-orange-500 border-2 border-[#0a0a0a] top-1" />
-              <span className="text-orange-500 text-xs font-semibold uppercase tracking-wide">
+              <span className="absolute -left-[37px] w-3 h-3 rounded-full bg-sky-500 border-2 border-[#060608] top-1" />
+              <span className="text-sky-500 text-xs font-semibold uppercase tracking-wide">
                 {item.duration}
               </span>
               <h3 className="text-white font-semibold text-lg mt-1">
@@ -160,8 +159,8 @@ const Resume = () => {
         <div className="relative border-l border-zinc-800 pl-8 flex flex-col gap-8">
           {education.map((item, i) => (
             <div key={i} className="relative">
-              <span className="absolute -left-[37px] w-3 h-3 rounded-full bg-orange-500 border-2 border-[#0a0a0a] top-1" />
-              <span className="text-orange-500 text-xs font-semibold uppercase tracking-wide">
+              <span className="absolute -left-[37px] w-3 h-3 rounded-full bg-sky-500 border-2 border-[#060608] top-1" />
+              <span className="text-sky-500 text-xs font-semibold uppercase tracking-wide">
                 {item.duration}
               </span>
               <h3 className="text-white font-semibold text-lg mt-1">
@@ -186,8 +185,8 @@ const Resume = () => {
             <TooltipProvider key={i} delayDuration={100}>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <div className="bg-zinc-900/60 border border-zinc-800 hover:border-orange-500/40 rounded-xl h-20 flex flex-col items-center justify-center gap-2 cursor-default transition-all duration-200 group">
-                    <span className="text-3xl text-zinc-500 group-hover:text-orange-500 transition-colors duration-200">
+                  <div className="bg-zinc-900/60 border border-zinc-800 hover:border-sky-500/40 rounded-xl h-20 flex flex-col items-center justify-center gap-2 cursor-default transition-all duration-200 group">
+                    <span className="text-3xl text-zinc-500 group-hover:text-sky-500 transition-colors duration-200">
                       {skill.icon}
                     </span>
                     <span className="text-zinc-600 group-hover:text-zinc-400 text-[10px] font-medium transition-colors">

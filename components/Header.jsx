@@ -15,10 +15,10 @@ const Header = () => {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 bg-[#0a0a0a]/90 backdrop-blur-sm border-b border-zinc-800">
+    <header className="sticky top-0 z-50 bg-[#060608]/90 backdrop-blur-sm border-b border-zinc-800">
       <div className="container mx-auto px-6 xl:px-12 h-16 flex items-center justify-between">
         <Link href="/" className="text-lg font-bold tracking-tight text-white">
-          NA<span className="text-orange-500">.</span>
+          NA<span className="text-sky-500">.</span>
         </Link>
 
         <nav className="hidden xl:flex items-center gap-8">
@@ -28,7 +28,7 @@ const Header = () => {
               href={link.path}
               className={`text-sm font-medium transition-colors duration-200 ${
                 link.path === pathname
-                  ? "text-orange-500"
+                  ? "text-sky-500"
                   : "text-zinc-400 hover:text-white"
               }`}
             >
@@ -40,7 +40,7 @@ const Header = () => {
         <div className="flex items-center gap-4">
           <Link
             href="/contacts"
-            className="hidden xl:inline-flex items-center bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold px-5 py-2 rounded-full transition-colors duration-200"
+            className="hidden xl:inline-flex items-center bg-sky-500 hover:bg-sky-600 text-white text-sm font-semibold px-5 py-2 rounded-full transition-colors duration-200"
           >
             Hire Me
           </Link>
