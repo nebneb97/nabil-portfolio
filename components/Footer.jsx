@@ -1,4 +1,4 @@
-import { FaGithub, FaLinkedin, FaYoutube } from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -24,14 +24,6 @@ const Footer = () => {
             className="hover:text-sky-500 transition-colors"
           >
             <FaLinkedin />
-          </a>
-          <a
-            href="https://tinyurl.com/yeypm3he"
-            target="_blank"
-            aria-label="YouTube"
-            className="hover:text-sky-500 transition-colors"
-          >
-            <FaYoutube />
           </a>
         </div>
       </div>

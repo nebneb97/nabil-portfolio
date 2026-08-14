@@ -18,6 +18,7 @@ export const metadata = {
   keywords: ["Portfolio", "Nabil Adib", "Web Developer", "Software Engineer", "Flutter Developer", "Next.js", "React"],
   description:
     "Full Stack and Flutter developer building fast, modern web and mobile applications. Based in Selangor, Malaysia. Available for freelance and full-time roles.",
+  metadataBase: new URL("https://nabiladib.vercel.app"),
   openGraph: {
     title: "Nabil Adib — Full Stack & Flutter Developer",
     description:

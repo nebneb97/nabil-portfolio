@@ -16,7 +16,7 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 bg-[#060608]/90 backdrop-blur-sm border-b border-zinc-800">
-      <div className="container mx-auto px-6 xl:px-12 h-16 flex items-center justify-between">
+      <div className="container mx-auto px-4 sm:px-6 xl:px-12 h-16 flex items-center justify-between">
         <Link href="/" className="text-lg font-bold tracking-tight text-white">
           NA<span className="text-sky-500">.</span>
         </Link>

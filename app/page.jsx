@@ -2,13 +2,13 @@ import { FiDownload } from "react-icons/fi";
 import Link from "next/link";
 import {
   SiNextdotjs,
-  SiTailwindcss,
   SiFirebase,
   SiPrisma,
   SiFlutter,
-  SiTypescript,
+  SiPostgresql,
+  SiAmazonwebservices,
 } from "react-icons/si";
-import { FaReact } from "react-icons/fa";
+import { FaReact, FaNodeJs } from "react-icons/fa";
 
 import Social from "@/components/Social";
 import Photo from "@/components/Photo";
@@ -17,18 +17,18 @@ import TypewriterText from "@/components/TypewriterText";
 
 const featuredProjects = [
   {
-    title: "Cloud-based Testing Platform",
+    title: "Media Command Centre (MCC)",
     description:
-      "A fullstack platform to request and manage software testing tasks with real-time status tracking and role-based access control.",
-    stack: [SiNextdotjs, FaReact, SiPrisma, SiTailwindcss, SiTypescript],
-    github: "https://github.com/nebneb97",
+      "Enterprise media intelligence platform for monitoring, analysing, and reporting news coverage. Led planning and development — built with Next.js, Node.js, Prisma, PostgreSQL, and deployed on AWS.",
+    stack: [SiNextdotjs, FaReact, FaNodeJs, SiPrisma, SiPostgresql, SiAmazonwebservices],
+    github: "",
     live: "",
-    category: "Fullstack Web",
+    category: "Enterprise Web App",
   },
   {
     title: "Equip&Go Rental App",
     description:
-      "A cross-platform mobile app for renting outdoor activity equipment based on user location, real-time availability, and multi-role access.",
+      "Cross-platform mobile app for renting outdoor equipment with Google Maps, real-time Firebase data, push notifications, and multi-role access for users, vendors, and admins.",
     stack: [SiFlutter, SiFirebase],
     github: "https://github.com/nebneb97",
     live: "",
@@ -41,7 +41,7 @@ const Home = () => {
     <section>
       {/* Hero */}
       <div
-        className="container mx-auto px-6 xl:px-12 pt-16 xl:pt-24 pb-16"
+        className="container mx-auto px-4 sm:px-6 xl:px-12 pt-16 xl:pt-24 pb-16"
         style={{
           background:
             "radial-gradient(ellipse 70% 50% at 75% 10%, rgba(56,189,248,0.07) 0%, transparent 70%)",
@@ -57,7 +57,7 @@ const Home = () => {
               </span>
             </div>
 
-            <h1 className="text-5xl xl:text-7xl font-bold leading-[1.05] tracking-tight text-white mb-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold leading-[1.05] tracking-tight text-white mb-4">
               Fast Apps.
               <br />
               Clean Code.
@@ -107,12 +107,12 @@ const Home = () => {
       </div>
 
       {/* Stats */}
-      <div className="container mx-auto px-6 xl:px-12 pb-16">
+      <div className="container mx-auto px-4 sm:px-6 xl:px-12 pb-16">
         <Stats />
       </div>
 
       {/* Featured Projects */}
-      <div className="container mx-auto px-6 xl:px-12 pb-24">
+      <div className="container mx-auto px-4 sm:px-6 xl:px-12 pb-24">
         <div className="flex items-end justify-between mb-10">
           <div>
             <p className="text-sky-500 text-xs font-semibold uppercase tracking-widest mb-2">
@@ -156,15 +156,17 @@ const Home = () => {
                 ))}
               </div>
               <div className="flex gap-3 pt-1">
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs font-medium text-zinc-400 hover:text-sky-500 transition-colors border border-zinc-700 hover:border-sky-500/50 px-3 py-1.5 rounded-full"
-                >
-                  GitHub
-                </a>
-                {project.live && (
+                {project.github && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs font-medium text-zinc-400 hover:text-sky-500 transition-colors border border-zinc-700 hover:border-sky-500/50 px-3 py-1.5 rounded-full"
+                  >
+                    GitHub
+                  </a>
+                )}
+                {project.live ? (
                   <a
                     href={project.live}
                     target="_blank"
@@ -173,6 +175,10 @@ const Home = () => {
                   >
                     Live Demo
                   </a>
+                ) : (
+                  <span className="text-xs font-medium text-zinc-600 border border-zinc-800 px-3 py-1.5 rounded-full">
+                    Demo on request
+                  </span>
                 )}
               </div>
             </div>

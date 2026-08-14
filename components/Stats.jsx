@@ -4,9 +4,9 @@ import CountUp from "react-countup";
 
 const stats = [
   { num: 4, suffix: "+", text: "Years of Experience" },
-  { num: 10, suffix: "+", text: "Technologies Mastered" },
-  { num: 3, suffix: "+", text: "Apps Shipped" },
-  { num: 2, suffix: "", text: "Companies Worked At" },
+  { num: 20, suffix: "+", text: "Technologies Mastered" },
+  { num: 4, suffix: "+", text: "Projects Shipped" },
+  { num: 3, suffix: "", text: "Companies Worked At" },
 ];
 
 const Stats = () => {
@@ -22,7 +22,7 @@ const Stats = () => {
               end={item.num}
               duration={4}
               delay={0.5}
-              className="text-4xl xl:text-5xl font-bold"
+              className="text-3xl sm:text-4xl xl:text-5xl font-bold"
             />
             <span className="text-2xl xl:text-3xl font-bold mb-1">
               {item.suffix}

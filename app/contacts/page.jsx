@@ -56,7 +56,7 @@ const Contacts = () => {
     <motion.section
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0, transition: { duration: 0.35 } }}
-      className="container mx-auto px-6 xl:px-12 py-16 xl:py-20"
+      className="container mx-auto px-4 sm:px-6 xl:px-12 py-16 xl:py-20"
     >
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-16 xl:gap-24 items-start">
 
@@ -65,7 +65,7 @@ const Contacts = () => {
           <p className="text-sky-500 text-xs font-semibold uppercase tracking-widest mb-4">
             Get In Touch
           </p>
-          <h1 className="text-5xl xl:text-6xl font-black text-white leading-none mb-6">
+          <h1 className="text-4xl sm:text-5xl xl:text-6xl font-black text-white leading-none mb-6">
             Let&apos;s
             <br />
             <span className="text-sky-500">Talk.</span>

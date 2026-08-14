@@ -2,10 +2,9 @@
 import { useState, useEffect } from "react";
 
 const roles = [
-  "Software Developer",
   "Full Stack Developer",
+  "Software Engineer",
   "Flutter Developer",
-  "Frontend Engineer",
 ];
 
 const TypewriterText = () => {

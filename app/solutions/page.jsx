@@ -2,61 +2,66 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { FaHtml5, FaCss3, FaJs, FaReact, FaNodeJs } from "react-icons/fa";
+import { FaReact, FaNodeJs } from "react-icons/fa";
 import {
   SiNextdotjs,
   SiTailwindcss,
   SiFirebase,
   SiFlutter,
   SiTypescript,
+  SiPrisma,
+  SiPostgresql,
+  SiMongodb,
+  SiAmazonwebservices,
 } from "react-icons/si";
 
 const services = [
   {
     num: "01",
-    title: "Web App Development",
+    title: "Full Stack Web Development",
     description:
-      "Designs and builds responsive, scalable web applications using modern frameworks like Next.js, React, and Tailwind CSS — suitable for dashboards, portfolios, and business tools.",
+      "Builds end-to-end web applications — from responsive Next.js frontends to Node.js backends with REST APIs, database design, and authentication. Delivered across enterprise dashboards, business tools, and SaaS platforms.",
     stack: [
-      { name: "React", Icon: FaReact },
       { name: "Next.js", Icon: SiNextdotjs },
-      { name: "Tailwind CSS", Icon: SiTailwindcss },
+      { name: "React", Icon: FaReact },
       { name: "Node.js", Icon: FaNodeJs },
       { name: "TypeScript", Icon: SiTypescript },
+      { name: "Tailwind CSS", Icon: SiTailwindcss },
     ],
   },
   {
     num: "02",
+    title: "Backend & Database",
+    description:
+      "Designs and develops scalable backend services, RESTful APIs, and database schemas using Node.js, Prisma ORM, and PostgreSQL — with role-based access control, authentication, and production deployments.",
+    stack: [
+      { name: "Node.js", Icon: FaNodeJs },
+      { name: "Prisma ORM", Icon: SiPrisma },
+      { name: "PostgreSQL", Icon: SiPostgresql },
+      { name: "MongoDB", Icon: SiMongodb },
+      { name: "TypeScript", Icon: SiTypescript },
+    ],
+  },
+  {
+    num: "03",
     title: "Mobile App Development",
     description:
-      "Delivers cross-platform mobile applications using Flutter and Firebase, optimised for real-time features, location-based services, and multi-role access systems.",
+      "Delivers cross-platform mobile applications using Flutter and Firebase — with real-time features, Google Maps integration, push notifications, multi-role access, and booking workflows.",
     stack: [
       { name: "Flutter", Icon: SiFlutter },
       { name: "Firebase", Icon: SiFirebase },
     ],
   },
   {
-    num: "03",
-    title: "Frontend Implementation",
-    description:
-      "Translates UI designs into interactive, accessible interfaces using Tailwind CSS and component-based architecture — ensuring consistency and responsiveness across all devices.",
-    stack: [
-      { name: "HTML5", Icon: FaHtml5 },
-      { name: "CSS3", Icon: FaCss3 },
-      { name: "JavaScript", Icon: FaJs },
-      { name: "React", Icon: FaReact },
-      { name: "Tailwind CSS", Icon: SiTailwindcss },
-    ],
-  },
-  {
     num: "04",
-    title: "Bug Fixing & QA Support",
+    title: "Cloud & Deployment",
     description:
-      "Provides frontend debugging, issue tracking, and collaborative testing support to enhance system stability, performance, and overall user experience.",
+      "Deploys and manages production applications on AWS (Amplify, EC2, Elastic Beanstalk, S3, Cognito) and Vercel — including CI/CD setup, environment configuration, and deployment verification.",
     stack: [
-      { name: "JavaScript", Icon: FaJs },
-      { name: "React", Icon: FaReact },
-      { name: "TypeScript", Icon: SiTypescript },
+      { name: "AWS", Icon: SiAmazonwebservices },
+      { name: "Next.js", Icon: SiNextdotjs },
+      { name: "Node.js", Icon: FaNodeJs },
+      { name: "PostgreSQL", Icon: SiPostgresql },
     ],
   },
 ];
@@ -67,7 +72,7 @@ const Solutions = () => {
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.35 }}
-      className="container mx-auto px-6 xl:px-12 py-16 xl:py-20"
+      className="container mx-auto px-4 sm:px-6 xl:px-12 py-16 xl:py-20"
     >
       {/* Heading */}
       <div className="mb-14">
@@ -92,7 +97,7 @@ const Solutions = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.4, delay: index * 0.08 }}
-            className="group relative bg-zinc-900/40 border border-zinc-800 hover:border-sky-500/30 rounded-2xl p-8 flex flex-col gap-5 transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+            className="group relative bg-zinc-900/40 border border-zinc-800 hover:border-sky-500/30 rounded-2xl p-5 sm:p-6 xl:p-8 flex flex-col gap-5 transition-all duration-300 hover:-translate-y-1 overflow-hidden"
           >
             {/* Background number */}
             <span className="absolute top-4 right-6 text-7xl font-black text-zinc-800/50 select-none group-hover:text-sky-500/10 transition-colors">
