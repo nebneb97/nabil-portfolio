@@ -53,7 +53,7 @@ const Home = () => {
             <div className="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/20 rounded-full px-4 py-1.5 mb-8">
               <span className="w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse" />
               <span className="text-sky-400 text-xs font-medium tracking-widest uppercase">
-                Available for work
+                Open to Freelance
               </span>
             </div>
 
@@ -82,12 +82,12 @@ const Home = () => {
 
             <div className="flex flex-col sm:flex-row items-center gap-4 justify-center xl:justify-start">
               <a
-                href="/assets/RESUME NABIL ADIB.pdf"
+                href="/assets/RESUME_NABIL_ADIB.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 border border-zinc-700 text-zinc-300 hover:text-white hover:border-zinc-500 px-6 py-3 rounded-full text-sm font-semibold uppercase transition-colors"
               >
-                Download CV
+                Download Resume
                 <FiDownload className="text-lg" />
               </a>
               <Link

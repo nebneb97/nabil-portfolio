@@ -5,6 +5,12 @@ const Footer = () => {
     <footer className="border-t border-zinc-800 py-8 px-6 xl:px-12">
       <div className="container mx-auto flex flex-col xl:flex-row items-center justify-between gap-4 text-sm text-zinc-500">
         <p>© {new Date().getFullYear()} Nabil Adib. All rights reserved.</p>
+        <a
+          href="mailto:nabiladib70@gmail.com"
+          className="hover:text-sky-500 transition-colors"
+        >
+          nabiladib70@gmail.com
+        </a>
         <span className="text-zinc-600">
           Built with Next.js · Tailwind · Framer Motion
         </span>
@@ -12,6 +18,7 @@ const Footer = () => {
           <a
             href="https://github.com/nebneb97"
             target="_blank"
+            rel="noopener noreferrer"
             aria-label="GitHub"
             className="hover:text-sky-500 transition-colors"
           >
@@ -20,6 +27,7 @@ const Footer = () => {
           <a
             href="https://linkedin.com/in/nabiladib"
             target="_blank"
+            rel="noopener noreferrer"
             aria-label="LinkedIn"
             className="hover:text-sky-500 transition-colors"
           >

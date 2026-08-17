@@ -104,11 +104,6 @@
   }
 }
 
-@media (hover: hover) and (pointer: fine) {
-  body, a, button {
-    cursor: none !important;
-  }
-}
 
 @keyframes glow-pulse {
   0%, 100% { opacity: 1; transform: scale(1); }

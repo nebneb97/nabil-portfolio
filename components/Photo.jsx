@@ -22,7 +22,7 @@ const Photo = () => {
           <Image
             src="/assets/resume.png"
             priority
-            quality={100}
+            quality={90}
             fill
             alt="Nabil Adib"
             className="object-cover object-center"

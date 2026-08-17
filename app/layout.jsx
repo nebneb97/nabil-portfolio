@@ -5,7 +5,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import Header from "@/components/Header";
 import PageTransition from "@/components/PageTransition";
 import Footer from "@/components/Footer";
-import CustomCursor from "@/components/CustomCursor";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -23,7 +22,7 @@ export const metadata = {
     title: "Nabil Adib — Full Stack & Flutter Developer",
     description:
       "Full Stack and Flutter developer building fast, modern web and mobile applications. Based in Selangor, Malaysia.",
-    url: "https://nabiladib.dev",
+    url: "https://nabiladib.vercel.app",
     siteName: "Nabil Adib Portfolio",
     images: [
       {
@@ -54,7 +53,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${outfit.variable}`}>
-        <CustomCursor />
         <Header />
         <main className="min-h-screen flex flex-col">
           <PageTransition>

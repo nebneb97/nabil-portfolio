@@ -63,7 +63,7 @@ const experience = [
     company: "Al-Ain IT Consultants Sdn Bhd",
     location: "Bukit Jalil, Selangor",
     role: "Frontend Developer Intern",
-    duration: "July 2024 – November 2025",
+    duration: "March 2024 – July 2024",
     bullets: [
       "Developed a cloud-based software testing platform using Next.js, TypeScript, and React, enabling smooth test execution and real-time monitoring.",
       "Developed responsive user profile and account management pages as part of the core frontend team.",
