@@ -1,15 +1,28 @@
-import { Outfit } from "next/font/google";
+import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "@/app/globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import Header from "@/components/Header";
 import PageTransition from "@/components/PageTransition";
 import Footer from "@/components/Footer";
+import CTABanner from "@/components/CTABanner";
 
-const outfit = Outfit({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
-  variable: "--font-outfit",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-space-grotesk",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-inter",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-mono",
 });
 
 export const metadata = {
@@ -52,12 +65,13 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${outfit.variable}`}>
+      <body className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}>
         <Header />
         <main className="min-h-screen flex flex-col">
           <PageTransition>
             <div className="flex-1">{children}</div>
           </PageTransition>
+          <CTABanner />
           <Footer />
         </main>
         <SpeedInsights />

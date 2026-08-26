@@ -22,7 +22,7 @@ const Stats = () => {
               end={item.num}
               duration={4}
               delay={0.5}
-              className="text-3xl sm:text-4xl xl:text-5xl font-bold"
+              className="font-mono text-3xl sm:text-4xl xl:text-5xl font-bold"
             />
             <span className="text-2xl xl:text-3xl font-bold mb-1">
               {item.suffix}

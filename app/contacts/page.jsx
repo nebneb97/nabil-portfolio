@@ -11,10 +11,38 @@ const info = [
   { icon: <FaLinkedin />, label: "LinkedIn", value: "linkedin.com/in/nabiladib", href: "https://linkedin.com/in/nabiladib" },
 ];
 
+const faqs = [
+  {
+    q: "Are you available for freelance work?",
+    a: "Yes — I'm open to freelance projects alongside my full-time role. Reach out with your scope and timeline and we'll see if it's a fit.",
+  },
+  {
+    q: "What kind of projects do you take on?",
+    a: "Full stack web apps (Next.js, Node.js), mobile apps (Flutter), backend APIs, and cloud deployments on AWS or Vercel. I work best with defined requirements and a clear scope.",
+  },
+  {
+    q: "How do we get started?",
+    a: "Fill in the contact form or email me directly. I reply within 24 hours and we'll schedule a call to discuss your project in detail.",
+  },
+  {
+    q: "Do you work with clients outside Malaysia?",
+    a: "Yes — I work fully remote with no geographic restrictions. I'm comfortable with async communication across time zones.",
+  },
+  {
+    q: "Can you handle both design and development?",
+    a: "I focus on development. I can work from your Figma files, or recommend a designer to collaborate with if you don't have one.",
+  },
+  {
+    q: "What does 'Demo on request' mean for your projects?",
+    a: "Some of my projects are enterprise applications on private infrastructure. I can walk you through them live on a video call.",
+  },
+];
+
 const Contacts = () => {
   const [status, setStatus] = useState("idle");
   const [copied, setCopied] = useState(false);
   const [service, setService] = useState("");
+  const [openFaq, setOpenFaq] = useState(null);
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText("nabiladib70@gmail.com");
@@ -61,8 +89,9 @@ const Contacts = () => {
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-16 xl:gap-24 items-start">
 
         {/* Left — info */}
-        <div>
-          <p className="text-sky-500 text-xs font-semibold uppercase tracking-widest mb-4">
+        <div className="relative">
+          <div className="absolute -top-10 -left-10 w-80 h-80 bg-sky-500/5 blur-[100px] rounded-full pointer-events-none" />
+          <p className="font-mono text-sky-500 text-xs font-semibold uppercase tracking-widest mb-4 relative">
             Get In Touch
           </p>
           <h1 className="text-4xl sm:text-5xl xl:text-6xl font-black text-white leading-none mb-6">
@@ -70,9 +99,12 @@ const Contacts = () => {
             <br />
             <span className="text-sky-500">Talk.</span>
           </h1>
-          <p className="text-zinc-400 text-base leading-relaxed mb-10 max-w-sm">
+          <p className="text-zinc-400 text-base leading-relaxed mb-3 max-w-sm">
             Whether you have a project in mind or just want to connect — I&apos;m
             open and ready to chat.
+          </p>
+          <p className="text-zinc-500 text-sm mb-10">
+            ⚡ I typically reply within 24 hours.
           </p>
 
           {/* Contact info */}
@@ -115,14 +147,22 @@ const Contacts = () => {
 
           {/* Why work with me */}
           <div className="p-5 bg-zinc-900/50 border border-zinc-800 rounded-xl">
-            <p className="text-sky-500 text-xs font-semibold uppercase tracking-widest mb-2">
+            <p className="text-sky-500 text-xs font-semibold uppercase tracking-widest mb-3">
               Why Work With Me?
             </p>
-            <p className="text-zinc-400 text-sm leading-relaxed">
-              I bring a fresh perspective, strong fundamentals, and a passion
-              for continuous learning. Eager to contribute, grow with your team,
-              and deliver clean, user-focused solutions using modern tools.
-            </p>
+            <ul className="flex flex-col gap-2">
+              {[
+                "Led end-to-end development of MCC — an enterprise media intelligence platform deployed on AWS",
+                "Mentored 3 software development interns at EBH IT Solutions",
+                "Resolved 30+ frontend issues, improving testing reliability by 25%",
+                "Delivers across both web (Next.js) and mobile (Flutter) — one developer, two platforms",
+              ].map((point, i) => (
+                <li key={i} className="flex items-start gap-2 text-sm text-zinc-400">
+                  <span className="text-sky-500 mt-0.5 flex-shrink-0">→</span>
+                  {point}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
@@ -217,6 +257,31 @@ const Contacts = () => {
               </a>
             </div>
           </form>
+        </div>
+      </div>
+      {/* FAQ */}
+      <div className="mt-20">
+        <p className="font-mono text-sky-500 text-xs font-semibold uppercase tracking-widest mb-3">FAQ</p>
+        <h2 className="text-2xl xl:text-3xl font-bold text-white mb-8">Common Questions</h2>
+        <div className="flex flex-col divide-y divide-zinc-800 border border-zinc-800 rounded-2xl overflow-hidden">
+          {faqs.map((faq, i) => (
+            <div key={i}>
+              <button
+                onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                className="w-full flex items-center justify-between px-6 py-5 text-left hover:bg-zinc-900/50 transition-colors"
+              >
+                <span className="text-white text-sm font-medium pr-4">{faq.q}</span>
+                <span className="text-sky-500 text-lg flex-shrink-0 transition-transform duration-200" style={{ transform: openFaq === i ? "rotate(45deg)" : "rotate(0deg)" }}>
+                  +
+                </span>
+              </button>
+              {openFaq === i && (
+                <div className="px-6 pb-5">
+                  <p className="text-zinc-400 text-sm leading-relaxed">{faq.a}</p>
+                </div>
+              )}
+            </div>
+          ))}
         </div>
       </div>
     </motion.section>

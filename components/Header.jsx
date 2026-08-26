@@ -9,6 +9,7 @@ const links = [
   { name: "About", path: "/resume" },
   { name: "Projects", path: "/projects" },
   { name: "Solutions", path: "/solutions" },
+  { name: "Contact", path: "/contacts" },
 ];
 
 const Header = () => {

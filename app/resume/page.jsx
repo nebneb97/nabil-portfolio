@@ -99,30 +99,55 @@ const education = [
   },
 ];
 
-const skills = [
-  { icon: <FaReact />, name: "React" },
-  { icon: <SiNextdotjs />, name: "Next.js" },
-  { icon: <SiTypescript />, name: "TypeScript" },
-  { icon: <FaJs />, name: "JavaScript" },
-  { icon: <FaNodeJs />, name: "Node.js" },
-  { icon: <SiPrisma />, name: "Prisma ORM" },
-  { icon: <SiPostgresql />, name: "PostgreSQL" },
-  { icon: <SiMysql />, name: "MySQL" },
-  { icon: <SiMongodb />, name: "MongoDB" },
-  { icon: <SiFirebase />, name: "Firebase" },
-  { icon: <SiTailwindcss />, name: "Tailwind CSS" },
-  { icon: <SiFlutter />, name: "Flutter" },
-  { icon: <SiLaravel />, name: "Laravel" },
-  { icon: <SiAmazonwebservices />, name: "AWS" },
-  { icon: <FaHtml5 />, name: "HTML5" },
-  { icon: <FaCss3 />, name: "CSS3" },
-  { icon: <SiPhp />, name: "PHP" },
-  { icon: <SiDart />, name: "Dart" },
-  { icon: <FaJava />, name: "Java" },
-  { icon: <FaGitAlt />, name: "Git" },
-  { icon: <FaGithub />, name: "GitHub" },
-  { icon: <SiPostman />, name: "Postman" },
-  { icon: <SiFigma />, name: "Figma" },
+const skillGroups = [
+  {
+    label: "Frontend",
+    skills: [
+      { icon: <FaReact />, name: "React" },
+      { icon: <SiNextdotjs />, name: "Next.js" },
+      { icon: <SiTypescript />, name: "TypeScript" },
+      { icon: <FaJs />, name: "JavaScript" },
+      { icon: <SiTailwindcss />, name: "Tailwind" },
+      { icon: <FaHtml5 />, name: "HTML5" },
+      { icon: <FaCss3 />, name: "CSS3" },
+    ],
+  },
+  {
+    label: "Backend",
+    skills: [
+      { icon: <FaNodeJs />, name: "Node.js" },
+      { icon: <SiPrisma />, name: "Prisma ORM" },
+      { icon: <SiLaravel />, name: "Laravel" },
+      { icon: <SiPhp />, name: "PHP" },
+      { icon: <FaJava />, name: "Java" },
+    ],
+  },
+  {
+    label: "Database",
+    skills: [
+      { icon: <SiPostgresql />, name: "PostgreSQL" },
+      { icon: <SiMysql />, name: "MySQL" },
+      { icon: <SiMongodb />, name: "MongoDB" },
+      { icon: <SiFirebase />, name: "Firebase" },
+    ],
+  },
+  {
+    label: "Mobile",
+    skills: [
+      { icon: <SiFlutter />, name: "Flutter" },
+      { icon: <SiDart />, name: "Dart" },
+    ],
+  },
+  {
+    label: "Cloud & Tools",
+    skills: [
+      { icon: <SiAmazonwebservices />, name: "AWS" },
+      { icon: <FaGitAlt />, name: "Git" },
+      { icon: <FaGithub />, name: "GitHub" },
+      { icon: <SiPostman />, name: "Postman" },
+      { icon: <SiFigma />, name: "Figma" },
+    ],
+  },
 ];
 
 const SectionLabel = ({ children }) => (
@@ -195,9 +220,17 @@ const Resume = () => {
           {experience.map((item, i) => (
             <div key={i} className="relative">
               <span className="absolute -left-[37px] w-3 h-3 rounded-full bg-sky-400 border-2 border-[#060608] top-1.5" />
-              <span className="text-sky-400 text-xs font-semibold uppercase tracking-wide">
-                {item.duration}
-              </span>
+              <div className="flex items-center gap-3 flex-wrap">
+                <span className="font-mono text-sky-400 text-xs font-semibold uppercase tracking-wide">
+                  {item.duration}
+                </span>
+                {item.duration.includes("Present") && (
+                  <span className="inline-flex items-center gap-1.5 bg-sky-500/10 border border-sky-500/20 rounded-full px-2.5 py-0.5 text-[10px] font-mono text-sky-400">
+                    <span className="w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse" />
+                    Current
+                  </span>
+                )}
+              </div>
               <h3 className="text-white font-semibold text-lg mt-1">
                 {item.role}
               </h3>
@@ -249,25 +282,32 @@ const Resume = () => {
         <h2 className="text-2xl xl:text-3xl font-bold text-white mb-8">
           Technologies
         </h2>
-        <div className="grid grid-cols-3 sm:grid-cols-5 xl:grid-cols-8 gap-3">
-          {skills.map((skill, i) => (
-            <TooltipProvider key={i} delayDuration={100}>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <div className="bg-zinc-900/60 border border-zinc-800 hover:border-sky-400/40 rounded-xl h-16 sm:h-20 flex flex-col items-center justify-center gap-1.5 cursor-default transition-all duration-200 group">
-                    <span className="text-2xl text-zinc-500 group-hover:text-sky-400 transition-colors duration-200">
-                      {skill.icon}
-                    </span>
-                    <span className="text-zinc-600 group-hover:text-zinc-400 text-[10px] font-medium transition-colors text-center px-1">
-                      {skill.name}
-                    </span>
-                  </div>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>{skill.name}</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
+        <div className="flex flex-col gap-8">
+          {skillGroups.map((group, gi) => (
+            <div key={gi}>
+              <p className="font-mono text-zinc-600 text-xs uppercase tracking-widest mb-3">{group.label}</p>
+              <div className="grid grid-cols-3 sm:grid-cols-5 xl:grid-cols-7 gap-3">
+                {group.skills.map((skill, i) => (
+                  <TooltipProvider key={i} delayDuration={100}>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <div className="bg-zinc-900/60 border border-zinc-800 hover:border-sky-400/40 rounded-xl h-16 sm:h-20 flex flex-col items-center justify-center gap-1.5 cursor-default transition-all duration-200 group">
+                          <span className="text-2xl text-zinc-500 group-hover:text-sky-400 transition-colors duration-200">
+                            {skill.icon}
+                          </span>
+                          <span className="text-zinc-600 group-hover:text-zinc-400 text-[10px] font-medium transition-colors text-center px-1">
+                            {skill.name}
+                          </span>
+                        </div>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>{skill.name}</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </div>

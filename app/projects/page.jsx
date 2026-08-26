@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { FaReact, FaNodeJs } from "react-icons/fa";
 import {
@@ -31,7 +32,7 @@ const projects = [
       { name: "PostgreSQL", Icon: SiPostgresql },
       { name: "AWS", Icon: SiAmazonwebservices },
     ],
-    image: null,
+    image: "/assets/Image MCC LOGIN.png",
     live: "",
     github: "",
   },
@@ -50,7 +51,7 @@ const projects = [
       { name: "PostgreSQL", Icon: SiPostgresql },
       { name: "AWS", Icon: SiAmazonwebservices },
     ],
-    image: null,
+    image: "/assets/Gambar EPIBG.png",
     live: "",
     github: "",
   },
@@ -94,7 +95,18 @@ const GradientPlaceholder = ({ num }) => (
   </div>
 );
 
+const filters = ["All", "Web", "Mobile"];
+
 const ProjectsPage = () => {
+  const [activeFilter, setActiveFilter] = useState("All");
+
+  const filtered =
+    activeFilter === "All"
+      ? projects
+      : activeFilter === "Mobile"
+      ? projects.filter((p) => p.category === "Mobile App")
+      : projects.filter((p) => p.category.includes("Web"));
+
   return (
     <motion.section
       initial={{ opacity: 0, y: 16 }}
@@ -103,8 +115,8 @@ const ProjectsPage = () => {
       className="container mx-auto px-4 sm:px-6 xl:px-12 py-16 xl:py-20"
     >
       {/* Heading */}
-      <div className="mb-14">
-        <p className="text-sky-400 text-xs font-semibold uppercase tracking-widest mb-3">
+      <div className="mb-10">
+        <p className="font-mono text-sky-400 text-xs font-semibold uppercase tracking-widest mb-3">
           My Work
         </p>
         <h1 className="text-4xl xl:text-5xl font-bold text-white mb-4">
@@ -116,20 +128,37 @@ const ProjectsPage = () => {
         </p>
       </div>
 
+      {/* Filter tabs */}
+      <div className="flex items-center gap-2 mb-10">
+        {filters.map((f) => (
+          <button
+            key={f}
+            onClick={() => setActiveFilter(f)}
+            className={`font-mono text-xs font-semibold uppercase tracking-widest px-4 py-2 rounded-full border transition-all duration-200 ${
+              activeFilter === f
+                ? "bg-sky-500 border-sky-500 text-white"
+                : "border-zinc-700 text-zinc-400 hover:border-sky-500/50 hover:text-sky-400"
+            }`}
+          >
+            {f}
+          </button>
+        ))}
+      </div>
+
       {/* Project cards */}
       <div className="flex flex-col gap-8">
-        {projects.map((project, index) => (
+        {filtered.map((project, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.4, delay: index * 0.07 }}
-            className="group grid grid-cols-1 xl:grid-cols-2 gap-0 bg-zinc-900/40 border border-zinc-800 hover:border-zinc-700 rounded-2xl overflow-hidden transition-all duration-300"
+            className="group grid grid-cols-1 xl:grid-cols-2 gap-0 bg-zinc-900/40 border border-zinc-800 hover:border-sky-500/20 rounded-2xl overflow-hidden transition-all duration-300"
           >
             {/* Image or gradient placeholder */}
             <div
-              className={`relative h-56 xl:h-auto ${
+              className={`relative h-56 xl:h-[360px] overflow-hidden ${
                 index % 2 === 1 ? "xl:order-last" : ""
               }`}
             >
@@ -139,7 +168,8 @@ const ProjectsPage = () => {
                     src={project.image}
                     fill
                     alt={project.title}
-                    className="object-cover opacity-70 group-hover:opacity-90 transition-opacity duration-300"
+                    className="opacity-70 group-hover:opacity-90 transition-opacity duration-300"
+                    style={{ objectFit: "cover", objectPosition: "top" }}
                     sizes="(max-width: 1280px) 100vw, 50vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/60 to-transparent" />
@@ -155,7 +185,7 @@ const ProjectsPage = () => {
             {/* Content */}
             <div className="flex flex-col justify-between p-5 sm:p-6 xl:p-8">
               <div className="flex flex-col gap-4">
-                <span className="text-sky-400 text-xs font-semibold uppercase tracking-widest">
+                <span className="font-mono text-sky-400 text-xs font-semibold uppercase tracking-widest">
                   {project.category}
                 </span>
                 <h2 className="text-xl xl:text-2xl font-bold text-white group-hover:text-sky-400 transition-colors">
