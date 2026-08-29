@@ -110,24 +110,6 @@ const Home = () => {
         </div>
       </div>
 
-      {/* ── Worked With ── */}
-      <div className="container mx-auto px-4 sm:px-6 xl:px-12 pb-10">
-        <div className="flex flex-wrap items-center gap-4 xl:gap-8">
-          <span className="font-mono text-zinc-600 text-xs uppercase tracking-widest">
-            Worked With
-          </span>
-          {["EBH IT Solutions", "Al-Ain IT Consultants", "Hezmedia Interactive"].map(
-            (company) => (
-              <span
-                key={company}
-                className="text-zinc-400 text-sm font-medium border border-zinc-800 px-4 py-1.5 rounded-full hover:border-sky-500/30 hover:text-sky-400 transition-colors"
-              >
-                {company}
-              </span>
-            )
-          )}
-        </div>
-      </div>
 
       {/* ── Marquee ticker ── */}
       <div className="relative overflow-hidden border-y border-zinc-800/60 py-4 mb-16 bg-zinc-900/20">
