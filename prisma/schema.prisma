@@ -20,3 +20,8 @@ model User {
   email     String   @unique
   name      String?
 }
+
+model VisitorCount {
+  id    Int @id @default(1)
+  count Int @default(0)
+}

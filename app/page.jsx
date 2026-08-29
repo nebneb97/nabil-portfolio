@@ -19,6 +19,7 @@ import Social from "@/components/Social";
 import Photo from "@/components/Photo";
 import Stats from "@/components/Stats";
 import TypewriterText from "@/components/TypewriterText";
+import VisitorTracker from "@/components/VisitorTracker";
 
 const techs = [
   { name: "Next.js", Icon: SiNextdotjs },
@@ -41,6 +42,7 @@ const Home = () => {
 
   return (
     <section>
+      <VisitorTracker />
       {/* ── Hero ── */}
       <div className="relative overflow-hidden">
         {/* Gradient blobs */}

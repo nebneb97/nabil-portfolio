@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { FaEnvelope, FaMapMarkerAlt, FaGithub, FaLinkedin } from "react-icons/fa";
+import Toast from "@/components/Toast";
 
 const info = [
   { icon: <FaEnvelope />, label: "Email", value: "nabiladib70@gmail.com", copyable: true },
@@ -38,11 +39,29 @@ const faqs = [
   },
 ];
 
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const validate = (data) => {
+  const errs = {};
+  if (!data.firstName?.trim()) errs.firstName = "First name is required.";
+  if (!data.email?.trim()) errs.email = "Email is required.";
+  else if (!EMAIL_RE.test(data.email.trim())) errs.email = "Enter a valid email address.";
+  if (!data.message?.trim()) errs.message = "Message is required.";
+  return errs;
+};
+
+const inputBase =
+  "bg-zinc-900 border text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm focus:outline-none transition-colors w-full";
+
 const Contacts = () => {
   const [status, setStatus] = useState("idle");
   const [copied, setCopied] = useState(false);
   const [service, setService] = useState("");
   const [openFaq, setOpenFaq] = useState(null);
+  const [errors, setErrors] = useState({});
+  const [toast, setToast] = useState(null);
+
+  const dismissToast = useCallback(() => setToast(null), []);
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText("nabiladib70@gmail.com");
@@ -50,9 +69,14 @@ const Contacts = () => {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const handleBlur = (e) => {
+    const { name, value } = e.target;
+    const fieldErrors = validate({ [name]: value });
+    setErrors((prev) => ({ ...prev, [name]: fieldErrors[name] }));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus("loading");
     const form = e.target;
     const data = {
       firstName: form.firstName.value,
@@ -62,6 +86,15 @@ const Contacts = () => {
       service,
       message: form.message.value,
     };
+
+    const errs = validate(data);
+    if (Object.keys(errs).length > 0) {
+      setErrors(errs);
+      return;
+    }
+    setErrors({});
+    setStatus("loading");
+
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
@@ -69,14 +102,17 @@ const Contacts = () => {
         body: JSON.stringify(data),
       });
       if (res.ok) {
-        setStatus("success");
+        setStatus("idle");
         form.reset();
         setService("");
+        setToast({ message: "Message sent! I'll get back to you within 24 hours.", type: "success" });
       } else {
-        setStatus("error");
+        setStatus("idle");
+        setToast({ message: "Something went wrong. Email me at nabiladib70@gmail.com", type: "error" });
       }
     } catch {
-      setStatus("error");
+      setStatus("idle");
+      setToast({ message: "Network error. Please try again or email me directly.", type: "error" });
     }
   };
 
@@ -168,40 +204,62 @@ const Contacts = () => {
 
         {/* Right — form */}
         <div>
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <input
-                name="firstName"
-                type="text"
-                placeholder="First Name"
-                required
-                className="bg-zinc-900 border border-zinc-700 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-sky-500 transition-colors"
-              />
-              <input
-                name="lastName"
-                type="text"
-                placeholder="Last Name"
-                className="bg-zinc-900 border border-zinc-700 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-sky-500 transition-colors"
-              />
-              <input
-                name="email"
-                type="email"
-                placeholder="Email"
-                required
-                className="bg-zinc-900 border border-zinc-700 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-sky-500 transition-colors"
-              />
-              <input
-                name="phone"
-                type="tel"
-                placeholder="Phone Number"
-                className="bg-zinc-900 border border-zinc-700 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-sky-500 transition-colors"
-              />
+              {/* First name */}
+              <div className="flex flex-col gap-1">
+                <input
+                  name="firstName"
+                  type="text"
+                  placeholder="First Name"
+                  onBlur={handleBlur}
+                  className={`${inputBase} ${errors.firstName ? "border-red-500 focus:border-red-500" : "border-zinc-700 focus:border-sky-500"}`}
+                />
+                {errors.firstName && (
+                  <p className="text-red-400 text-xs px-1">{errors.firstName}</p>
+                )}
+              </div>
+
+              {/* Last name */}
+              <div className="flex flex-col gap-1">
+                <input
+                  name="lastName"
+                  type="text"
+                  placeholder="Last Name"
+                  className={`${inputBase} border-zinc-700 focus:border-sky-500`}
+                />
+              </div>
+
+              {/* Email */}
+              <div className="flex flex-col gap-1">
+                <input
+                  name="email"
+                  type="email"
+                  placeholder="Email"
+                  onBlur={handleBlur}
+                  className={`${inputBase} ${errors.email ? "border-red-500 focus:border-red-500" : "border-zinc-700 focus:border-sky-500"}`}
+                />
+                {errors.email && (
+                  <p className="text-red-400 text-xs px-1">{errors.email}</p>
+                )}
+              </div>
+
+              {/* Phone */}
+              <div className="flex flex-col gap-1">
+                <input
+                  name="phone"
+                  type="tel"
+                  placeholder="Phone Number"
+                  className={`${inputBase} border-zinc-700 focus:border-sky-500`}
+                />
+              </div>
             </div>
 
+            {/* Service */}
             <select
               value={service}
               onChange={(e) => setService(e.target.value)}
-              className="bg-zinc-900 border border-zinc-700 text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-sky-500 transition-colors appearance-none"
+              className="bg-zinc-900 border border-zinc-700 text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-sky-500 transition-colors appearance-none w-full"
               style={{ color: service ? "#fafafa" : "#52525b" }}
             >
               <option value="" disabled>Select a service</option>
@@ -211,32 +269,27 @@ const Contacts = () => {
               <option value="qa">Bug Fixing &amp; QA</option>
             </select>
 
-            <textarea
-              name="message"
-              placeholder="Your message..."
-              required
-              rows={6}
-              className="bg-zinc-900 border border-zinc-700 text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-sky-500 transition-colors resize-none"
-            />
+            {/* Message */}
+            <div className="flex flex-col gap-1">
+              <textarea
+                name="message"
+                placeholder="Your message..."
+                rows={6}
+                onBlur={handleBlur}
+                className={`${inputBase} resize-none ${errors.message ? "border-red-500 focus:border-red-500" : "border-zinc-700 focus:border-sky-500"}`}
+              />
+              {errors.message && (
+                <p className="text-red-400 text-xs px-1">{errors.message}</p>
+              )}
+            </div>
 
             <button
               type="submit"
               disabled={status === "loading"}
-              className="w-fit bg-sky-500 hover:bg-sky-600 disabled:opacity-50 text-white font-semibold px-8 py-3 rounded-full text-sm uppercase transition-colors"
+              className="w-fit bg-sky-500 hover:bg-sky-600 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold px-8 py-3 rounded-full text-sm uppercase transition-colors"
             >
               {status === "loading" ? "Sending..." : "Send Message"}
             </button>
-
-            {status === "success" && (
-              <p className="text-sky-400 text-sm font-medium">
-                Message sent! I&apos;ll get back to you soon.
-              </p>
-            )}
-            {status === "error" && (
-              <p className="text-red-400 text-sm">
-                Something went wrong. Email me directly at nabiladib70@gmail.com
-              </p>
-            )}
 
             <div className="flex gap-4 pt-2">
               <a
@@ -259,6 +312,7 @@ const Contacts = () => {
           </form>
         </div>
       </div>
+
       {/* FAQ */}
       <div className="mt-20">
         <p className="font-mono text-sky-500 text-xs font-semibold uppercase tracking-widest mb-3">FAQ</p>
@@ -271,7 +325,10 @@ const Contacts = () => {
                 className="w-full flex items-center justify-between px-6 py-5 text-left hover:bg-zinc-900/50 transition-colors"
               >
                 <span className="text-white text-sm font-medium pr-4">{faq.q}</span>
-                <span className="text-sky-500 text-lg flex-shrink-0 transition-transform duration-200" style={{ transform: openFaq === i ? "rotate(45deg)" : "rotate(0deg)" }}>
+                <span
+                  className="text-sky-500 text-lg flex-shrink-0 transition-transform duration-200"
+                  style={{ transform: openFaq === i ? "rotate(45deg)" : "rotate(0deg)" }}
+                >
                   +
                 </span>
               </button>
@@ -284,6 +341,18 @@ const Contacts = () => {
           ))}
         </div>
       </div>
+
+      {/* Toast */}
+      <AnimatePresence>
+        {toast && (
+          <Toast
+            key="contact-toast"
+            message={toast.message}
+            type={toast.type}
+            onClose={dismissToast}
+          />
+        )}
+      </AnimatePresence>
     </motion.section>
   );
 };

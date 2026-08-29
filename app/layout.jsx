@@ -62,10 +62,37 @@ export const viewport = {
   initialScale: 1,
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Nabil Adib",
+  jobTitle: "Full Stack & Flutter Developer",
+  url: "https://nabiladib.vercel.app",
+  email: "nabiladib70@gmail.com",
+  image: "https://nabiladib.vercel.app/assets/og-image.png",
+  sameAs: [
+    "https://github.com/nebneb97",
+    "https://linkedin.com/in/nabiladib",
+  ],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Selangor",
+    addressCountry: "MY",
+  },
+  knowsAbout: [
+    "Next.js", "React", "TypeScript", "Node.js",
+    "Flutter", "Firebase", "PostgreSQL", "AWS", "Prisma",
+  ],
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <Header />
         <main className="min-h-screen flex flex-col">
           <PageTransition>
