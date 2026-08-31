@@ -27,10 +27,10 @@ const Header = () => {
             <Link
               key={link.path}
               href={link.path}
-              className={`text-sm font-medium transition-colors duration-200 ${
+              className={`font-mono text-xs uppercase tracking-widest transition-colors duration-200 ${
                 link.path === pathname
                   ? "text-sky-500"
-                  : "text-zinc-400 hover:text-white"
+                  : "text-zinc-500 hover:text-white"
               }`}
             >
               {link.name}
@@ -41,9 +41,9 @@ const Header = () => {
         <div className="flex items-center gap-4">
           <Link
             href="/contacts"
-            className="hidden xl:inline-flex items-center bg-sky-500 hover:bg-sky-600 text-white text-sm font-semibold px-5 py-2 rounded-full transition-colors duration-200"
+            className="hidden xl:inline-flex items-center bg-sky-500 hover:bg-sky-600 text-white text-xs font-bold px-5 py-2 rounded-full uppercase tracking-wide transition-colors duration-200"
           >
-            Hire Me
+            Let&apos;s Talk
           </Link>
           <MobileNav />
         </div>

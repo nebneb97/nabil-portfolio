@@ -136,11 +136,11 @@ const Contacts = () => {
             <span className="text-sky-500">Talk.</span>
           </h1>
           <p className="text-zinc-400 text-base leading-relaxed mb-3 max-w-sm">
-            Whether you have a project in mind or just want to connect — I&apos;m
-            open and ready to chat.
+            I read every message. Whether you have a project that needs
+            building or just want to talk shop — either works for me.
           </p>
           <p className="text-zinc-500 text-sm mb-10">
-            ⚡ I typically reply within 24 hours.
+            I typically reply within 24 hours.
           </p>
 
           {/* Contact info */}
@@ -181,20 +181,20 @@ const Contacts = () => {
             ))}
           </div>
 
-          {/* Why work with me */}
+          {/* What to expect */}
           <div className="p-5 bg-zinc-900/50 border border-zinc-800 rounded-xl">
             <p className="text-sky-500 text-xs font-semibold uppercase tracking-widest mb-3">
-              Why Work With Me?
+              What to Expect
             </p>
-            <ul className="flex flex-col gap-2">
+            <ul className="flex flex-col gap-3">
               {[
-                "Led end-to-end development of MCC — an enterprise media intelligence platform deployed on AWS",
-                "Mentored 3 software development interns at EBH IT Solutions",
-                "Resolved 30+ frontend issues, improving testing reliability by 25%",
-                "Delivers across both web (Next.js) and mobile (Flutter) — one developer, two platforms",
+                "I'll tell you honestly if something won't work before we start building it.",
+                "I communicate throughout — you won't be left wondering what's happening.",
+                "I've worked with CTOs and mentored interns. I adapt to who I'm working with.",
+                "I cover web and mobile — you don't need two developers for two platforms.",
               ].map((point, i) => (
                 <li key={i} className="flex items-start gap-2 text-sm text-zinc-400">
-                  <span className="text-sky-500 mt-0.5 flex-shrink-0">→</span>
+                  <span className="text-sky-500 mt-0.5 flex-shrink-0">—</span>
                   {point}
                 </li>
               ))}

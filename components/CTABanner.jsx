@@ -8,10 +8,10 @@ const CTABanner = () => (
           Open to Freelance
         </p>
         <h2 className="text-3xl xl:text-4xl font-bold text-white mb-3">
-          Ready to build something?
+          Have a project worth building?
         </h2>
         <p className="text-zinc-400 max-w-md mx-auto xl:mx-0">
-          Whether it&apos;s a web app, mobile app, or backend system — let&apos;s talk about your project.
+          I&apos;m currently available for freelance work. If it&apos;s something worth doing properly, I&apos;d like to hear about it.
         </p>
       </div>
       <Link

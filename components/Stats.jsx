@@ -3,6 +3,7 @@
 import CountUp from "react-countup";
 import { useEffect, useState } from "react";
 import { HiOutlineEye } from "react-icons/hi";
+import { motion } from "framer-motion";
 
 const stats = [
   { num: 1, suffix: "+", text: "Years of Experience" },
@@ -25,8 +26,12 @@ const Stats = () => {
     <div className="flex flex-col gap-4">
       <div className="grid grid-cols-2 xl:grid-cols-4 divide-x divide-y xl:divide-y-0 divide-zinc-800 border border-zinc-800 rounded-2xl overflow-hidden">
         {stats.map((item, index) => (
-          <div
+          <motion.div
             key={index}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.4, delay: index * 0.1 }}
             className="flex flex-col items-center justify-center py-8 px-4"
           >
             <div className="flex items-end gap-0.5 text-sky-500">
@@ -43,7 +48,7 @@ const Stats = () => {
             <p className="mt-2 text-zinc-500 text-xs xl:text-sm text-center max-w-[120px]">
               {item.text}
             </p>
-          </div>
+          </motion.div>
         ))}
       </div>
 

@@ -27,23 +27,18 @@ import {
   SiFigma,
   SiAmazonwebservices,
 } from "react-icons/si";
+import { FiDownload } from "react-icons/fi";
 import { motion } from "framer-motion";
-import {
-  Tooltip,
-  TooltipProvider,
-  TooltipTrigger,
-  TooltipContent,
-} from "@/components/ui/tooltip";
 
 const info = [
   { label: "Name", value: "Nabil Adib" },
   { label: "Role", value: "Full Stack Developer" },
   { label: "Email", value: "nabiladib70@gmail.com" },
   { label: "Phone", value: "019-2075390" },
-  { label: "Location", value: "Selangor, Malaysia" },
+  { label: "Location", value: "Selangor, MY" },
   { label: "Languages", value: "English, Malay" },
-  { label: "GitHub", value: "github.com/nebneb97", href: "https://github.com/nebneb97" },
-  { label: "LinkedIn", value: "linkedin.com/in/nabiladib", href: "https://linkedin.com/in/nabiladib" },
+  { label: "GitHub", value: "nebneb97", href: "https://github.com/nebneb97" },
+  { label: "LinkedIn", value: "nabiladib", href: "https://linkedin.com/in/nabiladib" },
 ];
 
 const experience = [
@@ -51,7 +46,7 @@ const experience = [
     company: "EBH IT Solutions",
     location: "Seri Kembangan, Selangor",
     role: "Full Stack Developer",
-    duration: "December 2025 – Present",
+    duration: "Dec 2025 – Present",
     bullets: [
       "Developed and maintained enterprise web applications using Next.js, React, TypeScript, Node.js, Prisma ORM, and PostgreSQL.",
       "Collaborated with the CTO, backend developers, and stakeholders to design, develop, and deliver new features across multiple enterprise projects.",
@@ -63,7 +58,7 @@ const experience = [
     company: "Al-Ain IT Consultants Sdn Bhd",
     location: "Bukit Jalil, Selangor",
     role: "Frontend Developer Intern",
-    duration: "March 2024 – July 2024",
+    duration: "Mar 2024 – Jul 2024",
     bullets: [
       "Developed a cloud-based software testing platform using Next.js, TypeScript, and React, enabling smooth test execution and real-time monitoring.",
       "Developed responsive user profile and account management pages as part of the core frontend team.",
@@ -75,7 +70,7 @@ const experience = [
     company: "Hezmedia Interactive Sdn Bhd",
     location: "Petaling Jaya, Selangor",
     role: "Frontend Developer Intern",
-    duration: "February 2022 – July 2022",
+    duration: "Feb 2022 – Jul 2022",
     bullets: [
       "Developed a responsive WordPress landing page for a mobile application.",
       "Built a FlutterFlow facility management app integrated with Firebase, supporting 100+ daily field records.",
@@ -107,7 +102,7 @@ const skillGroups = [
       { icon: <SiNextdotjs />, name: "Next.js" },
       { icon: <SiTypescript />, name: "TypeScript" },
       { icon: <FaJs />, name: "JavaScript" },
-      { icon: <SiTailwindcss />, name: "Tailwind" },
+      { icon: <SiTailwindcss />, name: "Tailwind CSS" },
       { icon: <FaHtml5 />, name: "HTML5" },
       { icon: <FaCss3 />, name: "CSS3" },
     ],
@@ -150,165 +145,230 @@ const skillGroups = [
   },
 ];
 
-const SectionLabel = ({ children }) => (
-  <p className="text-sky-400 text-xs font-semibold uppercase tracking-widest mb-3">
-    {children}
-  </p>
-);
-
 const Resume = () => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      animate={{ opacity: 1, y: 0, transition: { duration: 0.35 } }}
-      className="container mx-auto px-4 sm:px-6 xl:px-12 py-16 xl:py-20 max-w-5xl"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.4 } }}
     >
-      {/* Header */}
-      <div className="mb-16">
-        <SectionLabel>About Me</SectionLabel>
-        <h1 className="text-4xl xl:text-5xl font-bold text-white mb-6">
-          Nabil <span className="text-sky-400">Adib</span>
-        </h1>
-        <p className="text-zinc-400 leading-relaxed max-w-2xl text-base mb-8">
-          Full Stack Developer with professional experience building enterprise
-          web applications using Next.js, React, Node.js, TypeScript, and
-          PostgreSQL. Experienced in delivering scalable frontend and backend
-          solutions, collaborating with cross-functional teams, and translating
-          business requirements into production-ready features.
-        </p>
+      {/* ── Editorial Hero ── */}
+      <div className="border-b border-zinc-800">
+        <div className="container mx-auto px-4 sm:px-6 xl:px-12 max-w-6xl pt-16 xl:pt-24 pb-12 xl:pb-16">
+          <p className="font-mono text-zinc-600 text-[11px] uppercase tracking-[0.16em] mb-6">
+            Full Stack & Flutter Developer — Selangor, Malaysia
+          </p>
+          <h1 className="text-[clamp(52px,8vw,96px)] font-bold leading-[0.88] tracking-[-0.04em] text-white mb-10">
+            Nabil
+            <br />
+            <span className="text-sky-500">Adib</span>
+          </h1>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mb-8">
-          {info.map((item, i) => (
-            <div
-              key={i}
-              className="bg-zinc-900/60 border border-zinc-800 rounded-xl px-4 py-3"
-            >
-              <p className="text-zinc-500 text-xs mb-1">{item.label}</p>
-              {item.href ? (
-                <a
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sky-400 hover:text-sky-300 text-sm font-medium transition-colors"
+          {/* Personal statement */}
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 xl:gap-16 max-w-4xl">
+            <p className="text-zinc-300 text-[17px] leading-[1.7]">
+              There&apos;s a specific moment when something you built just clicks
+              for someone using it — that&apos;s the feeling I&apos;ve been chasing
+              since I wrote my first line of code.
+            </p>
+            <p className="text-zinc-500 text-[15px] leading-[1.7]">
+              I build web and mobile applications with care: clean architecture,
+              systems that scale, and software that solves real problems without
+              getting in the way. Currently building enterprise platforms at EBH
+              IT Solutions and open to freelance work worth caring about.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* ── Two-column layout ── */}
+      <div className="container mx-auto px-4 sm:px-6 xl:px-12 max-w-6xl py-16 xl:py-20">
+        <div className="grid grid-cols-1 xl:grid-cols-[2fr_5fr] gap-14 xl:gap-20 items-start">
+
+          {/* Left: sticky facts table */}
+          <div className="xl:sticky xl:top-24">
+            <div className="font-mono text-[11px]">
+              {info.map((item, i) => (
+                <div
+                  key={i}
+                  className="flex justify-between gap-4 border-b border-zinc-800 py-2"
                 >
-                  {item.value}
-                </a>
-              ) : (
-                <p className="text-white text-sm font-medium">{item.value}</p>
-              )}
-            </div>
-          ))}
-        </div>
-
-        <a
-          href="/assets/RESUME NABIL ADIB.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center bg-sky-400 hover:bg-sky-500 text-white text-sm font-semibold px-6 py-3 rounded-full transition-colors uppercase"
-        >
-          Download Resume
-        </a>
-      </div>
-
-      {/* Experience */}
-      <div className="mb-16">
-        <SectionLabel>Experience</SectionLabel>
-        <h2 className="text-2xl xl:text-3xl font-bold text-white mb-8">
-          Work History
-        </h2>
-        <div className="relative border-l border-zinc-800 pl-8 flex flex-col gap-10">
-          {experience.map((item, i) => (
-            <div key={i} className="relative">
-              <span className="absolute -left-[37px] w-3 h-3 rounded-full bg-sky-400 border-2 border-[#060608] top-1.5" />
-              <div className="flex items-center gap-3 flex-wrap">
-                <span className="font-mono text-sky-400 text-xs font-semibold uppercase tracking-wide">
-                  {item.duration}
-                </span>
-                {item.duration.includes("Present") && (
-                  <span className="inline-flex items-center gap-1.5 bg-sky-500/10 border border-sky-500/20 rounded-full px-2.5 py-0.5 text-[10px] font-mono text-sky-400">
-                    <span className="w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse" />
-                    Current
+                  <span className="text-zinc-600 uppercase tracking-widest flex-shrink-0">
+                    {item.label}
                   </span>
-                )}
+                  {item.href ? (
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sky-400 hover:text-sky-300 text-right transition-colors truncate"
+                    >
+                      {item.value}
+                    </a>
+                  ) : (
+                    <span className="text-white text-right">{item.value}</span>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            <a
+              href="/assets/RESUME_NABIL_ADIB.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 mt-6 bg-white text-zinc-950 hover:bg-sky-500 hover:text-white py-4 px-6 text-xs font-bold uppercase tracking-[0.08em] transition-colors"
+            >
+              Download CV
+              <FiDownload className="text-sm" />
+            </a>
+
+            <div className="mt-6 border border-zinc-800 p-4">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse flex-shrink-0" />
+                <span className="font-mono text-sky-500 text-[10px] uppercase tracking-widest">
+                  Available
+                </span>
               </div>
-              <h3 className="text-white font-semibold text-lg mt-1">
-                {item.role}
-              </h3>
-              <p className="text-zinc-500 text-sm mt-0.5">
-                {item.company} · {item.location}
-              </p>
-              {item.bullets && (
-                <ul className="mt-3 flex flex-col gap-2">
-                  {item.bullets.map((bullet, j) => (
-                    <li key={j} className="flex gap-2.5 text-zinc-400 text-sm leading-relaxed">
-                      <span className="mt-2 w-1 h-1 rounded-full bg-sky-400/60 flex-shrink-0" />
-                      {bullet}
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Education */}
-      <div className="mb-16">
-        <SectionLabel>Education</SectionLabel>
-        <h2 className="text-2xl xl:text-3xl font-bold text-white mb-8">
-          Academic Background
-        </h2>
-        <div className="relative border-l border-zinc-800 pl-8 flex flex-col gap-8">
-          {education.map((item, i) => (
-            <div key={i} className="relative">
-              <span className="absolute -left-[37px] w-3 h-3 rounded-full bg-sky-400 border-2 border-[#060608] top-1" />
-              <span className="text-sky-400 text-xs font-semibold uppercase tracking-wide">
-                {item.duration}
-              </span>
-              <h3 className="text-white font-semibold text-lg mt-1">
-                {item.degree}
-              </h3>
-              <p className="text-zinc-400 text-sm mt-0.5">
-                {item.institution} · {item.grade}
+              <p className="font-mono text-zinc-600 text-[11px] leading-relaxed">
+                Open to freelance projects and select full-time roles.
               </p>
             </div>
-          ))}
-        </div>
-      </div>
+          </div>
 
-      {/* Skills */}
-      <div>
-        <SectionLabel>Skills</SectionLabel>
-        <h2 className="text-2xl xl:text-3xl font-bold text-white mb-8">
-          Technologies
-        </h2>
-        <div className="flex flex-col gap-8">
-          {skillGroups.map((group, gi) => (
-            <div key={gi}>
-              <p className="font-mono text-zinc-600 text-xs uppercase tracking-widest mb-3">{group.label}</p>
-              <div className="grid grid-cols-3 sm:grid-cols-5 xl:grid-cols-7 gap-3">
-                {group.skills.map((skill, i) => (
-                  <TooltipProvider key={i} delayDuration={100}>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <div className="bg-zinc-900/60 border border-zinc-800 hover:border-sky-400/40 rounded-xl h-16 sm:h-20 flex flex-col items-center justify-center gap-1.5 cursor-default transition-all duration-200 group">
-                          <span className="text-2xl text-zinc-500 group-hover:text-sky-400 transition-colors duration-200">
-                            {skill.icon}
-                          </span>
-                          <span className="text-zinc-600 group-hover:text-zinc-400 text-[10px] font-medium transition-colors text-center px-1">
-                            {skill.name}
-                          </span>
-                        </div>
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>{skill.name}</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
+          {/* Right: main content sections */}
+          <div className="flex flex-col gap-16">
+
+            {/* In Brief */}
+            <div className="border-b border-zinc-800 pb-10">
+              <p className="font-mono text-zinc-500 text-[11px] uppercase tracking-[0.14em] border-b border-white pb-3 mb-8">
+                In Brief
+              </p>
+              <div className="flex flex-col gap-3">
+                {[
+                  "Started with a Diploma in Computer Science, finished a Degree in Netcentric Computing at UiTM.",
+                  "Found my footing in full stack development — where design decisions have real consequences.",
+                  "Currently leading feature development and mentoring interns at EBH IT Solutions.",
+                  "I build things because seeing someone use what I made, and watching it actually help them, never gets old.",
+                ].map((line, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: -16 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "-30px" }}
+                    transition={{ duration: 0.4, delay: i * 0.1 }}
+                    className="flex gap-3 text-zinc-400 text-[14px] leading-relaxed"
+                  >
+                    <span className="font-mono text-zinc-700 flex-shrink-0 mt-px">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    {line}
+                  </motion.div>
                 ))}
               </div>
             </div>
-          ))}
+
+            {/* Experience */}
+            <div>
+              <p className="font-mono text-zinc-500 text-[11px] uppercase tracking-[0.14em] border-b border-white pb-3">
+                Experience
+              </p>
+              {experience.map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.4, delay: i * 0.08 }}
+                  className="grid grid-cols-1 md:grid-cols-[1.4fr_3fr] gap-5 md:gap-8 border-b border-zinc-800 py-8"
+                >
+                  <div className="font-mono text-[11px] leading-[2] text-zinc-500">
+                    <div>{item.duration}</div>
+                    <div>{item.location}</div>
+                    {item.duration.includes("Present") && (
+                      <div className="text-sky-500 mt-2 flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse inline-block flex-shrink-0" />
+                        Current
+                      </div>
+                    )}
+                  </div>
+                  <div>
+                    <h3 className="text-white font-bold text-xl leading-tight tracking-[-0.025em] mb-1">
+                      {item.role}
+                    </h3>
+                    <p className="text-zinc-500 text-sm mb-5">{item.company}</p>
+                    {item.bullets && (
+                      <ul className="flex flex-col gap-2.5">
+                        {item.bullets.map((bullet, j) => (
+                          <li
+                            key={j}
+                            className="flex gap-3 text-zinc-400 text-[14px] leading-relaxed"
+                          >
+                            <span className="text-sky-500 font-mono flex-shrink-0 mt-px">
+                              —
+                            </span>
+                            {bullet}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Education */}
+            <div>
+              <p className="font-mono text-zinc-500 text-[11px] uppercase tracking-[0.14em] border-b border-white pb-3">
+                Education
+              </p>
+              {education.map((item, i) => (
+                <div
+                  key={i}
+                  className="grid grid-cols-1 md:grid-cols-[1.4fr_3fr] gap-5 md:gap-8 border-b border-zinc-800 py-8"
+                >
+                  <div className="font-mono text-[11px] leading-[2] text-zinc-500">
+                    <div>{item.duration}</div>
+                    <div className="text-sky-400">{item.grade}</div>
+                  </div>
+                  <div>
+                    <h3 className="text-white font-bold text-lg leading-snug tracking-tight mb-1">
+                      {item.degree}
+                    </h3>
+                    <p className="text-zinc-500 text-sm">{item.institution}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Skills */}
+            <div>
+              <p className="font-mono text-zinc-500 text-[11px] uppercase tracking-[0.14em] border-b border-white pb-3 mb-8">
+                Skills & Technologies
+              </p>
+              <div className="flex flex-col gap-8">
+                {skillGroups.map((group, gi) => (
+                  <div key={gi}>
+                    <p className="font-mono text-zinc-600 text-[10px] uppercase tracking-widest mb-3">
+                      {group.label}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {group.skills.map((skill, i) => (
+                        <div
+                          key={i}
+                          className="flex items-center gap-2 border border-zinc-800 hover:border-sky-500/40 hover:bg-sky-500/5 hover:text-white px-4 py-2 text-sm text-zinc-400 transition-all duration-200 cursor-default"
+                        >
+                          <span className="text-[15px] text-zinc-600">
+                            {skill.icon}
+                          </span>
+                          {skill.name}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
     </motion.div>

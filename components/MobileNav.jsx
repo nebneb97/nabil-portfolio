@@ -14,7 +14,7 @@ const links = [
   { name: "About", path: "/resume" },
   { name: "Projects", path: "/projects" },
   { name: "Solutions", path: "/solutions" },
-  { name: "Hire Me", path: "/contacts" },
+  { name: "Let's Talk", path: "/contacts" },
 ];
 
 const MobileNav = () => {

@@ -22,7 +22,8 @@ const projects = [
     category: "Enterprise Web App",
     title: "Media Command Centre (MCC)",
     description:
-      "Enterprise media intelligence platform for monitoring, analysing, and reporting news coverage across multiple sources. Led planning and development, designed Prisma schemas, implemented authentication and RBAC, and integrated frontend and backend modules via REST APIs. Deployed on AWS (Amplify, EC2, Elastic Beanstalk, S3, Cognito) with Cloudflare.",
+      "Enterprise media intelligence platform for monitoring, analysing, and reporting news coverage across multiple sources. Led planning and development, designed Prisma schemas, implemented authentication and RBAC, and integrated frontend and backend modules via REST APIs. Deployed on AWS across seven services with Cloudflare.",
+    note: "The project where I learned what 'production at scale' actually means. My name was on the architecture decisions — that changes how carefully you think.",
     stack: [
       { name: "Next.js", Icon: SiNextdotjs },
       { name: "React", Icon: FaReact },
@@ -41,7 +42,8 @@ const projects = [
     category: "Enterprise Web App",
     title: "ePIBG – Digital School Platform",
     description:
-      "Digital school management platform supporting parent engagement, school administration, attendance, payments, and activity management. Led development of the Digital Consent module and Treasurer module, integrated frontend with backend REST APIs, and performed functional testing and deployment verification through AWS Amplify.",
+      "Digital school management platform supporting parent engagement, school administration, attendance, payments, and activity management. Led the Digital Consent and Treasurer modules end-to-end — from planning through deployment on AWS Amplify.",
+    note: "The Treasurer module taught me how many edge cases exist in anything that touches money. Worth every hour of careful testing.",
     stack: [
       { name: "Next.js", Icon: SiNextdotjs },
       { name: "React", Icon: FaReact },
@@ -60,7 +62,8 @@ const projects = [
     category: "Fullstack Web App",
     title: "Cloud-based Testing Platform",
     description:
-      "Platform built during internship at Al-Ain IT Consultants to request and manage software testing tasks. Features real-time status tracking, role-based access control (admin, tester, client), and a structured request/approval workflow. Resolved 30+ frontend issues, improving testing reliability by 25%.",
+      "Platform built during my internship at Al-Ain IT Consultants to request and manage software testing tasks. Real-time status tracking, role-based access control, and a structured request/approval workflow. Resolved 30+ frontend issues, improving testing reliability by 25%.",
+    note: "My first time inheriting a codebase I didn't write. Resolving 30+ issues taught me to read other people's code before I touch anything.",
     stack: [
       { name: "Next.js", Icon: SiNextdotjs },
       { name: "React", Icon: FaReact },
@@ -77,7 +80,8 @@ const projects = [
     category: "Mobile App",
     title: "Equip&Go Rental App",
     description:
-      "Cross-platform Flutter mobile app for renting outdoor activity equipment. Users can discover, book, and manage rentals based on location and availability. Features multi-role access for users, vendors, and admins, Google Maps integration, Firebase real-time data, and push notifications for booking updates.",
+      "Cross-platform Flutter mobile app for renting outdoor activity equipment. Users can discover, book, and manage rentals based on location and availability. Google Maps integration, Firebase real-time data, push notifications, and multi-role access for users, vendors, and admins.",
+    note: "Built this one because the idea was fun. One codebase, two platforms, real users — still one of my favourites to talk about.",
     stack: [
       { name: "Flutter", Icon: SiFlutter },
       { name: "Firebase", Icon: SiFirebase },
@@ -123,8 +127,9 @@ const ProjectsPage = () => {
           Projects
         </h1>
         <p className="text-zinc-400 max-w-xl text-base">
-          Enterprise platforms, fullstack web apps, and mobile applications —
-          built in production and during internships.
+          Here&apos;s what I&apos;ve built — some led from scratch, others as
+          part of a team, one just because the idea was worth it. All shipped
+          to real users.
         </p>
       </div>
 
@@ -194,6 +199,11 @@ const ProjectsPage = () => {
                 <p className="text-zinc-400 text-sm leading-relaxed">
                   {project.description}
                 </p>
+                {project.note && (
+                  <p className="font-mono text-zinc-600 text-[11px] leading-relaxed border-l-2 border-sky-500/30 pl-3">
+                    {project.note}
+                  </p>
+                )}
                 <div className="flex flex-wrap gap-2 mt-2">
                   {project.stack.map((item, i) => (
                     <span

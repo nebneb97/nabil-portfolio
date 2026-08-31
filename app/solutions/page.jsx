@@ -20,7 +20,8 @@ const services = [
     num: "01",
     title: "Full Stack Web Development",
     description:
-      "Builds end-to-end web applications — from responsive Next.js frontends to Node.js backends with REST APIs, database design, and authentication. Delivered on enterprise platforms like MCC and ePIBG serving real production users.",
+      "I build end-to-end web applications — responsive Next.js frontends, Node.js backends, REST APIs, database design, and authentication. This is where most of my professional time goes, and where I've learned what it actually takes to ship something people depend on.",
+    aside: "MCC, ePIBG, and this portfolio — all built this way.",
     stack: [
       { name: "Next.js", Icon: SiNextdotjs },
       { name: "React", Icon: FaReact },
@@ -33,7 +34,8 @@ const services = [
     num: "02",
     title: "Backend & Database",
     description:
-      "Designs and develops scalable backend services, RESTful APIs, and database schemas using Node.js, Prisma ORM, and PostgreSQL — with role-based access control, authentication, and production deployments.",
+      "I design and develop scalable backend services, RESTful APIs, and database schemas using Node.js, Prisma ORM, and PostgreSQL. The architectural decisions here have real consequences — I take them seriously.",
+    aside: "RBAC, auth flows, schema design — the part most people don't see but everyone feels.",
     stack: [
       { name: "Node.js", Icon: FaNodeJs },
       { name: "Prisma ORM", Icon: SiPrisma },
@@ -46,7 +48,8 @@ const services = [
     num: "03",
     title: "Mobile App Development",
     description:
-      "Delivers cross-platform mobile applications using Flutter and Firebase — built Equip&Go, a rental app with Google Maps, real-time data, push notifications, and multi-role access for users, vendors, and admins.",
+      "I build cross-platform mobile apps using Flutter and Firebase. I built Equip&Go from scratch — Google Maps, real-time data, push notifications, multi-role access. Cross-platform Flutter is genuinely one of my favourite things to work on.",
+    aside: "One codebase, two platforms, real users.",
     stack: [
       { name: "Flutter", Icon: SiFlutter },
       { name: "Firebase", Icon: SiFirebase },
@@ -56,7 +59,8 @@ const services = [
     num: "04",
     title: "Cloud & Deployment",
     description:
-      "Deploys and manages production applications on AWS (Amplify, EC2, Elastic Beanstalk, S3, Cognito) and Vercel — including CI/CD setup, environment configuration, and deployment verification.",
+      "I deploy and manage production applications on AWS and Vercel — CI/CD setup, environment configuration, and deployment verification. Shipping MCC across seven AWS services taught me more about production infrastructure than anything else.",
+    aside: "Amplify, EC2, Elastic Beanstalk, S3, Cognito — done it in production.",
     stack: [
       { name: "AWS", Icon: SiAmazonwebservices },
       { name: "Next.js", Icon: SiNextdotjs },
@@ -83,8 +87,8 @@ const Solutions = () => {
           Solutions
         </h1>
         <p className="text-zinc-400 max-w-xl text-base">
-          From concept to deployment — services tailored to build real digital
-          products that work.
+          I don&apos;t take on everything. These are the areas I&apos;ve worked
+          in professionally, care about doing well, and can speak to honestly.
         </p>
       </div>
 
@@ -118,6 +122,11 @@ const Solutions = () => {
                 <p className="text-zinc-400 text-sm leading-relaxed max-w-lg">
                   {service.description}
                 </p>
+                {service.aside && (
+                  <p className="font-mono text-zinc-600 text-[11px] leading-relaxed">
+                    — {service.aside}
+                  </p>
+                )}
               </div>
 
               <div className="flex flex-wrap gap-2 mt-auto">
