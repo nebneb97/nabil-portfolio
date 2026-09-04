@@ -54,7 +54,7 @@ const Stats = () => {
 
       {visitors !== null && (
         <div className="flex items-center justify-center gap-2 text-zinc-600 text-xs font-mono">
-          <HiOutlineEye className="text-sm text-zinc-500" />
+          <HiOutlineEye className="text-sm text-zinc-500" aria-hidden="true" />
           <span>
             <span className="text-zinc-400 font-semibold">{visitors.toLocaleString()}</span>
             {" "}portfolio {visitors === 1 ? "visit" : "visits"}

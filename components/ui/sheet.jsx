@@ -72,8 +72,8 @@ function SheetContent({
         {children}
         <SheetPrimitive.Close
           className="absolute right-8 top-8 transition-opacity"
-          // className="ring-offset-background focus:ring-ring data-[state=open]:bg-secondary absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none">
-          ><IoMdClose className="text-3xl text-teal-500" />
+          aria-label="Close"
+          ><IoMdClose className="text-3xl text-teal-500" aria-hidden="true" />
           <span className="sr-only">Close</span>
         </SheetPrimitive.Close>
       </SheetPrimitive.Content>
