@@ -123,7 +123,7 @@ const Solutions = () => {
                   {service.description}
                 </p>
                 {service.aside && (
-                  <p className="font-mono text-zinc-600 text-[11px] leading-relaxed">
+                  <p className="font-mono text-zinc-500 text-[11px] leading-relaxed">
                     — {service.aside}
                   </p>
                 )}

@@ -178,7 +178,7 @@ const Home = () => {
               <div className="relative z-10 p-8 flex flex-col justify-between h-full min-h-[380px]">
                 <div className="flex items-center justify-between">
                   <span className="font-mono text-sky-400 text-xs uppercase tracking-widest">Enterprise Web App</span>
-                  <span className="font-mono text-zinc-600 text-xs">01</span>
+                  <span className="font-mono text-zinc-500 text-xs">01</span>
                 </div>
                 <div>
                   <h3 className="text-3xl xl:text-4xl font-bold text-white mb-3 group-hover:text-sky-400 transition-colors duration-300">
@@ -192,7 +192,7 @@ const Home = () => {
                       <span className="w-1.5 h-1.5 rounded-full bg-sky-500 flex-shrink-0" />
                       <span className="font-mono text-sky-400 text-xs">7 AWS Services · Enterprise Scale</span>
                     </div>
-                    <div className="flex gap-2 text-lg text-zinc-600 group-hover:text-sky-400/50 transition-colors">
+                    <div className="flex gap-2 text-lg text-zinc-500 group-hover:text-sky-400/50 transition-colors">
                       <SiNextdotjs /><FaReact /><FaNodeJs /><SiPrisma /><SiPostgresql /><SiAmazonwebservices />
                     </div>
                   </div>
@@ -216,7 +216,7 @@ const Home = () => {
               <div className="relative z-10 p-6 flex flex-col justify-between h-full min-h-[380px]">
                 <div className="flex items-center justify-between">
                   <span className="font-mono text-sky-400 text-xs uppercase tracking-widest">Enterprise Web</span>
-                  <span className="font-mono text-zinc-600 text-xs">02</span>
+                  <span className="font-mono text-zinc-500 text-xs">02</span>
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-white mb-2 group-hover:text-sky-400 transition-colors duration-300">
@@ -228,7 +228,7 @@ const Home = () => {
                   <div className="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/20 rounded-full px-3 py-1 mb-3">
                     <span className="font-mono text-sky-400 text-[10px]">2 Modules Led · Full SDLC</span>
                   </div>
-                  <div className="flex gap-2 text-base text-zinc-600 group-hover:text-sky-400/50 transition-colors">
+                  <div className="flex gap-2 text-base text-zinc-500 group-hover:text-sky-400/50 transition-colors">
                     <SiNextdotjs /><FaReact /><SiTypescript /><SiPostgresql /><SiAmazonwebservices />
                   </div>
                 </div>
@@ -244,7 +244,7 @@ const Home = () => {
               <div className="relative z-10 p-6 flex flex-col justify-between h-full min-h-[240px]">
                 <div className="flex items-center justify-between">
                   <span className="font-mono text-sky-400 text-xs uppercase tracking-widest">Fullstack Web</span>
-                  <span className="font-mono text-zinc-600 text-xs">03</span>
+                  <span className="font-mono text-zinc-500 text-xs">03</span>
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-white mb-3 group-hover:text-sky-400 transition-colors">
@@ -254,7 +254,7 @@ const Home = () => {
                     <span className="w-1.5 h-1.5 rounded-full bg-sky-500 flex-shrink-0" />
                     <span className="font-mono text-sky-400 text-[10px]">30+ Issues Fixed · 25% Reliability ↑</span>
                   </div>
-                  <div className="flex gap-2 text-lg text-zinc-600 group-hover:text-sky-400/50 transition-colors">
+                  <div className="flex gap-2 text-lg text-zinc-500 group-hover:text-sky-400/50 transition-colors">
                     <SiNextdotjs /><FaReact /><SiTypescript /><SiTailwindcss /><SiPrisma />
                   </div>
                 </div>
@@ -270,7 +270,7 @@ const Home = () => {
               <div className="relative z-10 p-6 flex flex-col justify-between h-full min-h-[240px]">
                 <div className="flex items-center justify-between">
                   <span className="font-mono text-sky-400 text-xs uppercase tracking-widest">Mobile App</span>
-                  <span className="font-mono text-zinc-600 text-xs">04</span>
+                  <span className="font-mono text-zinc-500 text-xs">04</span>
                 </div>
                 <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6">
                   <div>
@@ -286,7 +286,7 @@ const Home = () => {
                       <span className="w-1.5 h-1.5 rounded-full bg-sky-500 flex-shrink-0" />
                       <span className="font-mono text-sky-400 text-[10px]">Multi-role · Maps · Push Notifs</span>
                     </div>
-                    <div className="flex gap-3 text-2xl text-zinc-600 group-hover:text-sky-400/50 transition-colors">
+                    <div className="flex gap-3 text-2xl text-zinc-500 group-hover:text-sky-400/50 transition-colors">
                       <SiFlutter /><SiFirebase />
                     </div>
                   </div>

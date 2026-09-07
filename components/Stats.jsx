@@ -53,7 +53,7 @@ const Stats = () => {
       </div>
 
       {visitors !== null && (
-        <div className="flex items-center justify-center gap-2 text-zinc-600 text-xs font-mono">
+        <div className="flex items-center justify-center gap-2 text-zinc-500 text-xs font-mono">
           <HiOutlineEye className="text-sm text-zinc-500" aria-hidden="true" />
           <span>
             <span className="text-zinc-400 font-semibold">{visitors.toLocaleString()}</span>

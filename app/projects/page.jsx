@@ -200,7 +200,7 @@ const ProjectsPage = () => {
                   {project.description}
                 </p>
                 {project.note && (
-                  <p className="font-mono text-zinc-600 text-[11px] leading-relaxed border-l-2 border-sky-500/30 pl-3">
+                  <p className="font-mono text-zinc-500 text-[11px] leading-relaxed border-l-2 border-sky-500/30 pl-3">
                     {project.note}
                   </p>
                 )}

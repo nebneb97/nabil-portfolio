@@ -25,14 +25,14 @@ const Footer = () => {
             <p className="font-mono text-zinc-500 text-[11px] uppercase tracking-widest mb-1">
               Full Stack & Flutter Developer
             </p>
-            <p className="font-mono text-zinc-600 text-[11px] uppercase tracking-widest">
+            <p className="font-mono text-zinc-500 text-[11px] uppercase tracking-widest">
               Selangor, Malaysia
             </p>
           </div>
 
           {/* Nav */}
           <div>
-            <p className="font-mono text-zinc-600 text-[10px] uppercase tracking-[0.16em] mb-4">
+            <p className="font-mono text-zinc-500 text-[10px] uppercase tracking-[0.16em] mb-4">
               Navigation
             </p>
             <nav className="flex flex-col gap-2.5">
@@ -50,7 +50,7 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <p className="font-mono text-zinc-600 text-[10px] uppercase tracking-[0.16em] mb-4">
+            <p className="font-mono text-zinc-500 text-[10px] uppercase tracking-[0.16em] mb-4">
               Get in Touch
             </p>
             <a
@@ -59,7 +59,7 @@ const Footer = () => {
             >
               nabiladib70@gmail.com
             </a>
-            <div className="flex gap-4 text-lg text-zinc-600">
+            <div className="flex gap-4 text-lg text-zinc-500">
               <a
                 href="https://github.com/nebneb97"
                 target="_blank"
@@ -87,7 +87,7 @@ const Footer = () => {
       {/* ── Bottom bar ── */}
       <div className="border-t border-zinc-800/60">
         <div className="container mx-auto px-4 sm:px-6 xl:px-12 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="font-mono text-[11px] text-zinc-600 tracking-wide">
+          <p className="font-mono text-[11px] text-zinc-500 tracking-wide">
             © {new Date().getFullYear()} Nabil Adib — Built to last, shipped with care.
           </p>
           <div className="flex items-center gap-2">

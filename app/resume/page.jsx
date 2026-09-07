@@ -154,7 +154,7 @@ const Resume = () => {
       {/* ── Editorial Hero ── */}
       <div className="border-b border-zinc-800">
         <div className="container mx-auto px-4 sm:px-6 xl:px-12 max-w-6xl pt-16 xl:pt-24 pb-12 xl:pb-16">
-          <p className="font-mono text-zinc-600 text-[11px] uppercase tracking-[0.16em] mb-6">
+          <p className="font-mono text-zinc-500 text-[11px] uppercase tracking-[0.16em] mb-6">
             Full Stack & Flutter Developer — Selangor, Malaysia
           </p>
           <h1 className="text-[clamp(52px,8vw,96px)] font-bold leading-[0.88] tracking-[-0.04em] text-white mb-10">
@@ -192,7 +192,7 @@ const Resume = () => {
                   key={i}
                   className="flex justify-between gap-4 border-b border-zinc-800 py-2"
                 >
-                  <span className="text-zinc-600 uppercase tracking-widest flex-shrink-0">
+                  <span className="text-zinc-500 uppercase tracking-widest flex-shrink-0">
                     {item.label}
                   </span>
                   {item.href ? (
@@ -228,7 +228,7 @@ const Resume = () => {
                   Available
                 </span>
               </div>
-              <p className="font-mono text-zinc-600 text-[11px] leading-relaxed">
+              <p className="font-mono text-zinc-500 text-[11px] leading-relaxed">
                 Open to freelance projects and select full-time roles.
               </p>
             </div>
@@ -347,7 +347,7 @@ const Resume = () => {
               <div className="flex flex-col gap-8">
                 {skillGroups.map((group, gi) => (
                   <div key={gi}>
-                    <p className="font-mono text-zinc-600 text-[10px] uppercase tracking-widest mb-3">
+                    <p className="font-mono text-zinc-500 text-[10px] uppercase tracking-widest mb-3">
                       {group.label}
                     </p>
                     <div className="flex flex-wrap gap-2">
@@ -356,7 +356,7 @@ const Resume = () => {
                           key={i}
                           className="flex items-center gap-2 border border-zinc-800 hover:border-sky-500/40 hover:bg-sky-500/5 hover:text-white px-4 py-2 text-sm text-zinc-400 transition-all duration-200 cursor-default"
                         >
-                          <span className="text-[15px] text-zinc-600">
+                          <span className="text-[15px] text-zinc-500">
                             {skill.icon}
                           </span>
                           {skill.name}

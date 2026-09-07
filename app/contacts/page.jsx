@@ -174,7 +174,7 @@ const Contacts = () => {
                     </p>
                   )}
                   {item.copyable && (
-                    <p className="text-zinc-600 text-[10px] mt-0.5">click to copy</p>
+                    <p className="text-zinc-500 text-[10px] mt-0.5">click to copy</p>
                   )}
                 </div>
               </div>
@@ -298,7 +298,7 @@ const Contacts = () => {
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
               >
-                <FaLinkedin className="text-2xl text-zinc-600 hover:text-sky-500 transition-colors" />
+                <FaLinkedin className="text-2xl text-zinc-500 hover:text-sky-500 transition-colors" />
               </a>
               <a
                 href="https://github.com/nebneb97"
@@ -306,7 +306,7 @@ const Contacts = () => {
                 rel="noopener noreferrer"
                 aria-label="GitHub"
               >
-                <FaGithub className="text-2xl text-zinc-600 hover:text-sky-500 transition-colors" />
+                <FaGithub className="text-2xl text-zinc-500 hover:text-sky-500 transition-colors" />
               </a>
             </div>
           </form>
