@@ -1,15 +1,15 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaEnvelope, FaMapMarkerAlt, FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaEnvelope, FaMapMarkerAlt, FaGithub, FaLinkedin, FaChevronDown } from "react-icons/fa";
 import Toast from "@/components/Toast";
 
 const info = [
   { icon: <FaEnvelope />, label: "Email", value: "nabiladib70@gmail.com", copyable: true },
   { icon: <FaMapMarkerAlt />, label: "Location", value: "Selangor, Malaysia" },
-  { icon: <FaGithub />, label: "GitHub", value: "github.com/nebneb97", href: "https://github.com/nebneb97" },
-  { icon: <FaLinkedin />, label: "LinkedIn", value: "linkedin.com/in/nabiladib", href: "https://linkedin.com/in/nabiladib" },
+  { icon: <FaGithub />, label: "GitHub", value: "nebneb97", href: "https://github.com/nebneb97" },
+  { icon: <FaLinkedin />, label: "LinkedIn", value: "nabiladib", href: "https://linkedin.com/in/nabiladib" },
 ];
 
 const faqs = [
@@ -23,7 +23,7 @@ const faqs = [
   },
   {
     q: "How do we get started?",
-    a: "Fill in the contact form or email me directly. I reply within 24 hours and we'll schedule a call to discuss your project in detail.",
+    a: "Fill in the contact form or email me directly. I'll get back to you and we can schedule a call to discuss your project in detail.",
   },
   {
     q: "Do you work with clients outside Malaysia?",
@@ -51,15 +51,27 @@ const validate = (data) => {
 };
 
 const inputBase =
-  "bg-zinc-900 border text-white placeholder-zinc-600 rounded-xl px-4 py-3 text-sm focus:outline-none transition-colors w-full";
+  "bg-zinc-950 border text-white placeholder-zinc-600 px-4 py-3 text-sm focus:outline-none transition-colors w-full";
 
 const Contacts = () => {
   const [status, setStatus] = useState("idle");
   const [copied, setCopied] = useState(false);
   const [service, setService] = useState("");
+  const [serviceOpen, setServiceOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState(null);
   const [errors, setErrors] = useState({});
   const [toast, setToast] = useState(null);
+  const serviceRef = useRef(null);
+
+  useEffect(() => {
+    const handler = (e) => {
+      if (serviceRef.current && !serviceRef.current.contains(e.target)) {
+        setServiceOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, []);
 
   const dismissToast = useCallback(() => setToast(null), []);
 
@@ -105,7 +117,7 @@ const Contacts = () => {
         setStatus("idle");
         form.reset();
         setService("");
-        setToast({ message: "Message sent! I'll get back to you within 24 hours.", type: "success" });
+        setToast({ message: "Message sent! I'll get back to you soon.", type: "success" });
       } else {
         setStatus("idle");
         setToast({ message: "Something went wrong. Email me at nabiladib70@gmail.com", type: "error" });
@@ -117,228 +129,304 @@ const Contacts = () => {
   };
 
   return (
-    <motion.section
-      initial={{ opacity: 0, y: 16 }}
-      animate={{ opacity: 1, y: 0, transition: { duration: 0.35 } }}
-      className="container mx-auto px-4 sm:px-6 xl:px-12 py-16 xl:py-20"
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.4 } }}
     >
-      <div className="grid grid-cols-1 xl:grid-cols-2 gap-16 xl:gap-24 items-start">
-
-        {/* Left — info */}
-        <div className="relative">
-          <div className="absolute -top-10 -left-10 w-80 h-80 bg-sky-500/5 blur-[100px] rounded-full pointer-events-none" />
-          <p className="font-mono text-sky-500 text-xs font-semibold uppercase tracking-widest mb-4 relative">
+      {/* Editorial hero */}
+      <div className="border-b border-zinc-800">
+        <div className="container mx-auto px-4 sm:px-6 xl:px-12 pt-16 xl:pt-24 pb-12 xl:pb-16">
+          <p className="font-mono text-zinc-500 text-[11px] uppercase tracking-[0.16em] mb-6">
             Get In Touch
           </p>
-          <h1 className="text-4xl sm:text-5xl xl:text-6xl font-black text-white leading-none mb-6">
+          <h1 className="text-[clamp(52px,8vw,96px)] font-bold leading-[0.88] tracking-[-0.04em] text-white mb-10">
             Let&apos;s
             <br />
             <span className="text-sky-500">Talk.</span>
           </h1>
-          <p className="text-zinc-400 text-base leading-relaxed mb-3 max-w-sm">
-            I read every message. Whether you have a project that needs
-            building or just want to talk shop — either works for me.
-          </p>
-          <p className="text-zinc-500 text-sm mb-10">
-            I typically reply within 24 hours.
-          </p>
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 xl:gap-16">
+            <p className="text-zinc-300 text-[17px] leading-[1.7]">
+              I read every message. Whether you have a project that needs
+              building or just want to talk shop — either works for me.
+            </p>
+            <p className="text-zinc-500 text-[15px] leading-[1.7]">
+              Currently open to freelance projects and select full-time roles.
+            </p>
+          </div>
+        </div>
+      </div>
 
-          {/* Contact info */}
-          <div className="flex flex-col gap-4 mb-10">
-            {info.map((item, i) => (
-              <div
-                key={i}
-                onClick={item.copyable ? handleCopyEmail : undefined}
-                className={`flex items-center gap-4 p-4 bg-zinc-900/50 border border-zinc-800 rounded-xl ${
-                  item.copyable ? "cursor-pointer hover:border-sky-500/40 transition-colors group" : ""
-                }`}
-              >
-                <div className="w-10 h-10 rounded-lg bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-500 flex-shrink-0">
-                  {item.icon}
-                </div>
-                <div>
-                  <p className="text-zinc-500 text-xs mb-0.5">{item.label}</p>
+      {/* Two-column body */}
+      <div className="container mx-auto px-4 sm:px-6 xl:px-12 py-16 xl:py-20">
+        <div className="grid grid-cols-1 xl:grid-cols-[1.2fr_2fr] gap-14 xl:gap-24 items-start">
+
+          {/* Left: sticky info */}
+          <div className="xl:sticky xl:top-24 flex flex-col gap-8">
+
+            {/* Contact table */}
+            <div className="font-mono text-[11px]">
+              {info.map((item, i) => (
+                <div
+                  key={i}
+                  onClick={item.copyable ? handleCopyEmail : undefined}
+                  className={`flex justify-between gap-4 border-b border-zinc-800 py-2.5 ${
+                    item.copyable ? "cursor-pointer group" : ""
+                  }`}
+                >
+                  <span className="text-zinc-500 uppercase tracking-widest flex-shrink-0">
+                    {item.label}
+                  </span>
                   {item.href ? (
                     <a
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-white text-sm font-medium hover:text-sky-400 transition-colors"
+                      className="text-sky-400 hover:text-sky-300 text-right transition-colors truncate"
                       onClick={(e) => e.stopPropagation()}
                     >
                       {item.value}
                     </a>
                   ) : (
-                    <p className="text-white text-sm font-medium group-hover:text-sky-400 transition-colors">
+                    <span className={`text-right transition-colors truncate ${item.copyable ? "group-hover:text-sky-400" : "text-white"}`}>
                       {item.copyable && copied ? "Copied!" : item.value}
-                    </p>
-                  )}
-                  {item.copyable && (
-                    <p className="text-zinc-500 text-[10px] mt-0.5">click to copy</p>
+                    </span>
                   )}
                 </div>
-              </div>
-            ))}
-          </div>
-
-          {/* What to expect */}
-          <div className="p-5 bg-zinc-900/50 border border-zinc-800 rounded-xl">
-            <p className="text-sky-500 text-xs font-semibold uppercase tracking-widest mb-3">
-              What to Expect
-            </p>
-            <ul className="flex flex-col gap-3">
-              {[
-                "I'll tell you honestly if something won't work before we start building it.",
-                "I communicate throughout — you won't be left wondering what's happening.",
-                "I've worked with CTOs and mentored interns. I adapt to who I'm working with.",
-                "I cover web and mobile — you don't need two developers for two platforms.",
-              ].map((point, i) => (
-                <li key={i} className="flex items-start gap-2 text-sm text-zinc-400">
-                  <span className="text-sky-500 mt-0.5 flex-shrink-0">—</span>
-                  {point}
-                </li>
               ))}
-            </ul>
-          </div>
-        </div>
-
-        {/* Right — form */}
-        <div>
-          <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {/* First name */}
-              <div className="flex flex-col gap-1">
-                <input
-                  name="firstName"
-                  type="text"
-                  placeholder="First Name"
-                  onBlur={handleBlur}
-                  className={`${inputBase} ${errors.firstName ? "border-red-500 focus:border-red-500" : "border-zinc-700 focus:border-sky-500"}`}
-                />
-                {errors.firstName && (
-                  <p className="text-red-400 text-xs px-1">{errors.firstName}</p>
-                )}
-              </div>
-
-              {/* Last name */}
-              <div className="flex flex-col gap-1">
-                <input
-                  name="lastName"
-                  type="text"
-                  placeholder="Last Name"
-                  className={`${inputBase} border-zinc-700 focus:border-sky-500`}
-                />
-              </div>
-
-              {/* Email */}
-              <div className="flex flex-col gap-1">
-                <input
-                  name="email"
-                  type="email"
-                  placeholder="Email"
-                  onBlur={handleBlur}
-                  className={`${inputBase} ${errors.email ? "border-red-500 focus:border-red-500" : "border-zinc-700 focus:border-sky-500"}`}
-                />
-                {errors.email && (
-                  <p className="text-red-400 text-xs px-1">{errors.email}</p>
-                )}
-              </div>
-
-              {/* Phone */}
-              <div className="flex flex-col gap-1">
-                <input
-                  name="phone"
-                  type="tel"
-                  placeholder="Phone Number"
-                  className={`${inputBase} border-zinc-700 focus:border-sky-500`}
-                />
-              </div>
+              <p className="text-zinc-700 text-[10px] mt-2">click email to copy</p>
             </div>
 
-            {/* Service */}
-            <select
-              value={service}
-              onChange={(e) => setService(e.target.value)}
-              className="bg-zinc-900 border border-zinc-700 text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-sky-500 transition-colors appearance-none w-full"
-              style={{ color: service ? "#fafafa" : "#52525b" }}
-            >
-              <option value="" disabled>Select a service</option>
-              <option value="web">Web App Development</option>
-              <option value="mobile">Mobile App Development</option>
-              <option value="frontend">Frontend Implementation</option>
-              <option value="qa">Bug Fixing &amp; QA</option>
-            </select>
-
-            {/* Message */}
-            <div className="flex flex-col gap-1">
-              <textarea
-                name="message"
-                placeholder="Your message..."
-                rows={6}
-                onBlur={handleBlur}
-                className={`${inputBase} resize-none ${errors.message ? "border-red-500 focus:border-red-500" : "border-zinc-700 focus:border-sky-500"}`}
-              />
-              {errors.message && (
-                <p className="text-red-400 text-xs px-1">{errors.message}</p>
-              )}
+            {/* Availability */}
+            <div className="border border-zinc-800 p-4">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse flex-shrink-0" />
+                <span className="font-mono text-sky-500 text-[10px] uppercase tracking-widest">
+                  Available
+                </span>
+              </div>
+              <p className="font-mono text-zinc-500 text-[11px] leading-relaxed">
+                Open to freelance projects and select full-time roles.
+              </p>
             </div>
 
-            <button
-              type="submit"
-              disabled={status === "loading"}
-              className="w-fit bg-sky-500 hover:bg-sky-600 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold px-8 py-3 rounded-full text-sm uppercase transition-colors"
-            >
-              {status === "loading" ? "Sending..." : "Send Message"}
-            </button>
-
-            <div className="flex gap-4 pt-2">
+            {/* Social links */}
+            <div className="flex gap-3">
               <a
                 href="https://linkedin.com/in/nabiladib"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
+                className="flex items-center gap-2 border border-zinc-800 hover:border-sky-500/40 hover:text-white px-4 py-2 text-sm text-zinc-400 transition-all duration-200 font-mono text-[11px] uppercase tracking-widest"
               >
-                <FaLinkedin className="text-2xl text-zinc-500 hover:text-sky-500 transition-colors" />
+                <FaLinkedin className="text-base" />
+                LinkedIn
               </a>
               <a
                 href="https://github.com/nebneb97"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
+                className="flex items-center gap-2 border border-zinc-800 hover:border-sky-500/40 hover:text-white px-4 py-2 text-sm text-zinc-400 transition-all duration-200 font-mono text-[11px] uppercase tracking-widest"
               >
-                <FaGithub className="text-2xl text-zinc-500 hover:text-sky-500 transition-colors" />
+                <FaGithub className="text-base" />
+                GitHub
               </a>
             </div>
-          </form>
-        </div>
-      </div>
 
-      {/* FAQ */}
-      <div className="mt-20">
-        <p className="font-mono text-sky-500 text-xs font-semibold uppercase tracking-widest mb-3">FAQ</p>
-        <h2 className="text-2xl xl:text-3xl font-bold text-white mb-8">Common Questions</h2>
-        <div className="flex flex-col divide-y divide-zinc-800 border border-zinc-800 rounded-2xl overflow-hidden">
-          {faqs.map((faq, i) => (
-            <div key={i}>
-              <button
-                onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                className="w-full flex items-center justify-between px-6 py-5 text-left hover:bg-zinc-900/50 transition-colors"
-              >
-                <span className="text-white text-sm font-medium pr-4">{faq.q}</span>
-                <span
-                  className="text-sky-500 text-lg flex-shrink-0 transition-transform duration-200"
-                  style={{ transform: openFaq === i ? "rotate(45deg)" : "rotate(0deg)" }}
-                >
-                  +
-                </span>
-              </button>
-              {openFaq === i && (
-                <div className="px-6 pb-5">
-                  <p className="text-zinc-400 text-sm leading-relaxed">{faq.a}</p>
-                </div>
-              )}
+            {/* What to expect */}
+            <div className="border-t border-zinc-800 pt-6">
+              <p className="font-mono text-zinc-500 text-[10px] uppercase tracking-widest mb-4">
+                What to Expect
+              </p>
+              <ul className="flex flex-col gap-3">
+                {[
+                  "I'll tell you honestly if something won't work before we start.",
+                  "I communicate throughout — you won't be left wondering.",
+                  "I've worked with CTOs and mentored interns. I adapt.",
+                  "I cover web and mobile — one developer, two platforms.",
+                ].map((point, i) => (
+                  <li key={i} className="flex items-start gap-2.5 text-[13px] text-zinc-400">
+                    <span className="font-mono text-zinc-700 flex-shrink-0 mt-px">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    {point}
+                  </li>
+                ))}
+              </ul>
             </div>
-          ))}
+          </div>
+
+          {/* Right: form */}
+          <div className="border border-zinc-800 p-6 sm:p-8 xl:p-10">
+            <p className="font-mono text-zinc-500 text-[11px] uppercase tracking-[0.14em] border-b border-white pb-3 mb-8">
+              Send a Message
+            </p>
+
+            <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="flex flex-col gap-1">
+                  <label className="font-mono text-zinc-500 text-[10px] uppercase tracking-widest mb-1">
+                    First Name <span className="text-sky-500">*</span>
+                  </label>
+                  <input
+                    name="firstName"
+                    type="text"
+                    placeholder="Nabil"
+                    onBlur={handleBlur}
+                    className={`${inputBase} ${errors.firstName ? "border-red-500 focus:border-red-500" : "border-zinc-800 focus:border-sky-500"}`}
+                  />
+                  {errors.firstName && (
+                    <p className="text-red-400 text-xs px-1">{errors.firstName}</p>
+                  )}
+                </div>
+
+                <div className="flex flex-col gap-1">
+                  <label className="font-mono text-zinc-500 text-[10px] uppercase tracking-widest mb-1">
+                    Last Name
+                  </label>
+                  <input
+                    name="lastName"
+                    type="text"
+                    placeholder="Adib"
+                    className={`${inputBase} border-zinc-800 focus:border-sky-500`}
+                  />
+                </div>
+
+                <div className="flex flex-col gap-1">
+                  <label className="font-mono text-zinc-500 text-[10px] uppercase tracking-widest mb-1">
+                    Email <span className="text-sky-500">*</span>
+                  </label>
+                  <input
+                    name="email"
+                    type="email"
+                    placeholder="you@example.com"
+                    onBlur={handleBlur}
+                    className={`${inputBase} ${errors.email ? "border-red-500 focus:border-red-500" : "border-zinc-800 focus:border-sky-500"}`}
+                  />
+                  {errors.email && (
+                    <p className="text-red-400 text-xs px-1">{errors.email}</p>
+                  )}
+                </div>
+
+                <div className="flex flex-col gap-1">
+                  <label className="font-mono text-zinc-500 text-[10px] uppercase tracking-widest mb-1">
+                    Phone
+                  </label>
+                  <input
+                    name="phone"
+                    type="tel"
+                    placeholder="+60 12-345 6789"
+                    className={`${inputBase} border-zinc-800 focus:border-sky-500`}
+                  />
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-1 relative" ref={serviceRef}>
+                <label className="font-mono text-zinc-500 text-[10px] uppercase tracking-widest mb-1">
+                  Service
+                </label>
+                <button
+                  type="button"
+                  onClick={() => setServiceOpen((o) => !o)}
+                  className="flex items-center justify-between bg-zinc-950 border border-zinc-800 hover:border-zinc-600 focus:border-sky-500 focus:outline-none px-4 py-3 text-sm transition-colors w-full text-left"
+                >
+                  <span className={service ? "text-white" : "text-zinc-600"}>
+                    {service === "web" && "Web App Development"}
+                    {service === "mobile" && "Mobile App Development"}
+                    {service === "frontend" && "Frontend Implementation"}
+                    {service === "qa" && "Bug Fixing & QA"}
+                    {!service && "Select a service"}
+                  </span>
+                  <FaChevronDown
+                    className={`text-zinc-500 text-xs flex-shrink-0 transition-transform duration-200 ${serviceOpen ? "rotate-180" : ""}`}
+                  />
+                </button>
+                {serviceOpen && (
+                  <div className="absolute top-full left-0 right-0 z-50 bg-zinc-900 border border-zinc-700 mt-1">
+                    {[
+                      { value: "web", label: "Web App Development" },
+                      { value: "mobile", label: "Mobile App Development" },
+                      { value: "frontend", label: "Frontend Implementation" },
+                      { value: "qa", label: "Bug Fixing & QA" },
+                    ].map((opt) => (
+                      <button
+                        key={opt.value}
+                        type="button"
+                        onClick={() => { setService(opt.value); setServiceOpen(false); }}
+                        className={`w-full text-left px-4 py-3 text-sm transition-colors hover:bg-zinc-800 hover:text-white ${
+                          service === opt.value ? "text-sky-400 bg-zinc-800/50" : "text-zinc-300"
+                        }`}
+                      >
+                        {opt.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <div className="flex flex-col gap-1">
+                <label className="font-mono text-zinc-500 text-[10px] uppercase tracking-widest mb-1">
+                  Message <span className="text-sky-500">*</span>
+                </label>
+                <textarea
+                  name="message"
+                  placeholder="Tell me about your project..."
+                  rows={6}
+                  onBlur={handleBlur}
+                  className={`${inputBase} resize-none ${errors.message ? "border-red-500 focus:border-red-500" : "border-zinc-800 focus:border-sky-500"}`}
+                />
+                {errors.message && (
+                  <p className="text-red-400 text-xs px-1">{errors.message}</p>
+                )}
+              </div>
+
+              <div className="flex items-center justify-between pt-2">
+                <button
+                  type="submit"
+                  disabled={status === "loading"}
+                  className="flex items-center gap-2 bg-white text-zinc-950 hover:bg-sky-500 hover:text-white disabled:opacity-50 disabled:cursor-not-allowed py-4 px-8 text-xs font-bold uppercase tracking-[0.08em] transition-colors"
+                >
+                  {status === "loading" ? "Sending..." : "Send Message"}
+                </button>
+                <p className="font-mono text-zinc-600 text-[10px]">
+                  * required
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        {/* FAQ */}
+        <div className="mt-20 xl:mt-24">
+          <p className="font-mono text-zinc-500 text-[11px] uppercase tracking-[0.14em] border-b border-white pb-3 mb-10">
+            Common Questions
+          </p>
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-0 border border-zinc-800">
+            {faqs.map((faq, i) => (
+              <div
+                key={i}
+                className={`border-b border-zinc-800 ${i % 2 === 0 ? "xl:border-r" : ""} ${i >= faqs.length - 2 ? "xl:border-b-0" : ""} last:border-b-0`}
+              >
+                <button
+                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  className="w-full flex items-start justify-between px-6 py-5 text-left hover:bg-zinc-900/40 transition-colors gap-4"
+                >
+                  <span className="text-white text-sm font-medium leading-snug">{faq.q}</span>
+                  <span
+                    className="text-sky-500 text-lg flex-shrink-0 transition-transform duration-200 mt-0.5"
+                    style={{ transform: openFaq === i ? "rotate(45deg)" : "rotate(0deg)" }}
+                  >
+                    +
+                  </span>
+                </button>
+                {openFaq === i && (
+                  <div className="px-6 pb-5">
+                    <p className="text-zinc-400 text-sm leading-relaxed">{faq.a}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -353,7 +441,7 @@ const Contacts = () => {
           />
         )}
       </AnimatePresence>
-    </motion.section>
+    </motion.div>
   );
 };
 

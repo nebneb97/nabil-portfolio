@@ -29,15 +29,15 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: "Nabil Adib — Full Stack & Flutter Developer",
+  title: "Nabil Adib — Full Stack Developer",
   keywords: ["Portfolio", "Nabil Adib", "Web Developer", "Software Engineer", "Flutter Developer", "Next.js", "React"],
   description:
-    "Full Stack and Flutter developer building fast, modern web and mobile applications. Based in Selangor, Malaysia. Available for freelance and full-time roles.",
+    "Full Stack developer building fast, modern web and mobile applications. Based in Selangor, Malaysia. Available for freelance and full-time roles.",
   metadataBase: new URL("https://nabiladib.vercel.app"),
   openGraph: {
-    title: "Nabil Adib — Full Stack & Flutter Developer",
+    title: "Nabil Adib — Full Stack Developer",
     description:
-      "Full Stack and Flutter developer building fast, modern web and mobile applications. Based in Selangor, Malaysia.",
+      "Full Stack developer building fast, modern web and mobile applications. Based in Selangor, Malaysia.",
     url: "https://nabiladib.vercel.app",
     siteName: "Nabil Adib Portfolio",
     images: [
@@ -45,7 +45,7 @@ export const metadata = {
         url: "/assets/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Nabil Adib — Full Stack & Flutter Developer",
+        alt: "Nabil Adib — Full Stack Developer",
       },
     ],
     locale: "en_US",
@@ -53,9 +53,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nabil Adib — Full Stack & Flutter Developer",
+    title: "Nabil Adib — Full Stack Developer",
     description:
-      "Full Stack and Flutter developer building fast, modern web and mobile applications.",
+      "Full Stack developer building fast, modern web and mobile applications.",
     images: ["/assets/og-image.png"],
   },
 };
@@ -69,7 +69,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Nabil Adib",
-  jobTitle: "Full Stack & Flutter Developer",
+  jobTitle: "Full Stack Developer",
   url: "https://nabiladib.vercel.app",
   email: "nabiladib70@gmail.com",
   image: "https://nabiladib.vercel.app/assets/og-image.png",

@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { FaReact, FaNodeJs } from "react-icons/fa";
 import {
   SiNextdotjs,
@@ -92,17 +92,22 @@ const projects = [
   },
 ];
 
-const GradientPlaceholder = ({ num }) => (
-  <div className="relative h-56 xl:h-auto bg-gradient-to-br from-zinc-900 via-zinc-800/50 to-sky-950/30 flex items-center justify-center">
-    <span className="text-7xl font-black text-white/5 select-none">{num}</span>
-    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(56,189,248,0.05)_0%,transparent_70%)]" />
-  </div>
-);
+const isPlaceholder = (img) => !img || img.includes("thumb");
 
 const filters = ["All", "Web", "Mobile"];
 
 const ProjectsPage = () => {
   const [activeFilter, setActiveFilter] = useState("All");
+  const [openIndex, setOpenIndex] = useState(null);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const openParam = params.get("open");
+    if (openParam) {
+      const idx = projects.findIndex((p) => p.num === openParam);
+      if (idx !== -1) setOpenIndex(idx);
+    }
+  }, []);
 
   const filtered =
     activeFilter === "All"
@@ -111,147 +116,197 @@ const ProjectsPage = () => {
       ? projects.filter((p) => p.category === "Mobile App")
       : projects.filter((p) => p.category.includes("Web"));
 
+  const handleFilter = (f) => {
+    setActiveFilter(f);
+    setOpenIndex(null);
+  };
+
   return (
-    <motion.section
-      initial={{ opacity: 0, y: 16 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.35 }}
-      className="container mx-auto px-4 sm:px-6 xl:px-12 py-16 xl:py-20"
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.4 } }}
     >
-      {/* Heading */}
-      <div className="mb-10">
-        <p className="font-mono text-sky-400 text-xs font-semibold uppercase tracking-widest mb-3">
-          My Work
-        </p>
-        <h1 className="text-4xl xl:text-5xl font-bold text-white mb-4">
-          Projects
-        </h1>
-        <p className="text-zinc-400 max-w-xl text-base">
-          Here&apos;s what I&apos;ve built — some led from scratch, others as
-          part of a team, one just because the idea was worth it. All shipped
-          to real users.
-        </p>
+      {/* Editorial hero */}
+      <div className="border-b border-zinc-800">
+        <div className="container mx-auto px-4 sm:px-6 xl:px-12 pt-16 xl:pt-24 pb-12 xl:pb-16">
+          <p className="font-mono text-zinc-500 text-[11px] uppercase tracking-[0.16em] mb-6">
+            My Work
+          </p>
+          <h1 className="text-[clamp(52px,8vw,96px)] font-bold leading-[0.88] tracking-[-0.04em] text-white mb-10">
+            Projects
+          </h1>
+          <p className="text-zinc-400 max-w-lg text-[15px] leading-[1.7]">
+            Some led from scratch, others as part of a team, one just because
+            the idea was worth it. All shipped to real users.
+          </p>
+        </div>
       </div>
 
-      {/* Filter tabs */}
-      <div className="flex items-center gap-2 mb-10">
-        {filters.map((f) => (
-          <button
-            key={f}
-            onClick={() => setActiveFilter(f)}
-            className={`font-mono text-xs font-semibold uppercase tracking-widest px-4 py-2 rounded-full border transition-all duration-200 ${
-              activeFilter === f
-                ? "bg-sky-500 border-sky-500 text-white"
-                : "border-zinc-700 text-zinc-400 hover:border-sky-500/50 hover:text-sky-400"
-            }`}
-          >
-            {f}
-          </button>
-        ))}
-      </div>
+      <div className="container mx-auto px-4 sm:px-6 xl:px-12 py-12 xl:py-16">
 
-      {/* Project cards */}
-      <div className="flex flex-col gap-8">
-        {filtered.map((project, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.4, delay: index * 0.07 }}
-            className="group grid grid-cols-1 xl:grid-cols-2 gap-0 bg-zinc-900/40 border border-zinc-800 hover:border-sky-500/20 rounded-2xl overflow-hidden transition-all duration-300"
-          >
-            {/* Image or gradient placeholder */}
-            <div
-              className={`relative h-56 xl:h-[360px] overflow-hidden ${
-                index % 2 === 1 ? "xl:order-last" : ""
+        {/* Filter tabs — sharp edged */}
+        <div className="flex items-center gap-2 mb-12">
+          {filters.map((f) => (
+            <button
+              key={f}
+              onClick={() => handleFilter(f)}
+              className={`font-mono text-xs uppercase tracking-widest px-5 py-2.5 border transition-all duration-200 ${
+                activeFilter === f
+                  ? "bg-white text-zinc-950 border-white"
+                  : "border-zinc-700 text-zinc-400 hover:border-zinc-500 hover:text-white"
               }`}
             >
-              {project.image ? (
-                <>
-                  <Image
-                    src={project.image}
-                    fill
-                    alt={project.title}
-                    className="opacity-70 group-hover:opacity-90 transition-opacity duration-300"
-                    style={{ objectFit: "cover", objectPosition: "top" }}
-                    sizes="(max-width: 1280px) 100vw, 50vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/60 to-transparent" />
-                  <span className="absolute bottom-4 left-4 text-5xl font-black text-white/10 select-none">
+              {f}
+            </button>
+          ))}
+        </div>
+
+        {/* Accordion list */}
+        <div className="border-t border-zinc-800">
+          <AnimatePresence initial={false}>
+            {filtered.map((project, index) => (
+              <motion.div
+                key={project.num}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.25 }}
+              >
+                {/* Row header */}
+                <button
+                  onClick={() =>
+                    setOpenIndex(openIndex === index ? null : index)
+                  }
+                  className="w-full border-b border-zinc-800 py-6 px-2 flex items-center gap-6 xl:gap-10 group hover:bg-zinc-900/40 transition-colors text-left"
+                >
+                  <span className="font-mono text-zinc-600 text-sm w-8 flex-shrink-0">
                     {project.num}
                   </span>
-                </>
-              ) : (
-                <GradientPlaceholder num={project.num} />
-              )}
-            </div>
-
-            {/* Content */}
-            <div className="flex flex-col justify-between p-5 sm:p-6 xl:p-8">
-              <div className="flex flex-col gap-4">
-                <span className="font-mono text-sky-400 text-xs font-semibold uppercase tracking-widest">
-                  {project.category}
-                </span>
-                <h2 className="text-xl xl:text-2xl font-bold text-white group-hover:text-sky-400 transition-colors">
-                  {project.title}
-                </h2>
-                <p className="text-zinc-400 text-sm leading-relaxed">
-                  {project.description}
-                </p>
-                {project.note && (
-                  <p className="font-mono text-zinc-500 text-[11px] leading-relaxed border-l-2 border-sky-500/30 pl-3">
-                    {project.note}
-                  </p>
-                )}
-                <div className="flex flex-wrap gap-2 mt-2">
-                  {project.stack.map((item, i) => (
-                    <span
-                      key={i}
-                      className="flex items-center gap-1.5 text-xs font-medium text-zinc-400 bg-zinc-800 border border-zinc-700 px-3 py-1.5 rounded-full"
-                    >
-                      <item.Icon className="text-sm" />
-                      {item.name}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <div className="flex items-center gap-3 mt-8">
-                {project.github && (
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="GitHub"
-                    className="flex items-center gap-2 text-sm font-medium text-zinc-300 hover:text-sky-400 border border-zinc-700 hover:border-sky-400/50 px-4 py-2 rounded-full transition-all"
+                  <h2
+                    className={`text-xl xl:text-2xl font-bold flex-1 transition-colors duration-200 ${
+                      openIndex === index
+                        ? "text-sky-400"
+                        : "text-white group-hover:text-zinc-300"
+                    }`}
                   >
-                    <BsGithub className="text-base" />
-                    GitHub
-                  </a>
-                )}
-                {project.live ? (
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Live demo"
-                    className="flex items-center gap-2 text-sm font-medium text-white bg-sky-400 hover:bg-sky-500 px-4 py-2 rounded-full transition-colors"
-                  >
-                    <BsLink className="text-base" />
-                    Live Demo
-                  </a>
-                ) : (
-                  <span className="flex items-center gap-1.5 text-xs font-medium text-zinc-500 border border-zinc-800 px-3 py-1.5 rounded-full">
-                    Demo on request
+                    {project.title}
+                  </h2>
+                  <span className="font-mono text-zinc-500 text-[10px] uppercase tracking-widest hidden xl:block flex-shrink-0">
+                    {project.category}
                   </span>
-                )}
-              </div>
-            </div>
-          </motion.div>
-        ))}
+                  <span
+                    className={`text-2xl font-light flex-shrink-0 transition-all duration-300 ${
+                      openIndex === index
+                        ? "text-sky-400 rotate-45"
+                        : "text-zinc-600 group-hover:text-zinc-400"
+                    }`}
+                  >
+                    +
+                  </span>
+                </button>
+
+                {/* Expanded panel */}
+                <AnimatePresence initial={false}>
+                  {openIndex === index && (
+                    <motion.div
+                      key="content"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                      className="overflow-hidden"
+                    >
+                      <div className="border-b border-zinc-800 grid grid-cols-1 xl:grid-cols-2">
+                        {/* Screenshot or placeholder */}
+                        <div className="relative h-48 xl:h-[420px] bg-zinc-950 overflow-hidden border-r border-zinc-800">
+                          {!isPlaceholder(project.image) ? (
+                            <Image
+                              src={project.image}
+                              fill
+                              alt={project.title}
+                              style={{
+                                objectFit: "contain",
+                                objectPosition: "center top",
+                                padding: "16px",
+                              }}
+                              className="opacity-95 hover:opacity-100 transition-opacity duration-300"
+                              sizes="(max-width: 1280px) 100vw, 50vw"
+                            />
+                          ) : (
+                            <div className="w-full h-full flex items-center justify-center border-r border-zinc-800">
+                              <span className="font-mono text-zinc-800 text-8xl font-black select-none">
+                                {project.num}
+                              </span>
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Content */}
+                        <div className="bg-zinc-900 p-6 xl:p-10 flex flex-col justify-between">
+                          <div className="flex flex-col gap-5">
+                            <span className="font-mono text-sky-400 text-[10px] uppercase tracking-widest">
+                              {project.category}
+                            </span>
+                            <p className="text-zinc-300 text-sm leading-relaxed">
+                              {project.description}
+                            </p>
+                            {project.note && (
+                              <p className="font-mono text-zinc-500 text-[11px] leading-relaxed border-l-2 border-zinc-700 pl-3">
+                                {project.note}
+                              </p>
+                            )}
+                            <div className="flex flex-wrap gap-2 pt-1">
+                              {project.stack.map((item, i) => (
+                                <span
+                                  key={i}
+                                  className="flex items-center gap-1.5 text-xs text-zinc-400 border border-zinc-700 hover:border-zinc-500 hover:text-white px-3 py-1.5 transition-colors cursor-default"
+                                >
+                                  <item.Icon className="text-sm" />
+                                  {item.name}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+
+                          <div className="flex items-center gap-3 mt-8 pt-6 border-t border-zinc-800">
+                            {project.github && (
+                              <a
+                                href={project.github}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-zinc-300 hover:text-white border border-zinc-700 hover:border-zinc-500 px-4 py-2.5 transition-colors"
+                              >
+                                <BsGithub className="text-sm" />
+                                GitHub
+                              </a>
+                            )}
+                            {project.live ? (
+                              <a
+                                href={project.live}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest bg-white text-zinc-950 hover:bg-sky-500 hover:text-white px-4 py-2.5 transition-colors"
+                              >
+                                <BsLink className="text-sm" />
+                                Live Demo
+                              </a>
+                            ) : (
+                              <span className="font-mono text-zinc-600 text-[10px] uppercase tracking-widest">
+                                Demo on request
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
       </div>
-    </motion.section>
+    </motion.div>
   );
 };
 

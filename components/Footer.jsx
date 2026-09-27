@@ -5,7 +5,7 @@ const navLinks = [
   { name: "Home", path: "/" },
   { name: "About", path: "/resume" },
   { name: "Projects", path: "/projects" },
-  { name: "Solutions", path: "/solutions" },
+  { name: "Services", path: "/solutions" },
   { name: "Contact", path: "/contacts" },
 ];
 
@@ -23,7 +23,7 @@ const Footer = () => {
               NA<span className="text-sky-500">.</span>
             </Link>
             <p className="font-mono text-zinc-500 text-[11px] uppercase tracking-widest mb-1">
-              Full Stack & Flutter Developer
+              Full Stack Developer
             </p>
             <p className="font-mono text-zinc-500 text-[11px] uppercase tracking-widest">
               Selangor, Malaysia

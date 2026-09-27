@@ -152,11 +152,11 @@ const Resume = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { duration: 0.4 } }}
     >
-      {/* â"€â"€ Editorial Hero â"€â"€ */}
+      {/* Editorial Hero */}
       <div className="border-b border-zinc-800">
-        <div className="container mx-auto px-4 sm:px-6 xl:px-12 max-w-6xl pt-16 xl:pt-24 pb-12 xl:pb-16">
+        <div className="container mx-auto px-4 sm:px-6 xl:px-12 pt-16 xl:pt-24 pb-12 xl:pb-16">
           <p className="font-mono text-zinc-500 text-[11px] uppercase tracking-[0.16em] mb-6">
-            Full Stack & Flutter Developer - Selangor, Malaysia
+            Full Stack Developer — Selangor, Malaysia
           </p>
           <h1 className="text-[clamp(52px,8vw,96px)] font-bold leading-[0.88] tracking-[-0.04em] text-white mb-10">
             Nabil
@@ -165,25 +165,24 @@ const Resume = () => {
           </h1>
 
           {/* Personal statement */}
-          <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 xl:gap-16 max-w-4xl">
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 xl:gap-16">
             <p className="text-zinc-300 text-[17px] leading-[1.7]">
               There&apos;s a specific moment when something you built just clicks
-              for someone using it - that&apos;s the feeling I&apos;ve been chasing
+              for someone using it — that&apos;s the feeling I&apos;ve been chasing
               since I wrote my first line of code.
             </p>
             <p className="text-zinc-500 text-[15px] leading-[1.7]">
               I build web and mobile applications with care: clean architecture,
               systems that scale, and software that solves real problems without
-              getting in the way. Currently building enterprise platforms at EBH
-              IT Solutions and open to freelance work worth caring about.
+              getting in the way. Open to freelance work worth caring about.
             </p>
           </div>
         </div>
       </div>
 
-      {/* â"€â"€ Two-column layout â"€â"€ */}
-      <div className="container mx-auto px-4 sm:px-6 xl:px-12 max-w-6xl py-16 xl:py-20">
-        <div className="grid grid-cols-1 xl:grid-cols-[2fr_5fr] gap-14 xl:gap-20 items-start">
+      {/* Two-column layout */}
+      <div className="container mx-auto px-4 sm:px-6 xl:px-12 py-16 xl:py-20">
+        <div className="grid grid-cols-1 xl:grid-cols-[1fr_3fr] gap-14 xl:gap-24 items-start">
 
           {/* Left: sticky facts table */}
           <div className="xl:sticky xl:top-24">
@@ -247,7 +246,7 @@ const Resume = () => {
                 {[
                   "Started with a Diploma in Computer Science, finished a Degree in Netcentric Computing at UiTM.",
                   "Found my footing in full stack development - where design decisions have real consequences.",
-                  "Currently leading feature development and mentoring interns at EBH IT Solutions.",
+                  "Currently leading feature development and mentoring interns at an enterprise software company.",
                   "I build things because seeing someone use what I made, and watching it actually help them, never gets old.",
                 ].map((line, i) => (
                   <motion.div
