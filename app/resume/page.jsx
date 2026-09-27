@@ -27,7 +27,7 @@ import {
   SiFigma,
   SiAmazonwebservices,
 } from "react-icons/si";
-import { FiDownload } from "react-icons/fi";
+import { FiDownload, FiTerminal } from "react-icons/fi";
 import { motion } from "framer-motion";
 
 const info = [
@@ -46,11 +46,11 @@ const experience = [
     company: "EBH IT Solutions",
     location: "Seri Kembangan, Selangor",
     role: "Full Stack Developer",
-    duration: "Dec 2025 – Present",
+    duration: "Dec 2025 - Present",
     bullets: [
       "Developed and maintained enterprise web applications using Next.js, React, TypeScript, Node.js, Prisma ORM, and PostgreSQL.",
-      "Collaborated with the CTO, backend developers, and stakeholders to design, develop, and deliver new features across multiple enterprise projects.",
-      "Managed feature development, code reviews, bug fixes, deployment verification, and technical documentation throughout the SDLC.",
+      "Led planning and development of an enterprise media intelligence platform, including AI-powered analysis, social listening scraping via Apify, and reporting across dashboard, analytics, and administration modules.",
+      "Developed REST APIs, database schemas, authentication, and RBAC; managed AWS deployments across Amplify, EC2, Elastic Beanstalk, S3, Cognito, and Cloudflare.",
       "Supervised and mentored three software development interns by assigning tasks, reviewing progress, and providing technical guidance.",
     ],
   },
@@ -58,19 +58,19 @@ const experience = [
     company: "Al-Ain IT Consultants Sdn Bhd",
     location: "Bukit Jalil, Selangor",
     role: "Frontend Developer Intern",
-    duration: "Mar 2024 – Jul 2024",
+    duration: "Mar 2024 - Jul 2024",
     bullets: [
       "Developed a cloud-based software testing platform using Next.js, TypeScript, and React, enabling smooth test execution and real-time monitoring.",
       "Developed responsive user profile and account management pages as part of the core frontend team.",
       "Integrated GitHub workflows and managed tasks using Taiga, collaborating to debug and resolve 30+ page-specific issues, improving testing reliability by 25%.",
-      "Monitored the production website and created 10–15 detailed issue tickets in Taiga, ensuring timely resolution.",
+      "Monitored the production website and created 10-15 detailed issue tickets in Taiga, ensuring timely resolution.",
     ],
   },
   {
     company: "Hezmedia Interactive Sdn Bhd",
     location: "Petaling Jaya, Selangor",
     role: "Frontend Developer Intern",
-    duration: "Feb 2022 – Jul 2022",
+    duration: "Sep 2021 - Feb 2022",
     bullets: [
       "Developed a responsive WordPress landing page for a mobile application.",
       "Built a FlutterFlow facility management app integrated with Firebase, supporting 100+ daily field records.",
@@ -82,15 +82,15 @@ const experience = [
 const education = [
   {
     institution: "Universiti Teknologi MARA (UiTM), Shah Alam",
-    degree: "Bachelor of Computer Science (Hons.) – Netcentric Computing",
+    degree: "Bachelor of Computer Science (Hons.) - Netcentric Computing",
     grade: "CGPA 3.53",
-    duration: "2022 – 2024",
+    duration: "2022 - 2024",
   },
   {
     institution: "Universiti Teknologi MARA (UiTM), Kuala Terengganu",
     degree: "Diploma in Computer Science",
     grade: "CGPA 3.71",
-    duration: "2019 – 2022",
+    duration: "2019 - 2022",
   },
 ];
 
@@ -141,6 +141,7 @@ const skillGroups = [
       { icon: <FaGithub />, name: "GitHub" },
       { icon: <SiPostman />, name: "Postman" },
       { icon: <SiFigma />, name: "Figma" },
+      { icon: <FiTerminal />, name: "Puppeteer" },
     ],
   },
 ];
@@ -151,11 +152,11 @@ const Resume = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { duration: 0.4 } }}
     >
-      {/* ── Editorial Hero ── */}
+      {/* â"€â"€ Editorial Hero â"€â"€ */}
       <div className="border-b border-zinc-800">
         <div className="container mx-auto px-4 sm:px-6 xl:px-12 max-w-6xl pt-16 xl:pt-24 pb-12 xl:pb-16">
           <p className="font-mono text-zinc-500 text-[11px] uppercase tracking-[0.16em] mb-6">
-            Full Stack & Flutter Developer — Selangor, Malaysia
+            Full Stack & Flutter Developer - Selangor, Malaysia
           </p>
           <h1 className="text-[clamp(52px,8vw,96px)] font-bold leading-[0.88] tracking-[-0.04em] text-white mb-10">
             Nabil
@@ -167,7 +168,7 @@ const Resume = () => {
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 xl:gap-16 max-w-4xl">
             <p className="text-zinc-300 text-[17px] leading-[1.7]">
               There&apos;s a specific moment when something you built just clicks
-              for someone using it — that&apos;s the feeling I&apos;ve been chasing
+              for someone using it - that&apos;s the feeling I&apos;ve been chasing
               since I wrote my first line of code.
             </p>
             <p className="text-zinc-500 text-[15px] leading-[1.7]">
@@ -180,7 +181,7 @@ const Resume = () => {
         </div>
       </div>
 
-      {/* ── Two-column layout ── */}
+      {/* â"€â"€ Two-column layout â"€â"€ */}
       <div className="container mx-auto px-4 sm:px-6 xl:px-12 max-w-6xl py-16 xl:py-20">
         <div className="grid grid-cols-1 xl:grid-cols-[2fr_5fr] gap-14 xl:gap-20 items-start">
 
@@ -212,7 +213,7 @@ const Resume = () => {
             </div>
 
             <a
-              href="/assets/RESUME_NABIL_ADIB.pdf"
+              href="/assets/RESUME_NABIL%20ADIB_.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 mt-6 bg-white text-zinc-950 hover:bg-sky-500 hover:text-white py-4 px-6 text-xs font-bold uppercase tracking-[0.08em] transition-colors"
@@ -245,7 +246,7 @@ const Resume = () => {
               <div className="flex flex-col gap-3">
                 {[
                   "Started with a Diploma in Computer Science, finished a Degree in Netcentric Computing at UiTM.",
-                  "Found my footing in full stack development — where design decisions have real consequences.",
+                  "Found my footing in full stack development - where design decisions have real consequences.",
                   "Currently leading feature development and mentoring interns at EBH IT Solutions.",
                   "I build things because seeing someone use what I made, and watching it actually help them, never gets old.",
                 ].map((line, i) => (
@@ -303,7 +304,7 @@ const Resume = () => {
                             className="flex gap-3 text-zinc-400 text-[14px] leading-relaxed"
                           >
                             <span className="text-sky-500 font-mono flex-shrink-0 mt-px">
-                              —
+                              -
                             </span>
                             {bullet}
                           </li>

@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import { FiDownload } from "react-icons/fi";
 import Link from "next/link";
 import {
@@ -46,7 +46,7 @@ const Home = () => {
     <section>
       <VisitorTracker />
 
-      {/* ── Editorial Hero ── */}
+      {/* â"€â"€ Editorial Hero â"€â"€ */}
       <div className="border-b border-zinc-800">
         <div className="container mx-auto px-4 sm:px-6 xl:px-12 pt-16 xl:pt-24 pb-16">
           <div className="flex flex-col xl:flex-row items-center justify-between gap-12 xl:gap-8">
@@ -93,7 +93,7 @@ const Home = () => {
               {/* CTAs */}
               <div className="flex flex-col sm:flex-row items-center xl:items-start gap-3 justify-center xl:justify-start">
                 <a
-                  href="/assets/RESUME_NABIL_ADIB.pdf"
+                  href="/assets/RESUME_NABIL%20ADIB_.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-white text-zinc-950 hover:bg-sky-500 hover:text-white px-6 py-3.5 text-xs font-bold uppercase tracking-[0.08em] transition-colors"
@@ -119,7 +119,7 @@ const Home = () => {
         </div>
       </div>
 
-      {/* ── Marquee ticker ── */}
+      {/* â"€â"€ Marquee ticker â"€â"€ */}
       <div className="relative overflow-hidden border-b border-zinc-800/60 py-4 mb-16 bg-zinc-900/20">
         <div className="flex animate-marquee gap-10 w-max">
           {marqueeItems.map((t, i) => (
@@ -134,15 +134,27 @@ const Home = () => {
         </div>
       </div>
 
+      {/* Companies strip */}
+      <div className="container mx-auto px-4 sm:px-6 xl:px-12 pb-10">
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-3 justify-center xl:justify-start">
+          <span className="font-mono text-zinc-500 text-[10px] uppercase tracking-[0.16em]">Experience from</span>
+          {["EBH IT Solutions", "Al-Ain IT Consultants", "Hezmedia Interactive"].map((co) => (
+            <span key={co} className="font-mono text-xs text-zinc-400 border border-zinc-800 px-3 py-1 hover:border-zinc-600 transition-colors">
+              {co}
+            </span>
+          ))}
+        </div>
+      </div>
+
       {/* ── Stats ── */}
       <div className="container mx-auto px-4 sm:px-6 xl:px-12 pb-16">
         <Stats />
       </div>
 
-      {/* ── How I Work ── */}
+      {/* How I Work */}
       <ProcessSection />
 
-      {/* ── Featured Projects ── */}
+      {/* Featured Projects */}
       <div className="container mx-auto px-4 sm:px-6 xl:px-12 pb-24">
         <Reveal className="flex items-end justify-between mb-10">
           <div>
@@ -185,12 +197,16 @@ const Home = () => {
                     Media Command Centre
                   </h3>
                   <p className="text-zinc-400 text-sm leading-relaxed mb-5 max-w-md">
-                    Enterprise media intelligence platform for monitoring, analysing, and reporting news coverage. Led planning and development — deployed on AWS across 7 services.
+                    Enterprise media intelligence platform for monitoring, analysing, and reporting news coverage across 7 AWS services — with AI-powered analysis and social listening.
                   </p>
                   <div className="flex flex-wrap items-center gap-3">
                     <div className="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/20 rounded-full px-3 py-1.5">
                       <span className="w-1.5 h-1.5 rounded-full bg-sky-500 flex-shrink-0" />
                       <span className="font-mono text-sky-400 text-xs">7 AWS Services · Enterprise Scale</span>
+                    </div>
+                    <div className="inline-flex items-center gap-2 bg-violet-500/10 border border-violet-500/20 rounded-full px-3 py-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-violet-400 flex-shrink-0" />
+                      <span className="font-mono text-violet-400 text-xs">AI-Powered · Social Listening</span>
                     </div>
                     <div className="flex gap-2 text-lg text-zinc-500 group-hover:text-sky-400/50 transition-colors">
                       <SiNextdotjs /><FaReact /><FaNodeJs /><SiPrisma /><SiPostgresql /><SiAmazonwebservices />
@@ -220,7 +236,7 @@ const Home = () => {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-white mb-2 group-hover:text-sky-400 transition-colors duration-300">
-                    ePIBG – Digital School Platform
+                    ePIBG — Digital School Platform
                   </h3>
                   <p className="text-zinc-400 text-xs leading-relaxed mb-4">
                     Led the Digital Consent and Treasurer modules. Full SDLC from planning to deployment on AWS Amplify.
@@ -252,7 +268,7 @@ const Home = () => {
                   </h3>
                   <div className="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/20 rounded-full px-3 py-1 mb-4">
                     <span className="w-1.5 h-1.5 rounded-full bg-sky-500 flex-shrink-0" />
-                    <span className="font-mono text-sky-400 text-[10px]">30+ Issues Fixed · 25% Reliability ↑</span>
+                    <span className="font-mono text-sky-400 text-[10px]">30+ Issues Fixed · 25% Reliability up</span>
                   </div>
                   <div className="flex gap-2 text-lg text-zinc-500 group-hover:text-sky-400/50 transition-colors">
                     <SiNextdotjs /><FaReact /><SiTypescript /><SiTailwindcss /><SiPrisma />
