@@ -102,6 +102,10 @@
     color: #fafafa;
     font-family: var(--font-inter), sans-serif;
   }
+  .light body {
+    background-color: #F5F3EF;
+    color: #0A0A0B;
+  }
 }
 
 @layer utilities {
@@ -110,10 +114,15 @@
   }
 }
 
-
+/* Dark mode dot pattern (default) */
 body {
   background-image: radial-gradient(circle, rgba(255,255,255,0.045) 1px, transparent 1px);
   background-size: 28px 28px;
+}
+
+/* Light mode dot pattern */
+.light body {
+  background-image: radial-gradient(circle, rgba(0,0,0,0.06) 1px, transparent 1px);
 }
 
 h1, h2, h3, h4, h5, h6 {

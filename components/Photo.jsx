@@ -118,8 +118,8 @@ const Photo = () => {
           style={{ transformOrigin: "center" }}
         >
           <div
-            className="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-white/25"
-            style={{ boxShadow: "0 0 6px rgba(255,255,255,0.3)" }}
+            className="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-zinc-400/50 dark:bg-white/25"
+            style={{ boxShadow: "0 0 6px rgba(0,0,0,0.15)" }}
           />
         </motion.div>
 

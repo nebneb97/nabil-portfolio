@@ -11,15 +11,15 @@ const navLinks = [
 
 const Footer = () => {
   return (
-    <footer className="border-t border-zinc-800">
+    <footer className="border-t border-zinc-200 dark:border-zinc-800">
 
-      {/* ── Top section ── */}
+      {/* Top section */}
       <div className="container mx-auto px-4 sm:px-6 xl:px-12 py-10 xl:py-12">
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-10 xl:gap-20">
 
           {/* Brand */}
           <div>
-            <Link href="/" className="text-xl font-bold tracking-tight text-white mb-2 inline-block">
+            <Link href="/" className="text-xl font-bold tracking-tight text-zinc-900 dark:text-white mb-2 inline-block">
               NA<span className="text-sky-500">.</span>
             </Link>
             <p className="font-mono text-zinc-500 text-[11px] uppercase tracking-widest mb-1">
@@ -40,7 +40,7 @@ const Footer = () => {
                 <Link
                   key={link.path}
                   href={link.path}
-                  className="font-mono text-xs text-zinc-500 hover:text-sky-400 uppercase tracking-widest transition-colors w-fit"
+                  className="font-mono text-xs text-zinc-500 hover:text-sky-600 dark:hover:text-sky-400 uppercase tracking-widest transition-colors w-fit"
                 >
                   {link.name}
                 </Link>
@@ -55,7 +55,7 @@ const Footer = () => {
             </p>
             <a
               href="mailto:nabiladib70@gmail.com"
-              className="block font-mono text-xs text-zinc-400 hover:text-sky-400 transition-colors mb-5 tracking-wide"
+              className="block font-mono text-xs text-zinc-600 dark:text-zinc-400 hover:text-sky-600 dark:hover:text-sky-400 transition-colors mb-5 tracking-wide"
             >
               nabiladib70@gmail.com
             </a>
@@ -84,15 +84,15 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* ── Bottom bar ── */}
-      <div className="border-t border-zinc-800/60">
+      {/* Bottom bar */}
+      <div className="border-t border-zinc-200/60 dark:border-zinc-800/60">
         <div className="container mx-auto px-4 sm:px-6 xl:px-12 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="font-mono text-[11px] text-zinc-500 tracking-wide">
             © {new Date().getFullYear()} Nabil Adib — Built to last, shipped with care.
           </p>
           <div className="flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse" />
-            <span className="font-mono text-[11px] text-sky-500 uppercase tracking-widest">
+            <span className="font-mono text-[11px] text-sky-600 dark:text-sky-500 uppercase tracking-widest">
               Available for freelance
             </span>
           </div>

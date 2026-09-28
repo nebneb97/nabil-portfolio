@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import PageTransition from "@/components/PageTransition";
 import Footer from "@/components/Footer";
 import CTABanner from "@/components/CTABanner";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -90,20 +91,22 @@ const jsonLd = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <Header />
-        <main className="min-h-screen flex flex-col">
-          <PageTransition>
-            <div className="flex-1">{children}</div>
-          </PageTransition>
-          <CTABanner />
-          <Footer />
-        </main>
+        <ThemeProvider>
+          <Header />
+          <main className="min-h-screen flex flex-col pt-16">
+            <PageTransition>
+              <div className="flex-1">{children}</div>
+            </PageTransition>
+            <CTABanner />
+            <Footer />
+          </main>
+        </ThemeProvider>
         <SpeedInsights />
       </body>
     </html>

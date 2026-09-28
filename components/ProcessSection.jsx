@@ -36,16 +36,16 @@ const ProcessSection = () => {
         className="flex items-end justify-between mb-10"
       >
         <div>
-          <p className="font-mono text-sky-500 text-xs font-semibold uppercase tracking-widest mb-2">
+          <p className="font-mono text-sky-600 dark:text-sky-500 text-xs font-semibold uppercase tracking-widest mb-2">
             Process
           </p>
-          <h2 className="text-2xl xl:text-3xl font-bold text-white">
+          <h2 className="text-2xl xl:text-3xl font-bold text-zinc-900 dark:text-white">
             How I Work
           </h2>
         </div>
       </motion.div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-px bg-zinc-800">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-px bg-zinc-200 dark:bg-zinc-800">
         {steps.map((step, i) => (
           <motion.div
             key={i}
@@ -53,13 +53,13 @@ const ProcessSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.45, delay: i * 0.1 }}
-            className="bg-[#060608] p-6 xl:p-8 flex flex-col gap-4 group hover:bg-zinc-900/60 transition-colors duration-300"
+            className="bg-white dark:bg-[#060608] p-6 xl:p-8 flex flex-col gap-4 group hover:bg-zinc-50 dark:hover:bg-zinc-900/60 transition-colors duration-300"
           >
-            <span className="font-mono text-[56px] font-black text-zinc-800 leading-none group-hover:text-sky-500/20 transition-colors duration-300 select-none">
+            <span className="font-mono text-[56px] font-black text-zinc-200 dark:text-zinc-800 leading-none group-hover:text-sky-500/20 transition-colors duration-300 select-none">
               {step.num}
             </span>
             <div>
-              <h3 className="text-white font-bold text-lg mb-2 group-hover:text-sky-400 transition-colors duration-300">
+              <h3 className="text-zinc-900 dark:text-white font-bold text-lg mb-2 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors duration-300">
                 {step.title}
               </h3>
               <p className="text-zinc-500 text-sm leading-relaxed">

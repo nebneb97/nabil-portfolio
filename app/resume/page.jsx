@@ -153,20 +153,19 @@ const Resume = () => {
       animate={{ opacity: 1, transition: { duration: 0.4 } }}
     >
       {/* Editorial Hero */}
-      <div className="border-b border-zinc-800">
+      <div className="border-b border-zinc-200 dark:border-zinc-800">
         <div className="container mx-auto px-4 sm:px-6 xl:px-12 pt-16 xl:pt-24 pb-12 xl:pb-16">
           <p className="font-mono text-zinc-500 text-[11px] uppercase tracking-[0.16em] mb-6">
             Full Stack Developer — Selangor, Malaysia
           </p>
-          <h1 className="text-[clamp(52px,8vw,96px)] font-bold leading-[0.88] tracking-[-0.04em] text-white mb-10">
+          <h1 className="text-[clamp(52px,8vw,96px)] font-bold leading-[0.88] tracking-[-0.04em] text-zinc-900 dark:text-white mb-10">
             Nabil
             <br />
             <span className="text-sky-500">Adib</span>
           </h1>
 
-          {/* Personal statement */}
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 xl:gap-16">
-            <p className="text-zinc-300 text-[17px] leading-[1.7]">
+            <p className="text-zinc-700 dark:text-zinc-300 text-[17px] leading-[1.7]">
               There&apos;s a specific moment when something you built just clicks
               for someone using it — that&apos;s the feeling I&apos;ve been chasing
               since I wrote my first line of code.
@@ -190,7 +189,7 @@ const Resume = () => {
               {info.map((item, i) => (
                 <div
                   key={i}
-                  className="flex justify-between gap-4 border-b border-zinc-800 py-2"
+                  className="flex justify-between gap-4 border-b border-zinc-200 dark:border-zinc-800 py-2"
                 >
                   <span className="text-zinc-500 uppercase tracking-widest flex-shrink-0">
                     {item.label}
@@ -200,12 +199,12 @@ const Resume = () => {
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sky-400 hover:text-sky-300 text-right transition-colors truncate"
+                      className="text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300 text-right transition-colors truncate"
                     >
                       {item.value}
                     </a>
                   ) : (
-                    <span className="text-white text-right">{item.value}</span>
+                    <span className="text-zinc-900 dark:text-white text-right">{item.value}</span>
                   )}
                 </div>
               ))}
@@ -215,16 +214,16 @@ const Resume = () => {
               href="/assets/RESUME_NABIL%20ADIB_.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 mt-6 bg-white text-zinc-950 hover:bg-sky-500 hover:text-white py-4 px-6 text-xs font-bold uppercase tracking-[0.08em] transition-colors"
+              className="flex items-center justify-center gap-2 mt-6 bg-zinc-900 text-white hover:bg-sky-600 dark:bg-white dark:text-zinc-950 dark:hover:bg-sky-500 dark:hover:text-white py-4 px-6 text-xs font-bold uppercase tracking-[0.08em] transition-colors"
             >
               Download CV
               <FiDownload className="text-sm" />
             </a>
 
-            <div className="mt-6 border border-zinc-800 p-4">
+            <div className="mt-6 border border-zinc-200 dark:border-zinc-800 p-4">
               <div className="flex items-center gap-2 mb-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse flex-shrink-0" />
-                <span className="font-mono text-sky-500 text-[10px] uppercase tracking-widest">
+                <span className="font-mono text-sky-600 dark:text-sky-500 text-[10px] uppercase tracking-widest">
                   Available
                 </span>
               </div>
@@ -234,12 +233,12 @@ const Resume = () => {
             </div>
           </div>
 
-          {/* Right: main content sections */}
+          {/* Right: main content */}
           <div className="flex flex-col gap-16">
 
             {/* In Brief */}
-            <div className="border-b border-zinc-800 pb-10">
-              <p className="font-mono text-zinc-500 text-[11px] uppercase tracking-[0.14em] border-b border-white pb-3 mb-8">
+            <div className="border-b border-zinc-200 dark:border-zinc-800 pb-10">
+              <p className="font-mono text-zinc-500 text-[11px] uppercase tracking-[0.14em] border-b border-zinc-900 dark:border-white pb-3 mb-8">
                 In Brief
               </p>
               <div className="flex flex-col gap-3">
@@ -255,9 +254,9 @@ const Resume = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, margin: "-30px" }}
                     transition={{ duration: 0.4, delay: i * 0.1 }}
-                    className="flex gap-3 text-zinc-400 text-[14px] leading-relaxed"
+                    className="flex gap-3 text-zinc-600 dark:text-zinc-400 text-[14px] leading-relaxed"
                   >
-                    <span className="font-mono text-zinc-700 flex-shrink-0 mt-px">
+                    <span className="font-mono text-zinc-300 dark:text-zinc-700 flex-shrink-0 mt-px">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     {line}
@@ -268,7 +267,7 @@ const Resume = () => {
 
             {/* Experience */}
             <div>
-              <p className="font-mono text-zinc-500 text-[11px] uppercase tracking-[0.14em] border-b border-white pb-3">
+              <p className="font-mono text-zinc-500 text-[11px] uppercase tracking-[0.14em] border-b border-zinc-900 dark:border-white pb-3">
                 Experience
               </p>
               {experience.map((item, i) => (
@@ -278,20 +277,20 @@ const Resume = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-40px" }}
                   transition={{ duration: 0.4, delay: i * 0.08 }}
-                  className="grid grid-cols-1 md:grid-cols-[1.4fr_3fr] gap-5 md:gap-8 border-b border-zinc-800 py-8"
+                  className="grid grid-cols-1 md:grid-cols-[1.4fr_3fr] gap-5 md:gap-8 border-b border-zinc-200 dark:border-zinc-800 py-8"
                 >
                   <div className="font-mono text-[11px] leading-[2] text-zinc-500">
                     <div>{item.duration}</div>
                     <div>{item.location}</div>
                     {item.duration.includes("Present") && (
-                      <div className="text-sky-500 mt-2 flex items-center gap-1.5">
+                      <div className="text-sky-600 dark:text-sky-500 mt-2 flex items-center gap-1.5">
                         <span className="w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse inline-block flex-shrink-0" />
                         Current
                       </div>
                     )}
                   </div>
                   <div>
-                    <h3 className="text-white font-bold text-xl leading-tight tracking-[-0.025em] mb-1">
+                    <h3 className="text-zinc-900 dark:text-white font-bold text-xl leading-tight tracking-[-0.025em] mb-1">
                       {item.role}
                     </h3>
                     <p className="text-zinc-500 text-sm mb-5">{item.company}</p>
@@ -300,9 +299,9 @@ const Resume = () => {
                         {item.bullets.map((bullet, j) => (
                           <li
                             key={j}
-                            className="flex gap-3 text-zinc-400 text-[14px] leading-relaxed"
+                            className="flex gap-3 text-zinc-600 dark:text-zinc-400 text-[14px] leading-relaxed"
                           >
-                            <span className="text-sky-500 font-mono flex-shrink-0 mt-px">
+                            <span className="text-sky-600 dark:text-sky-500 font-mono flex-shrink-0 mt-px">
                               -
                             </span>
                             {bullet}
@@ -317,20 +316,20 @@ const Resume = () => {
 
             {/* Education */}
             <div>
-              <p className="font-mono text-zinc-500 text-[11px] uppercase tracking-[0.14em] border-b border-white pb-3">
+              <p className="font-mono text-zinc-500 text-[11px] uppercase tracking-[0.14em] border-b border-zinc-900 dark:border-white pb-3">
                 Education
               </p>
               {education.map((item, i) => (
                 <div
                   key={i}
-                  className="grid grid-cols-1 md:grid-cols-[1.4fr_3fr] gap-5 md:gap-8 border-b border-zinc-800 py-8"
+                  className="grid grid-cols-1 md:grid-cols-[1.4fr_3fr] gap-5 md:gap-8 border-b border-zinc-200 dark:border-zinc-800 py-8"
                 >
                   <div className="font-mono text-[11px] leading-[2] text-zinc-500">
                     <div>{item.duration}</div>
-                    <div className="text-sky-400">{item.grade}</div>
+                    <div className="text-sky-600 dark:text-sky-400">{item.grade}</div>
                   </div>
                   <div>
-                    <h3 className="text-white font-bold text-lg leading-snug tracking-tight mb-1">
+                    <h3 className="text-zinc-900 dark:text-white font-bold text-lg leading-snug tracking-tight mb-1">
                       {item.degree}
                     </h3>
                     <p className="text-zinc-500 text-sm">{item.institution}</p>
@@ -341,7 +340,7 @@ const Resume = () => {
 
             {/* Skills */}
             <div>
-              <p className="font-mono text-zinc-500 text-[11px] uppercase tracking-[0.14em] border-b border-white pb-3 mb-8">
+              <p className="font-mono text-zinc-500 text-[11px] uppercase tracking-[0.14em] border-b border-zinc-900 dark:border-white pb-3 mb-8">
                 Skills & Technologies
               </p>
               <div className="flex flex-col gap-8">
@@ -354,9 +353,9 @@ const Resume = () => {
                       {group.skills.map((skill, i) => (
                         <div
                           key={i}
-                          className="flex items-center gap-2 border border-zinc-800 hover:border-sky-500/40 hover:bg-sky-500/5 hover:text-white px-4 py-2 text-sm text-zinc-400 transition-all duration-200 cursor-default"
+                          className="flex items-center gap-2 border border-zinc-200 dark:border-zinc-800 hover:border-sky-500/40 hover:bg-sky-500/5 hover:text-zinc-900 dark:hover:text-white px-4 py-2 text-sm text-zinc-600 dark:text-zinc-400 transition-all duration-200 cursor-default"
                         >
-                          <span className="text-[15px] text-zinc-500">
+                          <span className="text-[15px] text-zinc-400 dark:text-zinc-500">
                             {skill.icon}
                           </span>
                           {skill.name}

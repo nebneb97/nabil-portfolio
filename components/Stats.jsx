@@ -24,7 +24,7 @@ const Stats = () => {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="grid grid-cols-2 xl:grid-cols-4 divide-x divide-y xl:divide-y-0 divide-zinc-800 border border-zinc-800 overflow-hidden">
+      <div className="grid grid-cols-2 xl:grid-cols-4 divide-x divide-y xl:divide-y-0 divide-zinc-200 dark:divide-zinc-800 border border-zinc-200 dark:border-zinc-800 overflow-hidden">
         {stats.map((item, index) => (
           <motion.div
             key={index}
@@ -34,7 +34,7 @@ const Stats = () => {
             transition={{ duration: 0.4, delay: index * 0.1 }}
             className="flex flex-col items-center justify-center py-8 px-4"
           >
-            <div className="flex items-end gap-0.5 text-sky-500">
+            <div className="flex items-end gap-0.5 text-sky-600 dark:text-sky-500">
               <CountUp
                 end={item.num}
                 duration={4}
@@ -56,7 +56,7 @@ const Stats = () => {
         <div className="flex items-center justify-center gap-2 text-zinc-500 text-xs font-mono">
           <HiOutlineEye className="text-sm text-zinc-500" aria-hidden="true" />
           <span>
-            <span className="text-zinc-400 font-semibold">{visitors.toLocaleString()}</span>
+            <span className="text-zinc-600 dark:text-zinc-400 font-semibold">{visitors.toLocaleString()}</span>
             {" "}portfolio {visitors === 1 ? "visit" : "visits"}
           </span>
         </div>

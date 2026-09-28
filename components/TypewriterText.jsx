@@ -31,9 +31,9 @@ const TypewriterText = () => {
   }, [charIndex, deleting, roleIndex]);
 
   return (
-    <span className="text-lg text-zinc-400">
+    <span className="text-lg text-zinc-600 dark:text-zinc-400">
       {roles[roleIndex].slice(0, charIndex)}
-      <span className="animate-pulse text-sky-500">|</span>
+      <span className="animate-pulse text-sky-600 dark:text-sky-500">|</span>
     </span>
   );
 };
