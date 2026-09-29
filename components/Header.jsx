@@ -86,7 +86,7 @@ const Header = () => {
           )}
           <Link
             href="/contacts"
-            className="hidden xl:inline-flex items-center bg-sky-500 hover:bg-sky-600 text-white text-xs font-bold px-5 py-2 rounded-full uppercase tracking-wide transition-colors duration-200"
+            className="hidden xl:inline-flex items-center bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold px-5 py-2 uppercase tracking-wide transition-colors duration-200"
           >
             Let&apos;s Talk
           </Link>

@@ -7,6 +7,7 @@ import PageTransition from "@/components/PageTransition";
 import Footer from "@/components/Footer";
 import CTABanner from "@/components/CTABanner";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import ScrollProgress from "@/components/ScrollProgress";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -98,6 +99,7 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <ThemeProvider>
+          <ScrollProgress />
           <Header />
           <main className="min-h-screen flex flex-col pt-16">
             <PageTransition>
