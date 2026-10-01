@@ -53,15 +53,9 @@ const Home = () => {
 
             {/* Content */}
             <div className="text-center xl:text-left order-2 xl:order-none flex-1">
-              <p className="font-mono text-zinc-500 text-[11px] uppercase tracking-[0.16em] mb-3">
+              <p className="font-mono text-zinc-500 text-[11px] uppercase tracking-[0.16em] mb-8">
                 Full Stack Developer — Selangor, Malaysia
               </p>
-              <div className="flex items-center gap-2 justify-center xl:justify-start mb-8">
-                <span className="w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse flex-shrink-0" />
-                <span className="font-mono text-zinc-500 text-[10px] uppercase tracking-widest">
-                  Currently at EBH IT Solutions
-                </span>
-              </div>
               <h1 className="text-[clamp(40px,6vw,88px)] font-bold leading-[0.92] tracking-[-0.04em] text-zinc-900 dark:text-white mb-10">
                 Fast Apps.
                 <br />
